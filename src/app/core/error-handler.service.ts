@@ -7,7 +7,7 @@ import { isObject } from 'util';
 import { ToastService } from '@app/shared/service/toast.service';
 import { environment } from '@env/environment';
 import { HttpStatus } from '@app/shared/enum/http-status.enum';
-import { OAuth2Error } from '@app/security/oauth2-error.enum';
+import { OAuth2Error } from '@app/security/shared/oauth2-error.enum';
 
 @Injectable()
 export class ErrorHandlerService {

@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  applicationName: 'Angular App',
+  apiAuthUrl: 'http://localhost:8080'
 };

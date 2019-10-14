@@ -7,6 +7,7 @@ import ptBR from '@angular/common/locales/pt';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+import { SecurityModule } from './security/security.module';
 import { SharedModule } from './shared/shared.module';
 
 registerLocaleData(ptBR);
@@ -16,6 +17,7 @@ registerLocaleData(ptBR);
     BrowserModule,
     HttpClientModule,
     CoreModule,
+    SecurityModule,
     SharedModule,
     AppRoutingModule
   ],
