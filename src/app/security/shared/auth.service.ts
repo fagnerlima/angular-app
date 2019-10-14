@@ -8,7 +8,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { StorageService } from '@app/shared/service/storage.service';
 import { environment } from '@env/environment';
-import { Credenciais } from './credenciais.model';
+import { Credenciais } from './credenciais';
 import { OAuth2HttpResponse } from './oauth2-http-response';
 
 @Injectable()
@@ -36,7 +36,7 @@ export class AuthService {
       .then(response => {
         this.selectStorage(remember);
         this.putData(response);
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/home']);
         Promise.resolve();
       })
       .catch((error: any) => {});

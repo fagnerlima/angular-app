@@ -7,7 +7,6 @@
       "severity": "warning"
     },
     "component-class-suffix": true,
-    "contextual-lifecycle": true,
     "directive-class-suffix": true,
     "directive-selector": [
       true,
@@ -21,6 +20,7 @@
       "app",
       "kebab-case"
     ],
+    "contextual-lifecycle": false,
     "import-blacklist": [
       true,
       "rxjs/Rx"

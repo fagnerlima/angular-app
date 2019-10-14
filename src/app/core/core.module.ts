@@ -1,12 +1,24 @@
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from '@app/shared/shared.module';
-import { ErrorHandlerService } from './error-handler.service';
+import { ErrorHandlerService } from './shared/error-handler.service';
+import { PageException401Component } from './page-exception-401/page-exception-401.component';
+import { PageException404Component } from './page-exception-404/page-exception-404.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 import { TopbarComponent } from './topbar/topbar.component';
 
 @NgModule({
   imports: [SharedModule],
-  declarations: [TopbarComponent],
+  declarations: [
+    PageException401Component,
+    PageException404Component,
+    SidebarComponent,
+    TopbarComponent
+  ],
+  exports: [
+    SidebarComponent,
+    TopbarComponent
+  ],
   providers: [ErrorHandlerService]
 })
 export class CoreModule { }

@@ -1,0 +1,26 @@
+body .ui-fieldset {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+
+  .ui-fieldset-legend {
+    border: 1px solid #ddd;
+    font-size: 1em;
+    font-weight: 600;
+    margin: 0 -4px;
+    padding: 0 5px;
+    width: auto;
+
+    a {
+      color: $color;
+      padding: 0;
+    }
+  }
+
+  &.legend-no-bordered .ui-fieldset-legend {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+}

@@ -1,4 +1,4 @@
-export class Credenciais {
+export interface Credenciais {
   username: string;
   senha: string;
 }

@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/font-awesome/css/font-awesome.min.css';
+@import '../node_modules/primeicons/primeicons.css';
+@import '../node_modules/primeng/resources/themes/nova-light/theme.css';
+@import '../node_modules/primeng/resources/primeng.min.css';
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+@import 'assets/scss/vars';
+@import 'assets/scss/accordion';
+@import 'assets/scss/container';
+@import 'assets/scss/page-exception';
+@import 'assets/scss/breadcrumb';
+@import 'assets/scss/button';
+@import 'assets/scss/card';
+@import 'assets/scss/dashboard';
+@import 'assets/scss/dialog';
+@import 'assets/scss/main';
+@import 'assets/scss/fieldset';
+@import 'assets/scss/form';
+@import 'assets/scss/growl';
+@import 'assets/scss/link';
+@import 'assets/scss/loader';
+@import 'assets/scss/login';
+@import 'assets/scss/panel';
+@import 'assets/scss/sidebar';
+@import 'assets/scss/table';
+@import 'assets/scss/tag';
+@import 'assets/scss/topbar';
+@import 'assets/scss/typography';
+@import 'assets/scss/utils';

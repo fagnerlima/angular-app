@@ -1,0 +1,43 @@
+<section class="login-form">
+  <app-panel-loader [visible]="loading"></app-panel-loader>
+
+  <div class="image">
+    <img class="logo" src="assets/image/logo.png" alt="Angular App" title="Angular App">
+  </div>
+
+  <form class="form form-login" [formGroup]="form" autocomplete="off" [class.submitted]="formSubmitted" (ngSubmit)="login()">
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <h1 class="text-center">Login</h1>
+      </div>
+    </div>
+
+    <div class="ui-g form-group-username">
+      <label for="username" class="ui-g-12 control-label">Usuário</label>
+      <div class="ui-g-12">
+        <input pInputText type="email" class="form-control" id="username" formControlName="username" appAutoFocus>
+        <app-validation-message [control]="form.get('username')" [submitted]="formSubmitted" mode="submitted"></app-validation-message>
+      </div>
+    </div>
+
+    <div class="ui-g form-group-senha">
+      <label for="senha" class="ui-g-12 control-label">Senha</label>
+      <div class="ui-g-12">
+        <input pInputText type="password" class="form-control" id="senha" formControlName="senha">
+        <app-validation-message [control]="form.get('senha')" [submitted]="formSubmitted" mode="submitted"></app-validation-message>
+      </div>
+    </div>
+
+    <div class="ui-g form-group-botoes">
+      <div class="ui-g-12">
+        <div class="pull-left" style="margin-top: 3px">
+          <p-checkbox inputId="lembrar-acesso" name="lembrar-acesso" label="Lembrar acesso" formControlName="lembrarAcesso" [binary]="true"></p-checkbox>
+        </div>
+        <button pButton type="submit" class="pull-right" icon="fa fa-sign-in" label="Entrar"></button>
+      </div>
+      <div class="ui-g-12 text-center">
+        <a id="recuperar-senha" routerLink="/administrativo/recuperacao-senha">Esqueceu a senha? Clique aqui</a>
+      </div>
+    </div>
+  </form>
+</section>

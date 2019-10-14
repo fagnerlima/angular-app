@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SecurityModule } from './security/security.module';
 import { SharedModule } from './shared/shared.module';
+import { HomeModule } from './home/home.module';
+import { AdministrativoModule } from './administrativo/administrativo.module';
 
 registerLocaleData(ptBR);
 
@@ -16,9 +18,11 @@ registerLocaleData(ptBR);
   imports: [
     BrowserModule,
     HttpClientModule,
+    SharedModule,
     CoreModule,
     SecurityModule,
-    SharedModule,
+    AdministrativoModule,
+    HomeModule,
     AppRoutingModule
   ],
   declarations: [
