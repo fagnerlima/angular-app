@@ -4,7 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { MenuItem } from 'primeng/components/common/menuitem';
 
-import { AuthService } from '@app/security/auth.service';
+import { AuthService } from '@app/security/shared/auth.service';
 import { SecurityModule } from '@app/security/security.module';
 import { CoreModule } from '../core.module';
 import { MenuBuilder } from './menu-builder';

@@ -28,7 +28,6 @@ describe('Grupo: GrupoListingComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(GrupoListingComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('deve criar o componente', () => {

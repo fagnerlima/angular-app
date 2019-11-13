@@ -28,7 +28,6 @@ describe('Usuario: UsuarioListingComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(UsuarioListingComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('deve criar o componente', () => {

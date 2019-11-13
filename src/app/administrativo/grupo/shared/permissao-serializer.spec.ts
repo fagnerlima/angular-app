@@ -12,7 +12,7 @@ describe('Grupo: PermissaoSerializer', () => {
   it('deve converter um JSON para um ResponseOptionModel', () => {
     const json = {
       id: 1,
-      label: 'Permissão 1'
+      papel: 'Permissão 1'
     };
     const model = serializer.fromJsonToResponseOptionModel(json);
 

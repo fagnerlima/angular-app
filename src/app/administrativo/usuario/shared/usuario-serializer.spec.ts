@@ -91,8 +91,6 @@ describe('Usuario: UsuarioSerializer', () => {
     expect(form.get('email').value).toBe('email');
     expect(form.get('confirmacaoEmail').value).toBeNull();
     expect(form.get('login').value).toBe('user');
-    expect(form.get('senha').value).toBeNull();
-    expect(form.get('confirmacaoSenha').value).toBeNull();
     expect(form.get('grupos').value[0]).toBe(1);
     expect(form.get('ativo').value).toBeTruthy();
   });

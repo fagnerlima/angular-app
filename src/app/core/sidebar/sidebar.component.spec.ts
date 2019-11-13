@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { AuthService } from '@app/security/auth.service';
+import { AuthService } from '@app/security/shared/auth.service';
 import { SharedModule } from '@app/shared/shared.module';
 import { UsuarioModule } from '@app/administrativo/usuario/usuario.module';
 import { SidebarComponent } from './sidebar.component';

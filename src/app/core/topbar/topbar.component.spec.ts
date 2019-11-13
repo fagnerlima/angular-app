@@ -1,11 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { MenuModule } from 'primeng/components/menu/menu';
 
-import { AuthService } from '@app/security/auth.service';
+import { AuthService } from '@app/security/shared/auth.service';
 import { TopbarComponent } from './topbar.component';
 
 class MockAuthService {
