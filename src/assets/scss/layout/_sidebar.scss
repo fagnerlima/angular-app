@@ -18,7 +18,7 @@ $borderLeftActiveMenu: 4px solid #19aa8d;
 
   .header-profile {
     background-color: $sidebarBackgroundColor;
-    background-image: url('assets/image/header-profile.png');
+    background-image: url('assets/image/background-header-profile.png');
     color: #fff;
     padding: 1em;
 
@@ -37,6 +37,8 @@ $borderLeftActiveMenu: 4px solid #19aa8d;
       background-color: transparent;
 
       .ui-panelmenu-header-link {
+        background-color: transparent;
+        border: none;
         padding: .9em .75em;
 
         span { color: $sidebarColorLink }
