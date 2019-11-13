@@ -18,7 +18,7 @@ export class PermissaoService {
   ) { }
 
   findOptions(): Observable<PermissaoOptionResponse[]> {
-    return this.httpClient.get<ResponseBody<PermissaoOptionResponse[]>>(this.resourceBaseUrl)
+    return this.httpClient.get<ResponseBody<PermissaoOptionResponse[]>>(`${this.resourceBaseUrl}/ativos`)
       .pipe(map(response => response.data.map(value => this.serializer.fromJsonToResponseOptionModel(value))));
   }
 
