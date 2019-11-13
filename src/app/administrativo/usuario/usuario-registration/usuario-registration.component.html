@@ -19,13 +19,6 @@
 
         <app-input-text label="Login" [control]="form.get('login')" inputId="login" orientation="horizontal"
           [required]="true" [submitted]="formSubmitted"></app-input-text>
-
-        <app-password label="Senha" [control]="form.get('senha')" inputId="senha" orientation="horizontal"
-          [required]="true" [submitted]="formSubmitted"
-          promptLabel="Sua senha deve ter letras e números com no mínimo 6 e no máximo 20 caracteres"></app-password>
-
-        <app-password label="Confirmação de Senha" [control]="form.get('confirmacaoSenha')" inputId="confirmacao-senha" orientation="horizontal"
-          [required]="true" [submitted]="formSubmitted" [blockCopyPaste]="true" [feedback]="false"></app-password>
       </p-fieldset> <!--/.fieldset-dados-acesso-->
 
       <p-fieldset legend="Grupos" styleClass="fieldset-grupos">

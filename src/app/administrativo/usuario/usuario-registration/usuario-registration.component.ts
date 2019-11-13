@@ -53,8 +53,7 @@ export class UsuarioRegistrationComponent extends CrudRegistration<UsuarioReques
 
   get validationMessages(): ValidationMessage[] {
     return [
-      { type: 'emailConfirmado', message: 'E-mail confirmado incorretamente' },
-      { type: 'senhaConfirmada', message: 'Senha confirmada incorretamente' }
+      { type: 'emailConfirmado', message: 'E-mail confirmado incorretamente' }
     ];
   }
 

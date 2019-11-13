@@ -8,6 +8,6 @@ export class PermissaoSerializer {
   }
 
   fromJsonToResponseOptionModel(json: any): PermissaoOptionResponse {
-    return new PermissaoOptionResponse(json.id, json.label);
+    return new PermissaoOptionResponse(json.id, json.papel);
   }
 }

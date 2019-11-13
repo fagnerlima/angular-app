@@ -25,7 +25,7 @@ export class UsuarioForm extends FormGroup {
       ativo: new FormControl(true, Validators.required)
     });
 
-    this.setValidators([emailConfirmado, senhaConfirmada]);
+    this.setValidators(emailConfirmado);
   }
 }
 

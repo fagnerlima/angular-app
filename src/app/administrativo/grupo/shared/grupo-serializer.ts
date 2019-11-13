@@ -15,7 +15,7 @@ export class GrupoSerializer implements Serializer<GrupoRequest, GrupoResponse, 
   constructor(private permissaoSerializer: PermissaoSerializer) { }
 
   fromJsonToResponseModel(json: any): GrupoResponse {
-    const permissoes = (<any[]>json.permissoes).map(permissao => this.permissaoSerializer.fromJsonToResponseGrupoModel(permissao));
+    const permissoes = (json.permissoes as any[]).map(permissao => this.permissaoSerializer.fromJsonToResponseGrupoModel(permissao));
 
     return new GrupoResponse(json.id, json.nome, permissoes, json.ativo);
   }
