@@ -5,7 +5,12 @@
 export const environment = {
   production: false,
   applicationName: 'Angular App',
-  apiAuthUrl: 'http://localhost:8080'
+  oauth2: {
+    headers: {
+      authorization: 'Basic YW5ndWxhcjphbmd1bGFy'
+    }
+  },
+  apiAuthUrl: 'http://localhost:9001'
 };
 
 /*

@@ -24,7 +24,7 @@ export class AuthService {
     private storageService: StorageService
   ) { }
 
-  login(credenciais: Credenciais, remember = false): Promise<void> {
+  async login(credenciais: Credenciais, remember = false): Promise<void> {
     const headers = this.getHeadersOAuthToken();
     const body = new URLSearchParams();
 
@@ -42,7 +42,7 @@ export class AuthService {
       .catch((error: any) => {});
   }
 
-  refreshToken(): Promise<void> {
+  async refreshToken(): Promise<void> {
     const headers = this.getHeadersOAuthToken();
     const body = new URLSearchParams();
 
@@ -111,7 +111,7 @@ export class AuthService {
   private getHeadersOAuthToken(): HttpHeaders {
     return new HttpHeaders()
       .append('Content-Type', 'application/x-www-form-urlencoded')
-      .append('Authorization', 'Basic cHJvY2Vzc2FtZW50bzokMmEkMTAkcDlQazBmUU5BUVNlc0k0dnV2S0EwT1phbkREMg==');
+      .append('Authorization', environment.oauth2.headers.authorization);
   }
 
   private selectStorage(remember: boolean) {
