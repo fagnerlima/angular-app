@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 
-import { isString } from 'util';
+import { isString, isNullOrUndefined } from 'util';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
 
@@ -83,11 +83,11 @@ export class AuthService {
   }
 
   isValidAccessToken(): boolean {
-    return this.getAccessToken() && !this.jwtHelperService.isTokenExpired(this.getAccessToken());
+    return !isNullOrUndefined(this.getAccessToken()) && !this.jwtHelperService.isTokenExpired(this.getAccessToken());
   }
 
   isValidRefreshToken(): boolean {
-    return this.getRefreshToken() && !this.jwtHelperService.isTokenExpired(this.getRefreshToken());
+    return !isNullOrUndefined(this.getRefreshToken()) && !this.jwtHelperService.isTokenExpired(this.getRefreshToken());
   }
 
   hasValidTokens(): boolean {
