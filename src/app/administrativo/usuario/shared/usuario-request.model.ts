@@ -4,10 +4,8 @@ export class UsuarioRequest implements RequestModel {
 
   constructor(
     public nome: string,
-    public sobrenome: string,
     public email: string,
-    public username: string,
-    public senha: string,
+    public login: string,
     public grupos: number[],
     public ativo: boolean
   ) { }

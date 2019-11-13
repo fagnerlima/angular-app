@@ -16,14 +16,6 @@
             </div>
           </div> <!--/.form-group-nome-->
 
-          <div class="ui-g form-group-sobrenome">
-            <label for="sobrenome" class="ui-g-12 control-label required">Sobrenome</label>
-            <div class="ui-g-12">
-              <input pInputText type="text" id="sobrenome" class="form-control" formControlName="sobrenome">
-              <app-validation-message [control]="formInformacoesPessoais.get('sobrenome')" [submitted]="formInformacoesPessoaisSubmitted"></app-validation-message>
-            </div>
-          </div> <!--/.form-group-sobrenome-->
-
           <div class="ui-g form-group-email">
             <label for="email" class="ui-g-12 control-label required">E-mail</label>
             <div class="ui-g-12">
@@ -40,13 +32,13 @@
             </div>
           </div> <!--/.form-group-confirmacao-email-->
 
-          <div class="ui-g form-group-username">
-            <label for="username" class="ui-g-12 control-label required">Login</label>
+          <div class="ui-g form-group-login">
+            <label for="login" class="ui-g-12 control-label required">Login</label>
             <div class="ui-g-12">
-              <input pInputText type="text" id="username" class="form-control" formControlName="username">
-              <app-validation-message [control]="formInformacoesPessoais.get('username')" [submitted]="formInformacoesPessoaisSubmitted"></app-validation-message>
+              <input pInputText type="text" id="login" class="form-control" formControlName="login">
+              <app-validation-message [control]="formInformacoesPessoais.get('login')" [submitted]="formInformacoesPessoaisSubmitted"></app-validation-message>
             </div>
-          </div> <!--/.form-group-username-->
+          </div> <!--/.form-group-login-->
 
           <div class="ui-g form-group-validacoes">
             <div class="ui-g-12">

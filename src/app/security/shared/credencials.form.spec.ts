@@ -1,20 +1,20 @@
-import { CredenciaisForm } from './credenciais.form';
+import { CredencialsForm } from './credencials.form';
 
-describe('Security: CredenciaisForm', () => {
+describe('Security: CredencialsForm', () => {
   it('deve criar uma instância do form', () => {
-    expect(new CredenciaisForm()).toBeTruthy();
+    expect(new CredencialsForm()).toBeTruthy();
   });
 
   it('deve gerar um model', () => {
-    const form = new CredenciaisForm();
+    const form = new CredencialsForm();
     form.get('username').setValue('meuusername');
-    form.get('senha').setValue('minhasenha');
-    form.get('lembrarAcesso').setValue(true);
+    form.get('password').setValue('minhasenha');
+    form.get('remember').setValue(true);
 
     const model = form.toModel();
     const expectedModel = {
       username: 'meuusername',
-      senha: 'minhasenha'
+      password: 'minhasenha'
     };
 
     expect(model).toEqual(jasmine.objectContaining(expectedModel));

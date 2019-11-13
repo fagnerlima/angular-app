@@ -18,13 +18,13 @@ export class UsuarioSerializer implements Serializer<UsuarioRequest, UsuarioResp
   constructor(private grupoSerializer: GrupoSerializer) { }
 
   fromJsonToResponseModel(json: any): UsuarioResponse {
-    const grupos = (<any[]>json.grupos).map(grupo => this.grupoSerializer.fromJsonToResponseOptionModel(grupo));
+    const grupos = (json.grupos as any[]).map(grupo => this.grupoSerializer.fromJsonToResponseOptionModel(grupo));
 
-    return new UsuarioResponse(json.id, json.nome, json.sobrenome, json.email, json.username, grupos, json.ativo);
+    return new UsuarioResponse(json.id, json.nome, json.email, json.login, grupos, json.ativo, json.pendente, json.bloqueado);
   }
 
   fromJsonToResponseListModel(json: any): UsuarioListResponse {
-    return new UsuarioListResponse(json.id, json.nome, json.sobrenome, json.email, json.username, json.grupos, json.ativo);
+    return new UsuarioListResponse(json.id, json.nome, json.email, json.login, json.grupos, json.ativo);
   }
 
   fromResponseModelToForm(model: UsuarioResponse): UsuarioForm {
@@ -32,9 +32,8 @@ export class UsuarioSerializer implements Serializer<UsuarioRequest, UsuarioResp
 
     form.patchValue({
       nome: model.nome,
-      sobrenome: model.sobrenome,
       email: model.email,
-      username: model.username,
+      login: model.login,
       grupos: model.grupos.map(grupo => grupo.id),
       ativo: model.ativo
     });
@@ -45,10 +44,8 @@ export class UsuarioSerializer implements Serializer<UsuarioRequest, UsuarioResp
   fromFormToRequestModel(form: UsuarioForm): UsuarioRequest {
     return new UsuarioRequest(
       form.get('nome').value,
-      form.get('sobrenome').value,
       form.get('email').value,
-      form.get('username').value,
-      form.get('senha').value,
+      form.get('login').value,
       form.get('grupos').value,
       form.get('ativo').value
     );
@@ -61,9 +58,8 @@ export class UsuarioSerializer implements Serializer<UsuarioRequest, UsuarioResp
 
     form.patchValue({
       nome: model.nome,
-      sobrenome: model.sobrenome,
       email: model.email,
-      username: model.username
+      login: model.login
     });
 
     return form;
@@ -74,9 +70,8 @@ export class UsuarioSerializer implements Serializer<UsuarioRequest, UsuarioResp
   ): UsuarioPerfilInformacoesPessoaisRequest {
     return new UsuarioPerfilInformacoesPessoaisRequest(
       form.get('nome').value,
-      form.get('sobrenome').value,
       form.get('email').value,
-      form.get('username').value
+      form.get('login').value
     );
   }
 

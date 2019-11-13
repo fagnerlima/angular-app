@@ -8,7 +8,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { StorageService } from '@app/shared/service/storage.service';
 import { environment } from '@env/environment';
-import { Credenciais } from './credenciais';
+import { Credencials } from './credentials.model';
 import { OAuth2HttpResponse } from './oauth2-http-response';
 
 @Injectable()
@@ -24,13 +24,13 @@ export class AuthService {
     private storageService: StorageService
   ) { }
 
-  async login(credenciais: Credenciais, remember = false): Promise<void> {
+  async login(credencials: Credencials, remember = false): Promise<void> {
     const headers = this.getHeadersOAuthToken();
     const body = new URLSearchParams();
 
     body.set('grant_type', 'password');
-    body.set('username', credenciais.username);
-    body.set('password', credenciais.senha);
+    body.set('username', credencials.username);
+    body.set('password', credencials.password);
 
     return this.httpClient.post<OAuth2HttpResponse>(this.authorizeUrl, body.toString(), { headers }).toPromise()
       .then(response => {

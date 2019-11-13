@@ -8,9 +8,6 @@
       <p-fieldset legend="Informações Pessoais" styleClass="fieldset-informacoes-pessoais">
         <app-input-text label="Nome" [control]="form.get('nome')" inputId="nome" orientation="horizontal" [autoFocus]="true"
           [required]="true" [submitted]="formSubmitted"></app-input-text>
-
-        <app-input-text label="Sobrenome" [control]="form.get('sobrenome')" inputId="sobrenome" orientation="horizontal"
-          [required]="true" [submitted]="formSubmitted"></app-input-text>
       </p-fieldset> <!--/.fieldset-informacoes-pessoais-->
 
       <p-fieldset legend="Dados de Acesso" styleClass="fieldset-dados-acesso">
@@ -20,7 +17,7 @@
         <app-input-text label="Confirmação de E-mail" [control]="form.get('confirmacaoEmail')" inputId="confirmacao-email" orientation="horizontal"
           [required]="true" [submitted]="formSubmitted" [blockCopyPaste]="true"></app-input-text>
 
-        <app-input-text label="Login" [control]="form.get('username')" inputId="username" orientation="horizontal"
+        <app-input-text label="Login" [control]="form.get('login')" inputId="login" orientation="horizontal"
           [required]="true" [submitted]="formSubmitted"></app-input-text>
 
         <app-password label="Senha" [control]="form.get('senha')" inputId="senha" orientation="horizontal"

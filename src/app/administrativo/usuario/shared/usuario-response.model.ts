@@ -6,10 +6,11 @@ export class UsuarioResponse implements ResponseModel {
   constructor(
     public id: number,
     public nome: string,
-    public sobrenome: string,
     public email: string,
-    public username: string,
+    public login: string,
     public grupos: GrupoOptionResponse[],
-    public ativo: boolean
+    public ativo: boolean,
+    public pendente: boolean,
+    public bloqueado: boolean
   ) { }
 }

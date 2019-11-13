@@ -31,9 +31,8 @@ describe('Usuario: UsuarioSerializer', () => {
     const json = {
       id: 1,
       nome: 'Nome 1',
-      sobrenome: 'Sobrenome 1',
       email: 'email',
-      username: 'user',
+      login: 'user',
       grupos: [
         {
           id: 1,
@@ -47,9 +46,8 @@ describe('Usuario: UsuarioSerializer', () => {
     expect(model instanceof UsuarioResponse).toBeTruthy();
     expect(model.id).toBe(1);
     expect(model.nome).toBe('Nome 1');
-    expect(model.sobrenome).toBe('Sobrenome 1');
     expect(model.email).toBe('email');
-    expect(model.username).toBe('user');
+    expect(model.login).toBe('user');
     expect(model.grupos[0] instanceof GrupoOptionResponse).toBeTruthy();
     expect(model.grupos[0].id).toBe(1);
     expect(model.grupos[0].nome).toBe('Grupo 1');
@@ -60,9 +58,8 @@ describe('Usuario: UsuarioSerializer', () => {
     const json = {
       id: 1,
       nome: 'Nome 1',
-      sobrenome: 'Sobrenome 1',
       email: 'email',
-      username: 'user',
+      login: 'user',
       grupos: ['Grupo 1'],
       ativo: true
     };
@@ -71,9 +68,8 @@ describe('Usuario: UsuarioSerializer', () => {
     expect(model instanceof UsuarioListResponse).toBeTruthy();
     expect(model.id).toBe(1);
     expect(model.nome).toBe('Nome 1');
-    expect(model.sobrenome).toBe('Sobrenome 1');
     expect(model.email).toBe('email');
-    expect(model.username).toBe('user');
+    expect(model.login).toBe('user');
     expect(model.grupos[0]).toBe('Grupo 1');
     expect(model.ativo).toBeTruthy();
   });
@@ -82,19 +78,19 @@ describe('Usuario: UsuarioSerializer', () => {
     const model = new UsuarioResponse(
       1,
       'Nome 1',
-      'Sobrenome 1',
       'email',
       'user',
       [new GrupoOptionResponse(1, 'Grupo 1')],
-      true
+      true,
+      false,
+      false
     );
     const form = serializer.fromResponseModelToForm(model);
 
     expect(form.get('nome').value).toBe('Nome 1');
-    expect(form.get('sobrenome').value).toBe('Sobrenome 1');
     expect(form.get('email').value).toBe('email');
     expect(form.get('confirmacaoEmail').value).toBeNull();
-    expect(form.get('username').value).toBe('user');
+    expect(form.get('login').value).toBe('user');
     expect(form.get('senha').value).toBeNull();
     expect(form.get('confirmacaoSenha').value).toBeNull();
     expect(form.get('grupos').value[0]).toBe(1);
@@ -105,12 +101,9 @@ describe('Usuario: UsuarioSerializer', () => {
     const form = new UsuarioForm();
     form.patchValue({
       nome: 'Nome 1',
-      sobrenome: 'Sobrenome 1',
       email: 'email',
       confirmacaoEmail: 'email',
-      username: 'user',
-      senha: 'senha',
-      confirmacaoSenha: 'senha',
+      login: 'user',
       grupos: [1],
       ativo: true
     });
@@ -118,41 +111,36 @@ describe('Usuario: UsuarioSerializer', () => {
 
     expect(model instanceof UsuarioRequest).toBeTruthy();
     expect(model.nome).toBe('Nome 1');
-    expect(model.sobrenome).toBe('Sobrenome 1');
     expect(model.email).toBe('email');
-    expect(model.username).toBe('user');
-    expect(model.senha).toBe('senha');
+    expect(model.login).toBe('user');
     expect(model.grupos[0]).toBe(1);
     expect(model.ativo).toBeTruthy();
   });
 
   it('deve converter um ResponseListModel para um PerfilInformacoesPessoaisForm', () => {
-    const model = new UsuarioListResponse(1, 'Nome 1', 'Sobrenome 1', 'email', 'user', ['Grupo 1'], true);
+    const model = new UsuarioListResponse(1, 'Nome 1', 'email', 'user', ['Grupo 1'], true);
     const form = serializer.fromResponseListModelToPerfilInformacoesPessoaisForm(model);
 
     expect(form.get('nome').value).toBe('Nome 1');
-    expect(form.get('sobrenome').value).toBe('Sobrenome 1');
     expect(form.get('email').value).toBe('email');
     expect(form.get('confirmacaoEmail').value).toBe(null);
-    expect(form.get('username').value).toBe('user');
+    expect(form.get('login').value).toBe('user');
   });
 
   it('deve converter um PerfilInformacoesPessoaisForm para um PerfilInformacoesPessoaisRequestModel', () => {
     const form = new UsuarioPerfilInformacoesPessoaisForm();
     form.patchValue({
       nome: 'Nome 1',
-      sobrenome: 'Sobrenome 1',
       email: 'email',
       confirmacaoEmail: 'email',
-      username: 'user'
+      login: 'user'
     });
     const model = serializer.fromPerfilInformacoesPessoaisFormToRequestModel(form);
 
     expect(model instanceof UsuarioPerfilInformacoesPessoaisRequest).toBeTruthy();
     expect(model.nome).toBe('Nome 1');
-    expect(model.sobrenome).toBe('Sobrenome 1');
     expect(model.email).toBe('email');
-    expect(model.username).toBe('user');
+    expect(model.login).toBe('user');
   });
 
   it('deve converter um PerfilSenhaForm para um PerfilSenhaRequestModel', () => {

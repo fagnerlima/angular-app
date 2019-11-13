@@ -9,11 +9,6 @@ export class UsuarioForm extends FormGroup {
         Validators.minLength(2),
         Validators.maxLength(32)]
       ),
-      sobrenome: new FormControl(null, [
-        Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(32)
-      ]),
       email: new FormControl(null, [
         Validators.required,
         Validators.email,
@@ -21,17 +16,11 @@ export class UsuarioForm extends FormGroup {
         Validators.maxLength(100)]
       ),
       confirmacaoEmail: new FormControl(null, Validators.required),
-      username: new FormControl(null, [
+      login: new FormControl(null, [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(32)
       ]),
-      senha: new FormControl(null, [
-        Validators.required,
-        Validators.minLength(6),
-        Validators.maxLength(20)
-      ]),
-      confirmacaoSenha: new FormControl(null, Validators.required),
       grupos: new FormControl([], Validators.required),
       ativo: new FormControl(true, Validators.required)
     });
@@ -49,11 +38,6 @@ export class UsuarioPerfilInformacoesPessoaisForm extends FormGroup {
         Validators.minLength(2),
         Validators.maxLength(32)]
       ),
-      sobrenome: new FormControl(null, [
-        Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(32)
-      ]),
       email: new FormControl(null, [
         Validators.required,
         Validators.email,
@@ -61,7 +45,7 @@ export class UsuarioPerfilInformacoesPessoaisForm extends FormGroup {
         Validators.maxLength(100)]
       ),
       confirmacaoEmail: new FormControl(null, Validators.required),
-      username: new FormControl(null, [
+      login: new FormControl(null, [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(32)

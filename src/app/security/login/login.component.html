@@ -20,18 +20,18 @@
       </div>
     </div>
 
-    <div class="ui-g form-group-senha">
-      <label for="senha" class="ui-g-12 control-label">Senha</label>
+    <div class="ui-g form-group-password">
+      <label for="password" class="ui-g-12 control-label">Senha</label>
       <div class="ui-g-12">
-        <input pInputText type="password" class="form-control" id="senha" formControlName="senha">
-        <app-validation-message [control]="form.get('senha')" [submitted]="formSubmitted" mode="submitted"></app-validation-message>
+        <input pInputText type="password" class="form-control" id="password" formControlName="password">
+        <app-validation-message [control]="form.get('password')" [submitted]="formSubmitted" mode="submitted"></app-validation-message>
       </div>
     </div>
 
     <div class="ui-g form-group-botoes">
       <div class="ui-g-12">
         <div class="pull-left" style="margin-top: 3px">
-          <p-checkbox inputId="lembrar-acesso" name="lembrar-acesso" label="Lembrar acesso" formControlName="lembrarAcesso" [binary]="true"></p-checkbox>
+          <p-checkbox inputId="lembrar-acesso" name="lembrar-acesso" label="Lembrar acesso" formControlName="remember" [binary]="true"></p-checkbox>
         </div>
         <button pButton type="submit" class="pull-right" icon="fa fa-sign-in" label="Entrar"></button>
       </div>

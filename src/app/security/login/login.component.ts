@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { TitleService } from '@app/shared/service/title.service';
 import { AuthService } from '../shared/auth.service';
-import { CredenciaisForm } from '../shared/credenciais.form';
+import { CredencialsForm } from '../shared/credencials.form';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,7 @@ import { CredenciaisForm } from '../shared/credenciais.form';
 })
 export class LoginComponent implements OnInit {
 
-  private _form = new CredenciaisForm();
+  private _form = new CredencialsForm();
   private _formSubmitted = false;
   private _loading = false;
 
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  get form(): CredenciaisForm {
+  get form(): CredencialsForm {
     return this._form;
   }
 
@@ -46,14 +46,14 @@ export class LoginComponent implements OnInit {
     this._formSubmitted = true;
 
     if (this._form.valid) {
-      await this.authService.login(this._form.toModel(), this._form.get('lembrarAcesso').value);
+      await this.authService.login(this._form.toModel(), this._form.get('remember').value);
     }
 
     this._loading = false;
-    this.limparSenha();
+    this.clearPassword();
   }
 
-  private limparSenha(): void {
-    this._form.get('senha').setValue(null);
+  private clearPassword(): void {
+    this._form.get('password').setValue(null);
   }
 }

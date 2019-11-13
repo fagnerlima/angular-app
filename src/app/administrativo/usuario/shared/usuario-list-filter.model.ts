@@ -4,9 +4,8 @@ export class UsuarioListFilter extends ListFilter {
 
   constructor(
     public nome = '',
-    public sobrenome = '',
     public email = '',
-    public username = '',
+    public login = '',
     public ativo = true,
     public page = 0,
     public size = 10,

@@ -7,16 +7,16 @@ import { CheckboxModule } from 'primeng/components/checkbox/checkbox';
 
 import { SharedModule } from '@app/shared/shared.module';
 import { TitleService } from '@app/shared/service/title.service';
-import { AuthService } from '@app/security/auth.service';
+import { AuthService } from '@app/security/shared/auth.service';
 import { LoginComponent } from './login.component';
-import { Credenciais } from '../credenciais.model';
+import { Credencials } from '../shared/credentials.model';
 
 class MockAuthService {
   hasValidTokens(): boolean {
     return false;
   }
 
-  login(credenciais: Credenciais): Promise<void> {
+  login(credencials: Credencials): Promise<void> {
     return Promise.resolve();
   }
 }
@@ -64,15 +64,15 @@ describe('Security: LoginComponent', () => {
 
   it('deve impedir o login pelo não preenchimento dos campos Usuário e Senha', () => {
     const username = component.form.get('username');
-    const senha = component.form.get('senha');
+    const password = component.form.get('password');
 
-    const credenciaisList = [
-      { username: '', senha: '' },
-      { username: 'meuusername', senha: '' },
-      { username: '', senha: 'minhasenha' }
+    const credencialsList = [
+      { username: '', password: '' },
+      { username: 'meuusername', password: '' },
+      { username: '', password: 'minhasenha' }
     ];
-    credenciaisList.forEach(credenciais => {
-      component.form.patchValue(credenciais);
+    credencialsList.forEach(credencials => {
+      component.form.patchValue(credencials);
       component.login();
     });
 
@@ -80,7 +80,7 @@ describe('Security: LoginComponent', () => {
   });
 
   it('deve chamar o login', () => {
-    component.form.patchValue({ username: 'meuusername', senha: 'minhasenha' });
+    component.form.patchValue({ username: 'meuusername', password: 'minhasenha' });
     component.login();
 
     expect(authService.login).toHaveBeenCalled();

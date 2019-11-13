@@ -12,19 +12,14 @@
             <input pInputText type="text" id="nome" class="form-control" name="nome" [(ngModel)]="filter.nome" appAutoFocus>
           </div>
 
-          <div class="ui-sm-12 ui-md-4 ui-lg-3 form-group-sobrenome">
-            <label for="sobrenome" class="control-label">Sobrenome</label>
-            <input pInputText type="text" id="sobrenome" class="form-control" name="sobrenome" [(ngModel)]="filter.sobrenome">
-          </div>
-
           <div class="ui-sm-12 ui-md-4 ui-lg-3 form-group-email">
             <label for="email" class="control-label">E-mail</label>
             <input pInputText type="text" id="email" class="form-control" name="email" [(ngModel)]="filter.email">
           </div>
 
-          <div class="ui-sm-12 ui-md-4 ui-lg-3 form-group-username">
-            <label for="username" class="control-label">Login</label>
-            <input pInputText type="text" id="username" class="form-control" name="username" [(ngModel)]="filter.username">
+          <div class="ui-sm-12 ui-md-4 ui-lg-3 form-group-login">
+            <label for="login" class="control-label">Login</label>
+            <input pInputText type="text" id="login" class="form-control" name="login" [(ngModel)]="filter.login">
           </div>
 
           <div class="ui-sm-12 ui-md-4 ui-lg-3 form-group-status">
@@ -97,7 +92,7 @@
           </td>
           <td>
             <span class="ui-column-title">Login</span>
-            {{rowData.username}}
+            {{rowData.login}}
           </td>
           <td class="text-center">
             <span class="ui-column-title">Status</span>
