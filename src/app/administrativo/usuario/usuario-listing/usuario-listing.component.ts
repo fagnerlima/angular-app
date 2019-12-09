@@ -24,7 +24,7 @@ export class UsuarioListingComponent extends CrudListing<UsuarioRequest, Usuario
   }
 
   hasActions(): boolean {
-    return this.hasAnyAuthority('USUARIO_CADASTRAR');
+    return this.hasAnyAuthority('ROLE_USUARIO_CADASTRAR');
   }
 
   get title(): string {

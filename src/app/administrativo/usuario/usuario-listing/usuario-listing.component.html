@@ -98,7 +98,7 @@
             <span class="ui-column-title">Status</span>
             <button pButton appTag [tagValue]="rowData.ativo" [tagSuccess]="true" [tagDanger]="false" class="btn-status"
               [label]="rowData.ativo | status" [pTooltip]="rowData.ativo | status:'Desativar':'Ativar'" tooltipPosition="top"
-              (click)="confirmChangeStatus(rowData)" [disabled]="!hasAnyAuthority('USUARIO_CADASTRAR')">
+              (click)="confirmChangeStatus(rowData)" [disabled]="!hasAnyAuthority('ROLE_USUARIO_CADASTRAR')">
             </button>
           </td>
           <td *ngIf="hasActions()" class="text-center">
@@ -135,6 +135,6 @@
 <ng-template #tplNoData>--</ng-template>
 
 <ng-template #tplHeaderTooltipStatus>
-  <i *ngIf="hasAnyAuthority('USUARIO_CADASTRAR')" class="fa fa-question-circle"
+  <i *ngIf="hasAnyAuthority('ROLE_USUARIO_CADASTRAR')" class="fa fa-question-circle"
     pTooltip="Clique no status para ativar/desativar o registro" tooltipPosition="top"></i>
 </ng-template>
