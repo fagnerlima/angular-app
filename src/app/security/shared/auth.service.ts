@@ -47,7 +47,6 @@ export class AuthService {
     const body = new URLSearchParams();
 
     body.set('grant_type', 'refresh_token');
-    body.set('refresh_token', this.getRefreshToken());
 
     return this.httpClient.post<OAuth2HttpResponse>(this.authorizeUrl, body.toString(), { headers }).toPromise()
       .then(response => {
@@ -66,10 +65,6 @@ export class AuthService {
     return this.storageService.getItem('access_token');
   }
 
-  getRefreshToken(): string {
-    return this.storageService.getItem('refresh_token');
-  }
-
   getName(): string {
     return this.storageService.getItem('name');
   }
@@ -84,14 +79,6 @@ export class AuthService {
 
   isValidAccessToken(): boolean {
     return !isNullOrUndefined(this.getAccessToken()) && !this.jwtHelperService.isTokenExpired(this.getAccessToken());
-  }
-
-  isValidRefreshToken(): boolean {
-    return !isNullOrUndefined(this.getRefreshToken()) && !this.jwtHelperService.isTokenExpired(this.getRefreshToken());
-  }
-
-  hasValidTokens(): boolean {
-    return this.isValidAccessToken() || this.isValidRefreshToken();
   }
 
   hasRole(roles: string[] | string): boolean {
@@ -126,7 +113,6 @@ export class AuthService {
 
   private putData(oauth2Response: OAuth2HttpResponse): void {
     this.storageService.setItem('access_token', oauth2Response.access_token);
-    this.storageService.setItem('refresh_token', oauth2Response.refresh_token);
 
     const payload = this.jwtHelperService.decodeToken(oauth2Response.access_token);
     this.storageService.setItem('name', payload['name']);

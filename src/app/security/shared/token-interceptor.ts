@@ -24,10 +24,11 @@ export class TokenInterceptor implements HttpInterceptor {
       return this.doRequestWithAuthentication(request, next);
     }
 
-    if (this.authService.isValidRefreshToken() && !this.isRefreshTokenRequest(request)) {
-      return from(this.authService.refreshToken()).pipe(map(response => response))
-        .pipe(mergeMap((response: any) => this.doRequestWithAuthentication(request, next)));
-    }
+    /** @todo configurar requisições refresh_token */
+    // if (!this.isRefreshTokenRequest(request)) {
+    //   return from(this.authService.refreshToken()).pipe(map(response => response))
+    //     .pipe(mergeMap((response: any) => this.doRequestWithAuthentication(request, next)));
+    // }
 
     return this.doRequest(request, next);
   }

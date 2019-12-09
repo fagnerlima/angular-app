@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
   }
 
   hasValidTokens(): boolean {
-    return this.authService.hasValidTokens();
+    return this.authService.isValidAccessToken();
   }
 
   toggleMenu(): void {

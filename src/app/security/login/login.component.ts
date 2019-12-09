@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.titleService.setTitle('Login');
 
-    if (this.authService.hasValidTokens()) {
+    if (this.authService.isValidAccessToken()) {
       this.router.navigate(['home']);
     }
   }
