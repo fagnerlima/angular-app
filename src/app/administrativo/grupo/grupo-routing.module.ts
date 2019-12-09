@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AuthGuard } from '@app/security/auth.guard';
-import { AuthorityGuard } from '@app/security/authority.guard';
+import { AuthGuard } from '@app/security/shared/auth.guard';
+import { AuthorityGuard } from '@app/security/shared/authority.guard';
 import { GrupoComponent } from './grupo.component';
 import { GrupoListingComponent } from './grupo-listing/grupo-listing.component';
 import { GrupoRegistrationComponent } from './grupo-registration/grupo-registration.component';

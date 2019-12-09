@@ -5,8 +5,8 @@ import { SharedModule } from '@app/shared/shared.module';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './shared/auth.service';
 import { TokenInterceptor } from './shared/token-interceptor';
-import { AuthGuard } from './auth.guard';
-import { AuthorityGuard } from './authority.guard';
+import { AuthGuard } from './shared/auth.guard';
+import { AuthorityGuard } from './shared/authority.guard';
 
 @NgModule({
   imports: [SharedModule],

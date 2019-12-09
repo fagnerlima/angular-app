@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { PageException401Component } from './core/page-exception-401/page-exception-401.component';
 import { PageException404Component } from './core/page-exception-404/page-exception-404.component';
-import { AuthGuard } from './security/auth.guard';
+import { AuthGuard } from './security/shared/auth.guard';
 import { LoginComponent } from './security/login/login.component';
 import { HomeComponent } from './home/home.component';
 

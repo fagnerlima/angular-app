@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AuthGuard } from '@app/security/auth.guard';
-import { AuthorityGuard } from '@app/security/authority.guard';
+import { AuthGuard } from '@app/security/shared/auth.guard';
+import { AuthorityGuard } from '@app/security/shared/authority.guard';
 import { UsuarioPerfilComponent } from './usuario-perfil/usuario-perfil.component';
 import { UsuarioListingComponent } from './usuario-listing/usuario-listing.component';
 import { UsuarioComponent } from './usuario.component';

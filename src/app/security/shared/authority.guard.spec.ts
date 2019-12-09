@@ -1,22 +1,20 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed, async, inject } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 
-import { AuthService } from './shared/auth.service';
-import { AuthGuard } from './auth.guard';
+import { AuthorityGuard } from './authority.guard';
+import { AuthService } from './auth.service';
 
 class MockAuthService {
-  validTokens: boolean;
-
-  hasValidTokens(): boolean {
-    return this.validTokens;
+  hasAnyAuthority(authorities: string[] | string): boolean {
+    return 'ROLE_ADMIN' === authorities;
   }
 }
 
-describe('Security: AuthGuard', () => {
-  let guard: AuthGuard;
+describe('Security: AuthorityGuard', () => {
+  let guard: AuthorityGuard;
+
   let activatedRoute: ActivatedRouteSnapshot;
-  let authService: MockAuthService;
   let router: Router;
   let routerState: RouterStateSnapshot;
 
@@ -24,18 +22,18 @@ describe('Security: AuthGuard', () => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       providers: [
-        AuthGuard,
+        AuthorityGuard,
         { provide: AuthService, useClass: MockAuthService }
       ]
     });
   });
 
-  beforeEach(inject([AuthGuard], (authGuard: AuthGuard) => {
-    guard = authGuard;
+  beforeEach(inject([AuthorityGuard], (authorityGuard: AuthorityGuard) => {
+    guard = authorityGuard;
+
     activatedRoute = jasmine.createSpyObj<ActivatedRouteSnapshot>('ActivatedRouteSnapshot', ['toString']);
-    authService = TestBed.get(AuthService);
-    router = TestBed.get(Router);
     routerState = jasmine.createSpyObj<RouterStateSnapshot>('RouterStateSnapshot', ['toString']);
+    router = TestBed.get(Router);
   }));
 
   beforeEach(() => {
@@ -46,15 +44,15 @@ describe('Security: AuthGuard', () => {
     expect(guard).toBeTruthy();
   });
 
-  it('deve ativar uma rota se o usuário estiver autenticado', () => {
-    authService.validTokens = true;
+  it('deve ativar uma rota se o usuário tiver uma permissão específica', () => {
+    activatedRoute.data = { expectedAuthority: 'ROLE_ADMIN' };
 
     expect(guard.canActivate(activatedRoute, routerState)).toBe(true);
     expect(router.navigate).not.toHaveBeenCalled();
   });
 
-  it('não deve ativar uma rota se o usuário não estiver autenticado', () => {
-    authService.validTokens = false;
+  it('não deve ativar uma rota se o usuário não tiver uma permissão específica', () => {
+    activatedRoute.data = { expectedAuthority: 'ROLE_COMUM' };
 
     expect(guard.canActivate(activatedRoute, routerState)).toBe(false);
     expect(router.navigate).toHaveBeenCalled();
