@@ -57,7 +57,7 @@ export class MenuBuilder {
    * @see addMenu
    */
   addMenuIfHasAnyAuthority(menu: MenuItem, authorities: string | string[], level?: number): this {
-    if (!this.authService.hasAnyAuthority(authorities)) {
+    if (!this.authService.hasAnyAuthorityOrAdmin(authorities)) {
       return this;
     }
 

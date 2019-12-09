@@ -5,14 +5,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
 
-import { HttpStatus } from '../../../enum/http-status.enum';
-import { RequestModel } from '../../../interface/request-model';
-import { ResponseListModel } from '../../../interface/response-list-model';
-import { ResponseModel } from '../../../interface/response-model';
-import { BreadcrumbService } from '../../../service/breadcrumb.service';
-import { CrudService } from '../../../service/crud.service';
-import { TitleService } from '../../../service/title.service';
-import { ToastService } from '../../../service/toast.service';
+import { Route } from '@app/shared/enum/route.enum';
+import { HttpStatus } from '@app/shared/enum/http-status.enum';
+import { RequestModel } from '@app/shared/interface/request-model';
+import { ResponseListModel } from '@app/shared/interface/response-list-model';
+import { ResponseModel } from '@app/shared/interface/response-model';
+import { BreadcrumbService } from '@app/shared/service/breadcrumb.service';
+import { CrudService } from '@app/shared/service/crud.service';
+import { TitleService } from '@app/shared/service/title.service';
+import { ToastService } from '@app/shared/service/toast.service';
 
 @Injectable()
 export abstract class CrudRegistration<T extends RequestModel, U extends ResponseModel, L extends ResponseListModel>
@@ -120,10 +121,10 @@ export abstract class CrudRegistration<T extends RequestModel, U extends Respons
   private errorRedirect(status: HttpStatus): void {
     switch (status) {
       case HttpStatus.UNAUTHORIZED:
-        this.router.navigate(['/erro-401']);
+        this.router.navigate([`/${Route.ERRO_401}`]);
         break;
       case HttpStatus.NOT_FOUND:
-        this.router.navigate(['/erro-404']);
+        this.router.navigate([`/${Route.ERRO_404}`]);
     }
   }
 

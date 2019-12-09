@@ -13,6 +13,7 @@ import { GrupoForm } from './../shared/grupo.form';
 import { GrupoResponse } from './../shared/grupo-response.model';
 import { GrupoRequest } from './../shared/grupo-request.model';
 import { GrupoService } from '../shared/grupo.service';
+import { Route } from '@app/shared/enum/route.enum';
 
 @Component({
   selector: 'app-grupo-registration',
@@ -54,14 +55,14 @@ export class GrupoRegistrationComponent extends CrudRegistration<GrupoRequest, G
   }
 
   protected initBreadcrumb(): void {
-    this.breadcrumbService.clearAndAdd('Grupos', ['/administrativo/grupos']);
+    this.breadcrumbService.clearAndAdd('Grupos', [`/${Route.ADMINISTRATIVO_GRUPOS}`]);
     this.isEditionMode()
-      ? this.breadcrumbService.add('Edição de Grupo', ['/administrativo/grupos', this.model.id])
-      : this.breadcrumbService.add('Cadastro de Grupo', ['/administrativo/grupos/novo']);
+      ? this.breadcrumbService.add('Edição de Grupo', [`/${Route.ADMINISTRATIVO_GRUPOS}`, this.model.id])
+      : this.breadcrumbService.add('Cadastro de Grupo', [`/${Route.ADMINISTRATIVO_GRUPOS}/${Route.GENERICO_CADASTRO}`]);
   }
 
   protected redirectToListing(): void {
-    this.router.navigate(['/administrativo/grupos']);
+    this.router.navigate([`/${Route.ADMINISTRATIVO_GRUPOS}`]);
   }
 
   private async loadPermissaoOptions(): Promise<void> {

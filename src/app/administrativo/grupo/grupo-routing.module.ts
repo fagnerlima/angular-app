@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { Route } from '@app/shared/enum/route.enum';
+import { Authority } from '@app/security/shared/authority.enum';
 import { AuthGuard } from '@app/security/shared/auth.guard';
 import { AuthorityGuard } from '@app/security/shared/authority.guard';
 import { GrupoComponent } from './grupo.component';
@@ -9,7 +11,7 @@ import { GrupoRegistrationComponent } from './grupo-registration/grupo-registrat
 
 const routes: Routes = [
   {
-    path: 'administrativo/grupos',
+    path: Route.ADMINISTRATIVO_GRUPOS,
     component: GrupoComponent,
     canActivate: [AuthGuard],
     children: [
@@ -17,20 +19,19 @@ const routes: Routes = [
         path: '',
         component: GrupoListingComponent,
         canActivate: [AuthorityGuard],
-        data: { expectedAuthority: 'GRUPO_LISTAR' }
+        data: { expectedAuthority: Authority.ROLE_GRUPO_LISTAR }
       },
       {
-        path: 'novo',
+        path: Route.GENERICO_CADASTRO,
         component: GrupoRegistrationComponent,
         canActivate: [AuthorityGuard],
-        data: { expectedAuthority: 'GRUPO_CADASTRAR' }
-      }
-      ,
+        data: { expectedAuthority: Authority.ROLE_GRUPO_SALVAR }
+      },
       {
-        path: ':id',
+        path: Route.GENERICO_EDICAO,
         component: GrupoRegistrationComponent,
         canActivate: [AuthorityGuard],
-        data: { expectedAuthority: 'GRUPO_CADASTRAR' }
+        data: { expectedAuthority: Authority.ROLE_GRUPO_EDITAR }
       }
     ]
   },

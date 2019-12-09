@@ -133,7 +133,7 @@ export abstract class CrudListing<T extends RequestModel, U extends ResponseMode
   }
 
   hasAnyAuthority(authorities: string[] | string): boolean {
-    return this.authService.hasAnyAuthority(authorities);
+    return this.authService.hasAnyAuthorityOrAdmin(authorities);
   }
 
   confirmChangeStatus(model: ResponseListModel): void {
@@ -241,7 +241,7 @@ export abstract class CrudListing<T extends RequestModel, U extends ResponseMode
     }
   }
 
-  protected createEnumFilter(enumObject: Object): SelectItem[] {
+  protected createEnumFilter(enumObject: object): SelectItem[] {
     const filter: SelectItem[] = [{ label: '--', value: '' }];
     Object.keys(enumObject).forEach(value => filter.push({ label: enumObject[value], value }));
 

@@ -4,6 +4,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 import { isObject } from 'util';
 
+import { Route } from '@app/shared/enum/route.enum';
 import { ToastService } from '@app/shared/service/toast.service';
 import { environment } from '@env/environment';
 import { HttpStatus } from '@app/shared/enum/http-status.enum';
@@ -33,7 +34,7 @@ export class ErrorHandlerService {
 
   handleHttpErrorResponse(httpErrorResponse: HttpErrorResponse): void {
     if (HttpStatus.UNAUTHORIZED === httpErrorResponse.status) {
-      this.router.navigate(['/login']);
+      this.router.navigate([`/${Route.LOGIN}`]);
       return;
     }
 

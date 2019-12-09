@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { Route } from '@app/shared/enum/route.enum';
 import { TitleService } from '@app/shared/service/title.service';
 import { AuthService } from '../shared/auth.service';
 import { CredencialsForm } from '../shared/credencials.form';
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
     this.titleService.setTitle('Login');
 
     if (this.authService.isValidAccessToken()) {
-      this.router.navigate(['home']);
+      this.router.navigate([`/${Route.HOME}`]);
     }
   }
 

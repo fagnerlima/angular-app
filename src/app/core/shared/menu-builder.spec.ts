@@ -10,7 +10,7 @@ import { CoreModule } from '../core.module';
 import { MenuBuilder } from './menu-builder';
 
 class MockAuthService extends AuthService {
-  hasAnyAuthority(authority: string): boolean {
+  hasAnyAuthorityOrAdmin(authority: string): boolean {
     return 'ROLE_COMUM' === authority;
   }
 }

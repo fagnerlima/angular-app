@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 
+import { Authority } from '@app/security/shared/authority.enum';
 import { CrudListing } from '@app/shared/component/crud/crud-listing/crud-listing';
 import { CrudService } from '@app/shared/service/crud.service';
+import { Route } from '@app/shared/enum/route.enum';
 import { UsuarioListFilter } from '../shared/usuario-list-filter.model';
 import { UsuarioListResponse } from '../shared/usuario-list-response.model';
 import { UsuarioRequest } from '../shared/usuario-request.model';
@@ -24,7 +26,15 @@ export class UsuarioListingComponent extends CrudListing<UsuarioRequest, Usuario
   }
 
   hasActions(): boolean {
-    return this.hasAnyAuthority('ROLE_USUARIO_CADASTRAR');
+    return this.hasEditarAuthority();
+  }
+
+  hasEditarAuthority(): boolean {
+    return this.hasAnyAuthority(Authority.ROLE_USUARIO_EDITAR);
+  }
+
+  hasAlterarStatusAuthority(): boolean {
+    return this.hasAnyAuthority(Authority.ROLE_USUARIO_ALTERAR_STATUS);
   }
 
   get title(): string {
@@ -36,6 +46,6 @@ export class UsuarioListingComponent extends CrudListing<UsuarioRequest, Usuario
   }
 
   protected initBreadcrumb(): void {
-    this.breadcrumbService.clearAndAdd('Usuários', ['/administrativo/usuarios']);
+    this.breadcrumbService.clearAndAdd('Usuários', [`/${Route.ADMINISTRATIVO_USUARIOS}`]);
   }
 }

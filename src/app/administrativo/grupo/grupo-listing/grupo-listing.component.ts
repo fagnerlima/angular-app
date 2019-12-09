@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 
+import { Authority } from '@app/security/shared/authority.enum';
 import { CrudListing } from '@app/shared/component/crud/crud-listing/crud-listing';
 import { CrudService } from '@app/shared/service/crud.service';
+import { Route } from '@app/shared/enum/route.enum';
 import { GrupoListFilter } from '../shared/grupo-list-filter.model';
 import { GrupoListResponse } from './../shared/grupo-list-response.model';
 import { GrupoResponse } from './../shared/grupo-response.model';
@@ -24,7 +26,15 @@ export class GrupoListingComponent extends CrudListing<GrupoRequest, GrupoRespon
   }
 
   hasActions(): boolean {
-    return this.hasAnyAuthority('ROLE_GRUPO_CADASTRAR');
+    return this.hasEditarAuthority();
+  }
+
+  hasEditarAuthority(): boolean {
+    return this.hasAnyAuthority(Authority.ROLE_GRUPO_EDITAR);
+  }
+
+  hasAlterarStatusAuthority(): boolean {
+    return this.hasAnyAuthority(Authority.ROLE_GRUPO_ALTERAR_STATUS);
   }
 
   get title(): string {
@@ -36,6 +46,6 @@ export class GrupoListingComponent extends CrudListing<GrupoRequest, GrupoRespon
   }
 
   protected initBreadcrumb(): void {
-    this.breadcrumbService.clearAndAdd('Grupos', ['/administrativo/grupos']);
+    this.breadcrumbService.clearAndAdd('Grupos', [`/${Route.ADMINISTRATIVO_GRUPOS}`]);
   }
 }

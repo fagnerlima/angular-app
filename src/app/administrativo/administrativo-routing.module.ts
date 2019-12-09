@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { Route } from '@app/shared/enum/route.enum';
 import { AdministrativoComponent } from './administrativo.component';
 
 const routes: Routes = [
   {
-    path: 'administrativo',
+    path: Route.ADMINISTRATIVO,
     component:  AdministrativoComponent
   }
 ];

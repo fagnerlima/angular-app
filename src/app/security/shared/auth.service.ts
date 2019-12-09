@@ -6,8 +6,10 @@ import { isString, isNullOrUndefined } from 'util';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-import { StorageService } from '@app/shared/service/storage.service';
 import { environment } from '@env/environment';
+import { Route } from '@app/shared/enum/route.enum';
+import { StorageService } from '@app/shared/service/storage.service';
+import { Authority } from './authority.enum';
 import { Credencials } from './credentials.model';
 import { OAuth2HttpResponse } from './oauth2-http-response';
 
@@ -36,7 +38,7 @@ export class AuthService {
       .then(response => {
         this.selectStorage(remember);
         this.putData(response);
-        this.router.navigate(['/home']);
+        this.router.navigate([`/${Route.HOME}`]);
         Promise.resolve();
       })
       .catch((error: any) => {});
@@ -58,7 +60,7 @@ export class AuthService {
 
   logout(): void {
     this.removeData();
-    this.router.navigate(['/login']);
+    this.router.navigate([`/${Route.LOGIN}`]);
   }
 
   getAccessToken(): string {
@@ -86,13 +88,21 @@ export class AuthService {
       return this.getAuthorities().includes(authorities as string);
     }
 
-    for (const authority of authorities) {
+    for (const authority of (authorities as string[])) {
       if (this.getAuthorities().includes(authority)) {
         return true;
       }
     }
 
     return false;
+  }
+
+  hasAnyAuthorityOrAdmin(authorities: string[] | string): boolean {
+    if (this.getAuthorities().includes(Authority.ROLE_ADMIN)) {
+      return true;
+    }
+
+    return this.hasAnyAuthority(authorities);
   }
 
   private getHeadersOAuthToken(): HttpHeaders {

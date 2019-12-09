@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ValidationMessage } from '@app/shared/component/validation-message/validation-message.model';
 import { BreadcrumbService } from '@app/shared/service/breadcrumb.service';
+import { Route } from '@app/shared/enum/route.enum';
 import { TitleService } from '@app/shared/service/title.service';
 import { ToastService } from '@app/shared/service/toast.service';
 import { UsuarioListResponse } from '../shared/usuario-list-response.model';
@@ -113,6 +113,6 @@ export class UsuarioPerfilComponent implements OnInit {
   }
 
   private initBreadcrumb(): void {
-    this.breadcrumbService.clearAndAdd('Perfil de Usuário', ['/perfil']);
+    this.breadcrumbService.clearAndAdd('Perfil de Usuário', [`/${Route.ADMINISTRATIVO_PERFIL}`]);
   }
 }

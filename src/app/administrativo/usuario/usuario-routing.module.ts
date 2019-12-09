@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { Route } from '@app/shared/enum/route.enum';
 import { AuthGuard } from '@app/security/shared/auth.guard';
+import { Authority } from '@app/security/shared/authority.enum';
 import { AuthorityGuard } from '@app/security/shared/authority.guard';
 import { UsuarioPerfilComponent } from './usuario-perfil/usuario-perfil.component';
 import { UsuarioListingComponent } from './usuario-listing/usuario-listing.component';
@@ -11,41 +13,36 @@ import { RecuperacaoSenhaComponent } from './recuperacao-senha/recuperacao-senha
 
 const routes: Routes = [
   {
-    path: 'administrativo',
+    path: Route.ADMINISTRATIVO_RECUPERACAO_SENHA,
+    component: RecuperacaoSenhaComponent
+  },
+  {
+    path: Route.ADMINISTRATIVO_PERFIL,
+    component: UsuarioPerfilComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: Route.ADMINISTRATIVO_USUARIOS,
+    component: UsuarioComponent,
+    canActivate: [AuthGuard],
     children: [
       {
-        path: 'recuperacao-senha',
-        component: RecuperacaoSenhaComponent
+        path: '',
+        component: UsuarioListingComponent,
+        canActivate: [AuthorityGuard],
+        data: { expectedAuthority: Authority.ROLE_USUARIO_LISTAR }
       },
       {
-        path: 'perfil',
-        component: UsuarioPerfilComponent,
-        canActivate: [AuthGuard]
+        path: Route.GENERICO_CADASTRO,
+        component: UsuarioRegistrationComponent,
+        canActivate: [AuthorityGuard],
+        data: { expectedAuthority: Authority.ROLE_USUARIO_SALVAR }
       },
       {
-        path: 'usuarios',
-        component: UsuarioComponent,
-        canActivate: [AuthGuard],
-        children: [
-          {
-            path: '',
-            component: UsuarioListingComponent,
-            canActivate: [AuthorityGuard],
-            data: { expectedAuthority: 'USUARIO_LISTAR' }
-          },
-          {
-            path: 'novo',
-            component: UsuarioRegistrationComponent,
-            canActivate: [AuthorityGuard],
-            data: { expectedAuthority: 'USUARIO_CADASTRAR' }
-          },
-          {
-            path: ':id',
-            component: UsuarioRegistrationComponent,
-            canActivate: [AuthorityGuard],
-            data: { expectedAuthority: 'GRUPO_CADASTRAR' }
-          }
-        ]
+        path: Route.GENERICO_EDICAO,
+        component: UsuarioRegistrationComponent,
+        canActivate: [AuthorityGuard],
+        data: { expectedAuthority: Authority.ROLE_USUARIO_EDITAR }
       }
     ]
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { Route } from '@app/shared/enum/route.enum';
 import { ToastService } from '@app/shared/service/toast.service';
 import { TitleService } from '@app/shared/service/title.service';
 import { RecuperacaoSenhaForm } from '../shared/recuperacao-senha.form';
@@ -62,7 +63,7 @@ export class RecuperacaoSenhaComponent implements OnInit {
     this.usuarioService.recoverySenha(email).subscribe(
       () => this.toastService.addSuccess('', 'Um link para recuperação da senha foi enviado para o e-mail informado.'),
       () => this._loading = false,
-      () => this.router.navigate(['/login'])
+      () => this.router.navigate([`/${Route.LOGIN}`])
     );
   }
 
@@ -80,7 +81,7 @@ export class RecuperacaoSenhaComponent implements OnInit {
     this.usuarioService.updateSenha(this.token, senha).subscribe(
       () => this.toastService.addSuccess('', 'Senha atualizada com sucesso.'),
       () => this._loading = false,
-      () => this.router.navigate(['/login'])
+      () => this.router.navigate([`/${Route.LOGIN}`])
     );
   }
 }
