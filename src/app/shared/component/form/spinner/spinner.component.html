@@ -21,6 +21,6 @@
 <ng-template #tplInput>
   <p-spinner [id]="inputId" [name]="name || inputId" [max]="max" [min]="min" [step]="step" [size]="size"
     [formControl]="control" [appAutoFocus]="autoFocus" [appBlockCopyPaste]="blockCopyPaste"
-    (blur)="onBlur.emit($event)" (change)="onChange.emit($event)" (focus)="onFocus.emit($event)"></p-spinner>
+    (blur)="blured.emit($event)" (change)="changed.emit($event)" (focus)="focused.emit($event)"></p-spinner>
   <app-validation-message *ngIf="validation" [control]="control" [submitted]="submitted"></app-validation-message>
 </ng-template>

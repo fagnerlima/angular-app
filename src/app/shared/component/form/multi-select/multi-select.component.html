@@ -23,8 +23,8 @@
     [formControl]="control" [appAutoFocus]="autoFocus"
     [options]="options" [filter]="true" [resetFilterOnHide]="true"
     selectedItemsLabel="{0} opções selecionadas" defaultLabel="--"
-    (onBlur)="onBlur.emit($event)" (onChange)="onChange.emit($event)" (onFocus)="onFocus.emit($event)"
-    (onPanelHide)="onPanelHide.emit($event)" (onPanelShow)="onPanelShow.emit($event)"></p-multiSelect>
+    (onBlur)="blured.emit($event)" (onChange)="changed.emit($event)" (onFocus)="focused.emit($event)"
+    (onPanelHide)="panelHided.emit($event)" (onPanelShow)="panelShowed.emit($event)"></p-multiSelect>
   <ng-template #loadingOptions>
     <span class="data-loading">{{ !options ? 'Carregando opções...' : 'Nenhuma opção encontrada' }}</span>
   </ng-template>

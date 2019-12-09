@@ -13,9 +13,9 @@ export class MultiSelectComponent extends FormInput {
   @Input() autoFocus = false;
   @Input() options: SelectItem[];
 
-  @Output() onBlur: EventEmitter<any> = new EventEmitter();
-  @Output() onChange: EventEmitter<any> = new EventEmitter();
-  @Output() onFocus: EventEmitter<any> = new EventEmitter();
-  @Output() onPanelHide: EventEmitter<any> = new EventEmitter();
-  @Output() onPanelShow: EventEmitter<any> = new EventEmitter();
+  @Output() blured: EventEmitter<any> = new EventEmitter();
+  @Output() changed: EventEmitter<any> = new EventEmitter();
+  @Output() focused: EventEmitter<any> = new EventEmitter();
+  @Output() panelHided: EventEmitter<any> = new EventEmitter();
+  @Output() panelShowed: EventEmitter<any> = new EventEmitter();
 }

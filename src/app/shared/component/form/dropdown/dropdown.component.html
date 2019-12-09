@@ -22,8 +22,8 @@
   <p-dropdown *ngIf="options && options.length; else loadingOptions" [inputId]="inputId" [name]="name || inputId"
     styleClass="form-control" placeholder="--"
     [formControl]="control" [options]="options" [filter]="true" [autofocus]="autoFocus"
-    (onBlur)="onBlur.emit($event)" (onChange)="onChange.emit($event)"
-    (onClick)="onClick.emit($event)" (onFocus)="onFocus.emit($event)"></p-dropdown>
+    (onBlur)="blured.emit($event)" (onChange)="changed.emit($event)"
+    (onClick)="clicked.emit($event)" (onFocus)="focused.emit($event)"></p-dropdown>
   <ng-template #loadingOptions>
     <span class="data-loading">{{ !options ? 'Carregando opções...' : 'Nenhuma opção encontrada' }}</span>
   </ng-template>

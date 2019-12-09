@@ -10,5 +10,5 @@ export class CheckboxComponent extends FormInput {
 
   @Input() binary = true;
 
-  @Output() onChange: EventEmitter<any> = new EventEmitter();
+  @Output() changed: EventEmitter<any> = new EventEmitter();
 }

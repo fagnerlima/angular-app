@@ -11,9 +11,8 @@ export class BytePipe implements PipeTransform {
   /**
    * Converte um valor em bytes na unidade mais adequada para impressão (B, KB, MB ou GB).
    * @param value valor a ser convertido.
-   * @param args
    */
-  transform(value: number, args?: any): string {
+  transform(value: number): string {
     if (value < 1024) {
       return this.transformDecimal(value) + ' B';
     }

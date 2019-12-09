@@ -21,6 +21,6 @@
 <ng-template #tplInput>
   <input pInputText [type]="type" [id]="inputId" [name]="name || inputId" class="form-control"
     [formControl]="control" [appAutoFocus]="autoFocus" [appBlockCopyPaste]="blockCopyPaste" [pKeyFilter]="keyFilter"
-    (blur)="onBlur.emit($event)" (change)="onChange.emit($event)" (click)="onClick.emit($event)" (focus)="onFocus.emit($event)">
+    (blur)="blured.emit($event)" (change)="changed.emit($event)" (click)="clicked.emit($event)" (focus)="focused.emit($event)">
   <app-validation-message *ngIf="validation" [control]="control" [submitted]="submitted"></app-validation-message>
 </ng-template>

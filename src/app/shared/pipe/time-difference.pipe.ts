@@ -7,7 +7,7 @@ import { DateUtils } from '../util/date-utils';
 })
 export class TimeDifferencePipe implements PipeTransform {
 
-  transform(end: Date | string, start:  Date | string): string {
+  transform(end: Date | string, start: Date | string): string {
     return DateUtils.timeDifference(end, start);
   }
 }

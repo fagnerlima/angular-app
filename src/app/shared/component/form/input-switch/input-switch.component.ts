@@ -11,5 +11,5 @@ export class InputSwitchComponent extends FormInput {
   @Input() off: string;
   @Input() on: string;
 
-  @Output() onChange: EventEmitter<any> = new EventEmitter();
+  @Output() changed: EventEmitter<any> = new EventEmitter();
 }

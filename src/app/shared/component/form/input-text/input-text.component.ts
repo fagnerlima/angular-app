@@ -18,8 +18,8 @@ export class InputTextComponent extends FormInput {
   @Input() keyFilter: RegExp | string = /.*/;
   @Input() type = Type.TEXT;
 
-  @Output() onBlur: EventEmitter<any> = new EventEmitter();
-  @Output() onChange: EventEmitter<any> = new EventEmitter();
-  @Output() onClick: EventEmitter<any> = new EventEmitter();
-  @Output() onFocus: EventEmitter<any> = new EventEmitter();
+  @Output() blured: EventEmitter<any> = new EventEmitter();
+  @Output() changed: EventEmitter<any> = new EventEmitter();
+  @Output() clicked: EventEmitter<any> = new EventEmitter();
+  @Output() focused: EventEmitter<any> = new EventEmitter();
 }

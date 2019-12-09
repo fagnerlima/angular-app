@@ -38,7 +38,7 @@ export class UsuarioPerfilComponent implements OnInit {
 
   async loadModel(): Promise<void> {
     await this.service.findPerfil().toPromise().then(
-      model => this._formInformacoesPessoais = (<UsuarioSerializer>this.service.serializer)
+      model => this._formInformacoesPessoais = (this.service.serializer as UsuarioSerializer)
         .fromResponseListModelToPerfilInformacoesPessoaisForm(model)
     );
   }
@@ -52,12 +52,12 @@ export class UsuarioPerfilComponent implements OnInit {
 
     this._loading = true;
 
-    const model = (<UsuarioSerializer>this.service.serializer)
+    const model = (this.service.serializer as UsuarioSerializer)
       .fromPerfilInformacoesPessoaisFormToRequestModel(this._formInformacoesPessoais);
 
     this.service.updatePerfilInformacoesPessoais(model).subscribe(
       (modelUsuario: UsuarioListResponse) => {
-        this._formInformacoesPessoais = (<UsuarioSerializer>this.service.serializer)
+        this._formInformacoesPessoais = (this.service.serializer as UsuarioSerializer)
           .fromResponseListModelToPerfilInformacoesPessoaisForm(modelUsuario);
         this._formInformacoesPessoaisSubmitted = false;
         this.toastService.addSuccess('', 'Informações pessoais atualizadas com sucesso');
@@ -74,7 +74,7 @@ export class UsuarioPerfilComponent implements OnInit {
       return;
     }
 
-    const model = (<UsuarioSerializer>this.service.serializer).fromPerfilSenhaFormToRequestModel(this._formSenha);
+    const model = (this.service.serializer as UsuarioSerializer).fromPerfilSenhaFormToRequestModel(this._formSenha);
 
     this._loading = true;
     this.service.updatePerfilSenha(model).subscribe(

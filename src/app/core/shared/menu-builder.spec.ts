@@ -73,16 +73,16 @@ describe('Core: MenuBuilder', () => {
 
     expect(menuItems[0].label).toBe('Menu 0');
     expect(menuItems[0].items.length).toBe(2);
-    expect((<MenuItem[]>menuItems[0].items)[0].label).toBe('Submenu 0.0');
-    expect((<MenuItem[]>menuItems[0].items)[1].label).toBe('Submenu 0.1');
+    expect((menuItems[0].items as MenuItem[])[0].label).toBe('Submenu 0.0');
+    expect((menuItems[0].items as MenuItem[])[1].label).toBe('Submenu 0.1');
 
-    expect((<MenuItem[]>menuItems[0].items)[1].items.length).toBe(1);
-    expect((<MenuItem[]>(<MenuItem[]>menuItems[0].items)[1].items)[0].label).toBe('Submenu 0.1.0');
+    expect((menuItems[0].items as MenuItem[])[1].items.length).toBe(1);
+    expect(((menuItems[0].items as MenuItem[])[1].items as MenuItem[])[0].label).toBe('Submenu 0.1.0');
 
     expect(menuItems[1].label).toBe('Menu 1');
     expect(menuItems[1].items.length).toBe(2);
-    expect((<MenuItem[]>menuItems[1].items)[0].label).toBe('Submenu 1.0');
-    expect((<MenuItem[]>menuItems[1].items)[1].label).toBe('Submenu 1.1');
+    expect((menuItems[1].items as MenuItem[])[0].label).toBe('Submenu 1.0');
+    expect((menuItems[1].items as MenuItem[])[1].label).toBe('Submenu 1.1');
   });
 
   it('não deve criar menus', () => {

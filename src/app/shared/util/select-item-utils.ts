@@ -36,7 +36,7 @@ export class SelectItemUtils {
     }
 
     return list.concat(sourceList.map(item => ({
-      label: isString(propToLabel) ? item[<string>propToLabel] : SelectItemUtils.buildLabel(item, <string[]>propToLabel),
+      label: isString(propToLabel) ? item[propToLabel as string] : SelectItemUtils.buildLabel(item, propToLabel as string[]),
       value: item[propToValue]
     })));
   }

@@ -8,6 +8,6 @@ export class MapUtils {
     const sortedMap = new Map();
     await keys.forEach(mapIndex => sortedMap.set(mapIndex, map.get(mapIndex)));
 
-    return <T>sortedMap;
+    return sortedMap as T;
   }
 }

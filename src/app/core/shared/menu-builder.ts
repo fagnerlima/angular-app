@@ -85,12 +85,12 @@ export class MenuBuilder {
       }
 
       if (i === level) {
-        (<MenuItem[]>targetMenu.items).push(menu);
+        (targetMenu.items as MenuItem[]).push(menu);
         return;
       }
 
       lastIndex = targetMenu.items.length - 1;
-      targetMenu = <MenuItem>targetMenu.items[lastIndex];
+      targetMenu = targetMenu.items[lastIndex] as MenuItem;
     }
   }
 }

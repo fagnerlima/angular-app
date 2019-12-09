@@ -11,7 +11,7 @@ export interface ParamSort {
 
 export class QueryParamsFactory {
 
-  create(obj: Object): HttpParams {
+  create(obj: object): HttpParams {
     let params = new HttpParams();
 
     Object.keys(obj).forEach(key => {

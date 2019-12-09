@@ -42,7 +42,7 @@ export class TagDirective implements OnInit, OnChanges, AfterViewInit {
 
   ngAfterViewInit(): void {
     if (isNullOrUndefined(this.tagValue)) {
-      this.tagValue = (<string>this.element.nativeElement.innerText).trim();
+      this.tagValue = (this.element.nativeElement.innerText as string).trim();
       this.changeTag();
     }
   }

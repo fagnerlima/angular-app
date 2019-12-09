@@ -19,7 +19,7 @@
 </ng-template>
 
 <ng-template #tplInput>
-  <p-inputSwitch [inputId]="inputId" [name]="name || inputId" [formControl]="control" (onChange)="onChange.emit($event)"></p-inputSwitch>
+  <p-inputSwitch [inputId]="inputId" [name]="name || inputId" [formControl]="control" (onChange)="changed.emit($event)"></p-inputSwitch>
   <span class="ui-inputswitch-label">{{ control.value ? on : off }}</span>
   <app-validation-message *ngIf="validation" [control]="control" [submitted]="submitted"></app-validation-message>
 </ng-template>

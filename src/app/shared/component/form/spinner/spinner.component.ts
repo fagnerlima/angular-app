@@ -15,7 +15,7 @@ export class SpinnerComponent extends FormInput {
   @Input() size: number;
   @Input() step = 1;
 
-  @Output() onBlur: EventEmitter<any> = new EventEmitter();
-  @Output() onChange: EventEmitter<any> = new EventEmitter();
-  @Output() onFocus: EventEmitter<any> = new EventEmitter();
+  @Output() blured: EventEmitter<any> = new EventEmitter();
+  @Output() changed: EventEmitter<any> = new EventEmitter();
+  @Output() focused: EventEmitter<any> = new EventEmitter();
 }
