@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AuthGuard } from '@app/security/auth.guard';
-import { RoleGuard } from '@app/security/role.guard';
+import { AuthorityGuard } from '@app/security/authority.guard';
 import { UsuarioPerfilComponent } from './usuario-perfil/usuario-perfil.component';
 import { UsuarioListingComponent } from './usuario-listing/usuario-listing.component';
 import { UsuarioComponent } from './usuario.component';
@@ -30,20 +30,20 @@ const routes: Routes = [
           {
             path: '',
             component: UsuarioListingComponent,
-            canActivate: [RoleGuard],
-            data: { expectedRole: 'USUARIO_LISTAR' }
+            canActivate: [AuthorityGuard],
+            data: { expectedAuthority: 'USUARIO_LISTAR' }
           },
           {
             path: 'novo',
             component: UsuarioRegistrationComponent,
-            canActivate: [RoleGuard],
-            data: { expectedRole: 'USUARIO_CADASTRAR' }
+            canActivate: [AuthorityGuard],
+            data: { expectedAuthority: 'USUARIO_CADASTRAR' }
           },
           {
             path: ':id',
             component: UsuarioRegistrationComponent,
-            canActivate: [RoleGuard],
-            data: { expectedRole: 'GRUPO_CADASTRAR' }
+            canActivate: [AuthorityGuard],
+            data: { expectedAuthority: 'GRUPO_CADASTRAR' }
           }
         ]
       }

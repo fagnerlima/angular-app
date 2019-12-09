@@ -132,8 +132,8 @@ export abstract class CrudListing<T extends RequestModel, U extends ResponseMode
     this.filter = new ListFilter();
   }
 
-  hasRole(roles: string[] | string): boolean {
-    return this.authService.hasRole(roles);
+  hasAnyAuthority(authorities: string[] | string): boolean {
+    return this.authService.hasAnyAuthority(authorities);
   }
 
   confirmChangeStatus(model: ResponseListModel): void {

@@ -13,10 +13,10 @@ class MockAuthService {
     return 'admin';
   }
 
-  hasRole(role: string): boolean {
-    const roles: string[] = ['GRUPO_LISTAR', 'GRUPO_CADASTRAR'];
+  hasAnyAuthority(authority: string): boolean {
+    const authorities: string[] = ['ROLE_GRUPO_LISTAR', 'ROLE_GRUPO_CADASTRAR'];
 
-    return roles.some(value => role === value);
+    return authorities.some(value => authority === value);
   }
 }
 

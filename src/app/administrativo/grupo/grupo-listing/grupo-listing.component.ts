@@ -24,7 +24,7 @@ export class GrupoListingComponent extends CrudListing<GrupoRequest, GrupoRespon
   }
 
   hasActions(): boolean {
-    return this.hasRole('GRUPO_CADASTRAR');
+    return this.hasAnyAuthority('GRUPO_CADASTRAR');
   }
 
   get title(): string {

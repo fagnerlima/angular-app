@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 
 import { AuthService } from './shared/auth.service';
-import { Role } from './shared/role.enum';
+import { Authority } from './shared/authority.enum';
 
 @Injectable()
-export class RoleGuard implements CanActivate {
+export class AuthorityGuard implements CanActivate {
 
   constructor(
     private authService: AuthService,
@@ -13,9 +13,9 @@ export class RoleGuard implements CanActivate {
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const expectedRole = route.data.expectedRole;
+    const expectedAuthority = route.data.expectedAuthority;
 
-    if (!this.authService.hasRole([expectedRole, Role.ADMIN])) {
+    if (!this.authService.hasAnyAuthority([expectedAuthority, Authority.ROLE_ADMIN])) {
       this.router.navigate(['erro-401']);
 
       return false;

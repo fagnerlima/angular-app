@@ -10,8 +10,8 @@ import { CoreModule } from '../core.module';
 import { MenuBuilder } from './menu-builder';
 
 class MockAuthService extends AuthService {
-  hasRole(role: string): boolean {
-    return 'COMUM' === role;
+  hasAnyAuthority(authority: string): boolean {
+    return 'ROLE_COMUM' === authority;
   }
 }
 
@@ -88,8 +88,8 @@ describe('Core: MenuBuilder', () => {
   it('não deve criar menus', () => {
     const menuItems = builder
       .addMenu({ label: 'Menu 0' })
-        .addMenuIfHasRole({ label: 'Submenu 0.0', routerLink: ['/'] }, 'ADMIN', 1)
-        .addMenuIfHasRole({ label: 'Submenu 0.1', routerLink: ['/'] }, 'ADMIN', 1)
+        .addMenuIfHasAnyAuthority({ label: 'Submenu 0.0', routerLink: ['/'] }, 'ADMIN', 1)
+        .addMenuIfHasAnyAuthority({ label: 'Submenu 0.1', routerLink: ['/'] }, 'ADMIN', 1)
       .getMenuItems();
 
     expect(menuItems.length).toBe(0);
@@ -98,8 +98,8 @@ describe('Core: MenuBuilder', () => {
   it('deve criar dois menus, sendo o primeiro com um submenu', () => {
     const menuItems = builder
       .addMenu({ label: 'Menu 0' })
-        .addMenuIfHasRole({ label: 'Submenu 0.0', routerLink: ['/'] }, 'COMUM', 1)
-        .addMenuIfHasRole({ label: 'Submenu 0.1', routerLink: ['/'] }, 'ADMIN', 1)
+        .addMenuIfHasAnyAuthority({ label: 'Submenu 0.0', routerLink: ['/'] }, 'COMUM', 1)
+        .addMenuIfHasAnyAuthority({ label: 'Submenu 0.1', routerLink: ['/'] }, 'ADMIN', 1)
       .addMenu({ label: 'Menu 1', routerLink: ['/'] })
       .getMenuItems();
 

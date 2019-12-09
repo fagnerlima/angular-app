@@ -6,7 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './shared/auth.service';
 import { TokenInterceptor } from './shared/token-interceptor';
 import { AuthGuard } from './auth.guard';
-import { RoleGuard } from './role.guard';
+import { AuthorityGuard } from './authority.guard';
 
 @NgModule({
   imports: [SharedModule],
@@ -19,7 +19,7 @@ import { RoleGuard } from './role.guard';
       multi: true
     },
     AuthGuard,
-    RoleGuard
+    AuthorityGuard
   ]
 })
 export class SecurityModule { }

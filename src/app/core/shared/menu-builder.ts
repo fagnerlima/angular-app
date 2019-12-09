@@ -49,15 +49,15 @@ export class MenuBuilder {
    * Adiciona um novo MenuItem ao conjunto de menus.
    *
    * @param menu MenuItem a ser adicionado.
-   * @param roles Permissão(ões) necessárias para acessar o menu.
+   * @param authorities Permissão(ões) necessárias para acessar o menu.
    * @param indexes Usado para submenus, indica o nível de profundidade em que o menu será adicionado.
    * Se não for informado, adota o padrão zero, posição dos menus principais.
    * Se informado, atrela o submenu ao último menu de nível anterior adicionado (se nível 1, atrela ao último nível 0 adicionado).
    *
    * @see addMenu
    */
-  addMenuIfHasRole(menu: MenuItem, roles: string | string[], level?: number): this {
-    if (!this.authService.hasRole(roles)) {
+  addMenuIfHasAnyAuthority(menu: MenuItem, authorities: string | string[], level?: number): this {
+    if (!this.authService.hasAnyAuthority(authorities)) {
       return this;
     }
 

@@ -73,21 +73,21 @@ export class AuthService {
     return this.storageService.getItem('username');
   }
 
-  getRoles(): string[] {
-    return this.storageService.getArray('roles');
+  getAuthorities(): string[] {
+    return this.storageService.getArray('authorities');
   }
 
   isValidAccessToken(): boolean {
     return !isNullOrUndefined(this.getAccessToken()) && !this.jwtHelperService.isTokenExpired(this.getAccessToken());
   }
 
-  hasRole(roles: string[] | string): boolean {
-    if (isString(roles)) {
-      return this.getRoles().includes(`ROLE_${roles}`);
+  hasAnyAuthority(authorities: string[] | string): boolean {
+    if (isString(authorities)) {
+      return this.getAuthorities().includes(authorities as string);
     }
 
-    for (const role of roles) {
-      if (this.getRoles().includes(`ROLE_${role}`)) {
+    for (const authority of authorities) {
+      if (this.getAuthorities().includes(authority)) {
         return true;
       }
     }
@@ -117,7 +117,7 @@ export class AuthService {
     const payload = this.jwtHelperService.decodeToken(oauth2Response.access_token);
     this.storageService.setItem('name', payload['name']);
     this.storageService.setItem('username', payload['user_name']);
-    this.storageService.setArray('roles', payload['authorities']);
+    this.storageService.setArray('authorities', payload['authorities']);
   }
 
   private removeData(): void {
