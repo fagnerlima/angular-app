@@ -11,7 +11,7 @@ import { MenuBuilder } from './menu-builder';
 
 class MockAuthService extends AuthService {
   hasAnyAuthorityOrAdmin(authority: string): boolean {
-    return 'ROLE_COMUM' === authority;
+    return ['ROLE_ADMIN', 'ROLE_COMUM'].includes(authority);
   }
 }
 
@@ -69,42 +69,42 @@ describe('Core: MenuBuilder', () => {
         .addMenu({ label: 'Submenu 1.1'}, 1)
       .getMenuItems();
 
-      expect(menuItems.length).toBe(2);
+    expect(menuItems.length).toBe(2);
 
-      expect(menuItems[0].label).toBe('Menu 0');
-      expect(menuItems[0].items.length).toBe(2);
-      expect((<MenuItem[]>menuItems[0].items)[0].label).toBe('Submenu 0.0');
-      expect((<MenuItem[]>menuItems[0].items)[1].label).toBe('Submenu 0.1');
+    expect(menuItems[0].label).toBe('Menu 0');
+    expect(menuItems[0].items.length).toBe(2);
+    expect((<MenuItem[]>menuItems[0].items)[0].label).toBe('Submenu 0.0');
+    expect((<MenuItem[]>menuItems[0].items)[1].label).toBe('Submenu 0.1');
 
-      expect((<MenuItem[]>menuItems[0].items)[1].items.length).toBe(1);
-      expect((<MenuItem[]>(<MenuItem[]>menuItems[0].items)[1].items)[0].label).toBe('Submenu 0.1.0');
+    expect((<MenuItem[]>menuItems[0].items)[1].items.length).toBe(1);
+    expect((<MenuItem[]>(<MenuItem[]>menuItems[0].items)[1].items)[0].label).toBe('Submenu 0.1.0');
 
-      expect(menuItems[1].label).toBe('Menu 1');
-      expect(menuItems[1].items.length).toBe(2);
-      expect((<MenuItem[]>menuItems[1].items)[0].label).toBe('Submenu 1.0');
-      expect((<MenuItem[]>menuItems[1].items)[1].label).toBe('Submenu 1.1');
+    expect(menuItems[1].label).toBe('Menu 1');
+    expect(menuItems[1].items.length).toBe(2);
+    expect((<MenuItem[]>menuItems[1].items)[0].label).toBe('Submenu 1.0');
+    expect((<MenuItem[]>menuItems[1].items)[1].label).toBe('Submenu 1.1');
   });
 
   it('não deve criar menus', () => {
     const menuItems = builder
       .addMenu({ label: 'Menu 0' })
-        .addMenuIfHasAnyAuthority({ label: 'Submenu 0.0', routerLink: ['/'] }, 'ADMIN', 1)
-        .addMenuIfHasAnyAuthority({ label: 'Submenu 0.1', routerLink: ['/'] }, 'ADMIN', 1)
+        .addMenuIfHasAnyAuthority({ label: 'Submenu 0.0', routerLink: ['/'] }, 'ROLE_CADASTRAR', 1)
+        .addMenuIfHasAnyAuthority({ label: 'Submenu 0.1', routerLink: ['/'] }, 'ROLE_CADASTRAR', 1)
       .getMenuItems();
 
     expect(menuItems.length).toBe(0);
   });
 
-  it('deve criar dois menus, sendo o primeiro com um submenu', () => {
+  it('deve criar dois menus, sendo o primeiro com dois submenus', () => {
     const menuItems = builder
       .addMenu({ label: 'Menu 0' })
-        .addMenuIfHasAnyAuthority({ label: 'Submenu 0.0', routerLink: ['/'] }, 'COMUM', 1)
-        .addMenuIfHasAnyAuthority({ label: 'Submenu 0.1', routerLink: ['/'] }, 'ADMIN', 1)
+        .addMenuIfHasAnyAuthority({ label: 'Submenu 0.0', routerLink: ['/'] }, 'ROLE_COMUM', 1)
+        .addMenuIfHasAnyAuthority({ label: 'Submenu 0.1', routerLink: ['/'] }, 'ROLE_ADMIN', 1)
       .addMenu({ label: 'Menu 1', routerLink: ['/'] })
       .getMenuItems();
 
     expect(menuItems.length).toBe(2);
-    expect(menuItems[0].items.length).toBe(1);
+    expect(menuItems[0].items.length).toBe(2);
     expect(menuItems[1].items).toBeUndefined();
   });
 });

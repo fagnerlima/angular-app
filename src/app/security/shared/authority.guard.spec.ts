@@ -6,7 +6,7 @@ import { AuthorityGuard } from './authority.guard';
 import { AuthService } from './auth.service';
 
 class MockAuthService {
-  hasAnyAuthority(authorities: string): boolean {
+  hasAnyAuthorityOrAdmin(authorities: string): boolean {
     return 'ROLE_ADMIN' === authorities;
   }
 }

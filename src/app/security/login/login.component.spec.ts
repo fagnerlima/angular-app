@@ -12,7 +12,7 @@ import { LoginComponent } from './login.component';
 import { Credencials } from '../shared/credentials.model';
 
 class MockAuthService {
-  hasValidTokens(): boolean {
+  isValidAccessToken(): boolean {
     return false;
   }
 

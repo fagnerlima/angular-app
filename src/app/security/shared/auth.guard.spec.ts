@@ -6,10 +6,11 @@ import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 
 class MockAuthService {
-  validTokens: boolean;
 
-  hasValidTokens(): boolean {
-    return this.validTokens;
+  validAccessToken: boolean;
+
+  isValidAccessToken(): boolean {
+    return this.validAccessToken;
   }
 }
 
@@ -47,14 +48,14 @@ describe('Security: AuthGuard', () => {
   });
 
   it('deve ativar uma rota se o usuário estiver autenticado', () => {
-    authService.validTokens = true;
+    authService.validAccessToken = true;
 
     expect(guard.canActivate(activatedRoute, routerState)).toBe(true);
     expect(router.navigate).not.toHaveBeenCalled();
   });
 
   it('não deve ativar uma rota se o usuário não estiver autenticado', () => {
-    authService.validTokens = false;
+    authService.validAccessToken = false;
 
     expect(guard.canActivate(activatedRoute, routerState)).toBe(false);
     expect(router.navigate).toHaveBeenCalled();
