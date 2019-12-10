@@ -67,7 +67,6 @@ export class AppComponent implements OnInit {
 
   @HostListener('document:keydown.escape', ['$event'])
   keyDownEscape(event: KeyboardEvent): void {
-    console.log(event);
     this.hideMenu();
   }
 }

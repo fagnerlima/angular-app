@@ -7,7 +7,6 @@ import { GrupoListResponse } from './grupo-list-response.model';
 import { GrupoOptionResponse } from './grupo-option-response.model';
 import { GrupoRequest } from './grupo-request.model';
 import { GrupoResponse } from './grupo-response.model';
-import { PermissaoOptionResponse } from './permissao-option-response.model';
 
 @Injectable()
 export class GrupoSerializer implements Serializer<GrupoRequest, GrupoResponse, GrupoListResponse> {
@@ -21,7 +20,7 @@ export class GrupoSerializer implements Serializer<GrupoRequest, GrupoResponse, 
   }
 
   fromJsonToResponseListModel(json: any): GrupoListResponse {
-    return new GrupoListResponse(json.id, json.nome, json.permissoes, json.ativo);
+    return new GrupoListResponse(json.id, json.nome, json.ativo);
   }
 
   fromResponseModelToForm(model: GrupoResponse): GrupoForm {
