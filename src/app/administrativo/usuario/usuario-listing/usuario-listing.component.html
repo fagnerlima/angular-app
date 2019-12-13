@@ -82,7 +82,7 @@
       <ng-template pTemplate="body" let-rowData let-expanded="expanded">
         <tr>
           <td>
-            <a href="#" class="btn-row-toggler" [pRowToggler]="rowData">
+            <a href="#" class="btn-row-toggler" [pRowToggler]="rowData" (click)="find(rowData.id, expanded)">
               <i [ngClass]="expanded ? 'fa fa-fw fa-chevron-circle-down' : 'fa fa-fw fa-chevron-circle-right'"></i>
             </a>
           </td>
@@ -112,19 +112,22 @@
       <ng-template pTemplate="rowexpansion" let-rowData>
         <tr class="expanded-row-content">
           <td colspan="5">
-            <div class="scroll">
-              <dl>
-                <dt>E-mail</dt>
-                <dd>{{rowData.email}}</dd>
+            <p *ngIf="loadingExpandedRow; else tplRegister">Carregando...</p>
+            <ng-template #tplRegister>
+              <div class="scroll" *ngIf="register">
+                <dl>
+                  <dt>E-mail</dt>
+                  <dd>{{register.email}}</dd>
 
-                <dt>Grupos</dt>
-                <dd>
-                  <ul class="list-unstyled no-margin" *ngIf="rowData.grupos && rowData.grupos.length; else tplNoData">
-                    <li *ngFor="let grupo of rowData.grupos">{{grupo}}</li>
-                  </ul>
-                </dd>
-              </dl>
-            </div>
+                  <dt>Grupos</dt>
+                  <dd>
+                    <ul class="list-unstyled no-margin" *ngIf="register.grupos && register.grupos.length; else tplNoData">
+                      <li *ngFor="let grupo of register.grupos">{{grupo.nome}}</li>
+                    </ul>
+                  </dd>
+                </dl>
+              </div>
+            </ng-template>
           </td>
         </tr>
       </ng-template>

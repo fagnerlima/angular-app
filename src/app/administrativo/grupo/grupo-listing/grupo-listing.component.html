@@ -36,7 +36,7 @@
     <p-table #table *ngIf="listInitialized" [value]="registerList" dataKey="id" [responsive]="true" [autoLayout]="true"
       [loading]="loadingDataTable" loadingIcon="fa fa-spinner" [resizableColumns]="true"
       [paginator]="registerList && registerList.length" [rows]="rows" [totalRecords]="totalRecords"
-      [lazy]="true" (onLazyLoad)="changePage($event)"
+      [lazy]="true" (onLazyLoad)="changePage($event)" rowExpandMode="single"
       sortMode="multiple" (onSort)="changeSort($event.multisortmeta)">
 
       <ng-template pTemplate="summary">
@@ -69,7 +69,7 @@
       <ng-template pTemplate="body" let-rowData let-expanded="expanded">
         <tr>
           <td>
-            <a href="#" class="btn-row-toggler" [pRowToggler]="rowData">
+            <a href="#" class="btn-row-toggler" [pRowToggler]="rowData" (click)="find(rowData.id, expanded)">
               <i [ngClass]="expanded ? 'fa fa-fw fa-chevron-circle-down' : 'fa fa-fw fa-chevron-circle-right'"></i>
             </a>
           </td>
@@ -95,16 +95,19 @@
       <ng-template pTemplate="rowexpansion" let-rowData>
         <tr class="expanded-row-content">
           <td colspan="6">
-            <div class="scroll">
-              <dl>
-                <dt>Permissões</dt>
-                <dd>
-                  <ul class="list-unstyled no-margin" *ngIf="rowData.permissoes && rowData.permissoes.length; else tplNoData">
-                    <li *ngFor="let permissao of rowData.permissoes">{{permissao}}</li>
-                  </ul>
-                </dd>
-              </dl>
-            </div>
+            <p *ngIf="loadingExpandedRow; else tplRegister">Carregando...</p>
+            <ng-template #tplRegister>
+              <div class="scroll" *ngIf="register">
+                <dl>
+                  <dt>Permissões</dt>
+                  <dd>
+                    <ul class="list-unstyled no-margin" *ngIf="register.permissoes && register.permissoes.length; else tplNoData">
+                      <li *ngFor="let permissao of register.permissoes">{{permissao.papel}}</li>
+                    </ul>
+                  </dd>
+                </dl>
+              </div>
+            </ng-template>
           </td>
         </tr>
       </ng-template>
