@@ -4,7 +4,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CheckboxModule } from 'primeng/components/checkbox/checkbox';
 
-import { ValidationMessageComponent } from '../../validation-message/validation-message.component';
+import { ValidationComponent } from '../../validation/validation.component';
 import { CheckboxComponent } from './checkbox.component';
 
 describe('Shared: Component: CheckboxComponent', () => {
@@ -20,7 +20,7 @@ describe('Shared: Component: CheckboxComponent', () => {
       ],
       declarations: [
         CheckboxComponent,
-        ValidationMessageComponent
+        ValidationComponent
       ]
     })
     .compileComponents();

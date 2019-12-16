@@ -7,7 +7,7 @@ import { KeyFilterModule } from 'primeng/components/keyfilter/keyfilter';
 
 import { AutoFocusDirective } from '../../../directive/auto-focus.directive';
 import { BlockCopyPasteDirective } from '../../../directive/block-copy-paste.directive';
-import { ValidationMessageComponent } from '../../validation-message/validation-message.component';
+import { ValidationComponent } from '../../validation/validation.component';
 import { InputTextComponent } from './input-text.component';
 
 describe('Shared: Component: InputTextComponent', () => {
@@ -26,7 +26,7 @@ describe('Shared: Component: InputTextComponent', () => {
         AutoFocusDirective,
         BlockCopyPasteDirective,
         InputTextComponent,
-        ValidationMessageComponent
+        ValidationComponent
       ]
     })
     .compileComponents();

@@ -1,6 +1,6 @@
 import { ValidationType } from './validation-type.enum';
 
-export class ValidationMessage {
+export class Validation {
   type: ValidationType | string;
   message: string;
 }

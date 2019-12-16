@@ -8,7 +8,7 @@ import { TooltipModule } from 'primeng/components/tooltip/tooltip';
 
 import { AutoFocusDirective } from '../../../directive/auto-focus.directive';
 import { BlockCopyPasteDirective } from '../../../directive/block-copy-paste.directive';
-import { ValidationMessageComponent } from '../../validation-message/validation-message.component';
+import { ValidationComponent } from '../../validation/validation.component';
 import { PasswordComponent } from './password.component';
 
 describe('Shared: Component: PasswordComponent', () => {
@@ -28,7 +28,7 @@ describe('Shared: Component: PasswordComponent', () => {
         AutoFocusDirective,
         BlockCopyPasteDirective,
         PasswordComponent,
-        ValidationMessageComponent
+        ValidationComponent
       ]
     })
     .compileComponents();

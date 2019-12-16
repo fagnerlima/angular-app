@@ -1,17 +1,17 @@
 import { Component, Input } from '@angular/core';
 import { AbstractControl, FormControl } from '@angular/forms';
 
-import { ValidationMessage } from './validation-message.model';
+import { Validation } from './validation.model';
 import { ValidationType } from './validation-type.enum';
 
 @Component({
-  selector: 'app-validation-message',
-  templateUrl: './validation-message.component.html'
+  selector: 'app-validation',
+  templateUrl: './validation.component.html'
 })
-export class ValidationMessageComponent {
+export class ValidationComponent {
 
   @Input() control: AbstractControl = new FormControl();
-  @Input() messages: ValidationMessage[] = [];
+  @Input() messages: Validation[] = [];
   @Input() mode: 'touched' | 'submitted' = 'touched';
   @Input() submitted = false;
 

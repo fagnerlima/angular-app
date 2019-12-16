@@ -5,7 +5,7 @@ import { SelectItem } from 'primeng/components/common/selectitem';
 
 import { GrupoService } from '@app/administrativo/grupo/shared/grupo.service';
 import { CrudRegistration } from '@app/shared/component/crud/crud-registration/crud-registration';
-import { ValidationMessage } from '@app/shared/component/validation-message/validation-message.model';
+import { Validation } from '@app/shared/component/validation/validation.model';
 import { BreadcrumbService } from '@app/shared/service/breadcrumb.service';
 import { TitleService } from '@app/shared/service/title.service';
 import { ToastService } from '@app/shared/service/toast.service';
@@ -52,7 +52,7 @@ export class UsuarioRegistrationComponent extends CrudRegistration<UsuarioReques
     return 'Cadastro de Usuário';
   }
 
-  get validationMessages(): ValidationMessage[] {
+  get validationMessages(): Validation[] {
     return [
       { type: 'emailConfirmado', message: 'E-mail confirmado incorretamente' }
     ];

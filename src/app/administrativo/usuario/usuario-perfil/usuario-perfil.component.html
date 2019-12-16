@@ -12,7 +12,7 @@
             <label for="nome" class="ui-g-12 control-label required">Nome</label>
             <div class="ui-g-12">
               <input pInputText type="text" id="nome" class="form-control" formControlName="nome" appAutoFocus>
-              <app-validation-message [control]="formInformacoesPessoais.get('nome')" [submitted]="formInformacoesPessoaisSubmitted"></app-validation-message>
+              <app-validation [control]="formInformacoesPessoais.get('nome')" [submitted]="formInformacoesPessoaisSubmitted"></app-validation>
             </div>
           </div> <!--/.form-group-nome-->
 
@@ -20,7 +20,7 @@
             <label for="email" class="ui-g-12 control-label required">E-mail</label>
             <div class="ui-g-12">
               <input pInputText type="email" id="email" class="form-control" formControlName="email">
-              <app-validation-message [control]="formInformacoesPessoais.get('email')" [submitted]="formInformacoesPessoaisSubmitted"></app-validation-message>
+              <app-validation [control]="formInformacoesPessoais.get('email')" [submitted]="formInformacoesPessoaisSubmitted"></app-validation>
             </div>
           </div> <!--/.form-group-email-->
 
@@ -28,7 +28,7 @@
             <label for="confirmacao-email" class="ui-g-12 control-label required">Confirmação de e-mail</label>
             <div class="ui-g-12">
               <input pInputText type="email" id="confirmacao-email" class="form-control" formControlName="confirmacaoEmail" autocomplete="off">
-              <app-validation-message [control]="formInformacoesPessoais.get('confirmacaoEmail')" [submitted]="formInformacoesPessoaisSubmitted"></app-validation-message>
+              <app-validation [control]="formInformacoesPessoais.get('confirmacaoEmail')" [submitted]="formInformacoesPessoaisSubmitted"></app-validation>
             </div>
           </div> <!--/.form-group-confirmacao-email-->
 
@@ -36,14 +36,14 @@
             <label for="login" class="ui-g-12 control-label required">Login</label>
             <div class="ui-g-12">
               <input pInputText type="text" id="login" class="form-control" formControlName="login">
-              <app-validation-message [control]="formInformacoesPessoais.get('login')" [submitted]="formInformacoesPessoaisSubmitted"></app-validation-message>
+              <app-validation [control]="formInformacoesPessoais.get('login')" [submitted]="formInformacoesPessoaisSubmitted"></app-validation>
             </div>
           </div> <!--/.form-group-login-->
 
           <div class="ui-g form-group-validacoes">
             <div class="ui-g-12">
-              <app-validation-message [control]="formInformacoesPessoais" [submitted]="formInformacoesPessoaisSubmitted" mode="submitted"
-                [messages]="[{ type: 'emailConfirmado', message: 'E-mail confirmado incorretamente' }]"></app-validation-message>
+              <app-validation [control]="formInformacoesPessoais" [submitted]="formInformacoesPessoaisSubmitted" mode="submitted"
+                [messages]="[{ type: 'emailConfirmado', message: 'E-mail confirmado incorretamente' }]"></app-validation>
             </div>
           </div>
 
@@ -62,7 +62,7 @@
             <label for="senha-atual" class="ui-g-12 control-label required">Senha atual</label>
             <div class="ui-g-12">
               <input pInputText type="password" id="senha-atual" class="form-control" formControlName="senhaAtual">
-              <app-validation-message [control]="formSenha.get('senhaAtual')" [submitted]="formSenhaSubmitted"></app-validation-message>
+              <app-validation [control]="formSenha.get('senhaAtual')" [submitted]="formSenhaSubmitted"></app-validation>
             </div>
           </div> <!--/.form-group-senha-->
 
@@ -72,7 +72,7 @@
               <input pPassword type="password" id="senha" class="form-control" formControlName="senha"
                 promptLabel="Sua senha deve ter letras e números com no mínimo 6 e no máximo 20 caracteres"
                 weakLabel="Senha fraca" mediumLabel="Senha média" strongLabel="Senha forte">
-              <app-validation-message [control]="formSenha.get('senha')" [submitted]="formSenhaSubmitted"></app-validation-message>
+              <app-validation [control]="formSenha.get('senha')" [submitted]="formSenhaSubmitted"></app-validation>
             </div>
           </div> <!--/.form-group-senha-->
 
@@ -80,14 +80,14 @@
             <label for="confirmacao-senha" class="ui-g-12 control-label required">Confirmação de Senha</label>
             <div class="ui-g-12">
               <input pInputText type="password" id="confirmacao-senha" class="form-control" formControlName="confirmacaoSenha">
-              <app-validation-message [control]="formSenha.get('confirmacaoSenha')" [submitted]="formSenhaSubmitted"></app-validation-message>
+              <app-validation [control]="formSenha.get('confirmacaoSenha')" [submitted]="formSenhaSubmitted"></app-validation>
             </div>
           </div> <!--/.form-group-confirmacao-senha-->
 
           <div class="ui-g">
             <div class="ui-g-12 form-group-validacoes">
-              <app-validation-message [control]="formSenha" [submitted]="formSenhaSubmitted" mode="submitted"
-                [messages]="[{ type: 'senhaConfirmada', message: 'Senha confirmada incorretamente' }]"></app-validation-message>
+              <app-validation [control]="formSenha" [submitted]="formSenhaSubmitted" mode="submitted"
+                [messages]="[{ type: 'senhaConfirmada', message: 'Senha confirmada incorretamente' }]"></app-validation>
             </div>
           </div>
 

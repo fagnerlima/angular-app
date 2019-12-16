@@ -16,7 +16,7 @@
       <label for="username" class="ui-g-12 control-label">Usuário</label>
       <div class="ui-g-12">
         <input pInputText type="email" class="form-control" id="username" formControlName="username" appAutoFocus>
-        <app-validation-message [control]="form.get('username')" [submitted]="formSubmitted" mode="submitted"></app-validation-message>
+        <app-validation [control]="form.get('username')" [submitted]="formSubmitted" mode="submitted"></app-validation>
       </div>
     </div>
 
@@ -24,7 +24,7 @@
       <label for="password" class="ui-g-12 control-label">Senha</label>
       <div class="ui-g-12">
         <input pInputText type="password" class="form-control" id="password" formControlName="password">
-        <app-validation-message [control]="form.get('password')" [submitted]="formSubmitted" mode="submitted"></app-validation-message>
+        <app-validation [control]="form.get('password')" [submitted]="formSubmitted" mode="submitted"></app-validation>
       </div>
     </div>
 

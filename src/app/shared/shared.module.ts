@@ -42,7 +42,7 @@ import { PageHeaderComponent } from './component/page-header/page-header.compone
 import { PanelLoaderComponent } from './component/panel-loader/panel-loader.component';
 import { PasswordComponent } from './component/form/password/password.component';
 import { SpinnerComponent } from './component/form/spinner/spinner.component';
-import { ValidationMessageComponent } from './component/validation-message/validation-message.component';
+import { ValidationComponent } from './component/validation/validation.component';
 import { AutoFocusDirective } from './directive/auto-focus.directive';
 import { BlockCopyPasteDirective } from './directive/block-copy-paste.directive';
 import { TagDirective } from './directive/tag.directive';
@@ -102,7 +102,7 @@ const sharedComponents: Array<Type<any> | any[]> = [
   PasswordComponent,
   PanelLoaderComponent,
   SpinnerComponent,
-  ValidationMessageComponent
+  ValidationComponent
 ];
 const sharedDirectives: Array<Type<any> | any[]> = [
   AutoFocusDirective,

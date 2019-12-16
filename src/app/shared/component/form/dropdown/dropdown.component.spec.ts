@@ -5,7 +5,7 @@ import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { DropdownModule } from 'primeng/components/dropdown/dropdown';
 
 import { AutoFocusDirective } from '../../../directive/auto-focus.directive';
-import { ValidationMessageComponent } from '../../validation-message/validation-message.component';
+import { ValidationComponent } from '../../validation/validation.component';
 import { DropdownComponent } from './dropdown.component';
 
 describe('Shared: Component: DropdownComponent', () => {
@@ -22,7 +22,7 @@ describe('Shared: Component: DropdownComponent', () => {
       declarations: [
         AutoFocusDirective,
         DropdownComponent,
-        ValidationMessageComponent
+        ValidationComponent
       ]
     })
     .compileComponents();
