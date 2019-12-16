@@ -11,12 +11,12 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: Route.HOME,
+    redirectTo: Route.LOGIN,
     pathMatch: 'full'
   },
   {
     path: Route.HOME,
-    component: HomeComponent,
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
     canActivate: [AuthGuard]
   },
   {

@@ -2,7 +2,6 @@ import { NgModule, Type } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AccordionModule } from 'primeng/components/accordion/accordion';
 import { BreadcrumbModule } from 'primeng/components/breadcrumb/breadcrumb';
@@ -57,7 +56,6 @@ import { ToastService } from './service/toast.service';
 // Modules
 const angularModules: Array<Type<any> | any[]> = [
   CommonModule,
-  BrowserAnimationsModule,
   ReactiveFormsModule,
   FormsModule,
   RouterModule

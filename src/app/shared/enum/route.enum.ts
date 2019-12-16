@@ -8,6 +8,10 @@ export enum Route {
   GENERICO_EDICAO = ':id',
 
   ADMINISTRATIVO = 'administrativo',
+  GRUPOS = 'grupos',
+  USUARIOS = 'usuarios',
+  PERFIL = 'perfil',
+  RECUPERACAO_SENHA = 'recuperacao-senha',
   ADMINISTRATIVO_GRUPOS = 'administrativo/grupos',
   ADMINISTRATIVO_USUARIOS = 'administrativo/usuarios',
   ADMINISTRATIVO_PERFIL = 'administrativo/perfil',
