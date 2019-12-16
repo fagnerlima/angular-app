@@ -1,5 +1,7 @@
 # AngularApp
 
+Projeto Angular que serve como base para desenvolvimento de outros projetos.
+
 ## Módulos/Funcionalidades
 
 * Home
