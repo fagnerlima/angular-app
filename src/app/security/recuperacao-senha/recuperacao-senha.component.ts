@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { UsuarioService } from '@app/administrativo/usuario/shared/usuario.service';
 import { Route } from '@app/shared/enum/route.enum';
 import { ToastService } from '@app/shared/service/toast.service';
 import { TitleService } from '@app/shared/service/title.service';
 import { RecuperacaoSenhaForm } from '../shared/recuperacao-senha.form';
 import { AtualizacaoSenhaForm } from '../shared/atualizacao-senha.form';
-import { UsuarioService } from '../shared/usuario.service';
 
 @Component({
   selector: 'app-recuperacao-senha',

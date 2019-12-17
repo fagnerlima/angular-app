@@ -9,13 +9,8 @@ import { UsuarioPerfilComponent } from './usuario-perfil/usuario-perfil.componen
 import { UsuarioListingComponent } from './usuario-listing/usuario-listing.component';
 import { UsuarioComponent } from './usuario.component';
 import { UsuarioRegistrationComponent } from './usuario-registration/usuario-registration.component';
-import { RecuperacaoSenhaComponent } from './recuperacao-senha/recuperacao-senha.component';
 
 const routes: Routes = [
-  {
-    path: Route.ADMINISTRATIVO_RECUPERACAO_SENHA,
-    component: RecuperacaoSenhaComponent
-  },
   {
     path: Route.ADMINISTRATIVO_PERFIL,
     component: UsuarioPerfilComponent,

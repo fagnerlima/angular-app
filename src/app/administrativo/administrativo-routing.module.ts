@@ -7,7 +7,7 @@ import { AdministrativoComponent } from './administrativo.component';
 const routes: Routes = [
   {
     path: Route.ADMINISTRATIVO,
-    component:  AdministrativoComponent
+    component: AdministrativoComponent
   }
 ];
 

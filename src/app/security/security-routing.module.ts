@@ -3,11 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { Route } from '@app/shared/enum/route.enum';
 import { LoginComponent } from './login/login.component';
+import { RecuperacaoSenhaComponent } from './recuperacao-senha/recuperacao-senha.component';
 
 const routes: Routes = [
   {
     path: Route.LOGIN,
-    component:  LoginComponent
+    component: LoginComponent
+  },
+  {
+    path: Route.RECUPERACAO_SENHA,
+    component: RecuperacaoSenhaComponent
   }
 ];
 
