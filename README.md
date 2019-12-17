@@ -4,6 +4,8 @@ Projeto Angular que serve como base para desenvolvimento de outros projetos.
 
 ## Módulos/Funcionalidades
 
+* Login
+  * Recuperação de Senha
 * Home
 * Administrativo
   * Grupo
