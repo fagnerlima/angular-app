@@ -11,7 +11,7 @@ import { GrupoRegistrationComponent } from './grupo-registration/grupo-registrat
 
 const routes: Routes = [
   {
-    path: Route.ADMINISTRATIVO_GRUPOS,
+    path: '',
     component: GrupoComponent,
     canActivate: [AuthGuard],
     children: [

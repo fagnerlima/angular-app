@@ -14,5 +14,5 @@ export enum Route {
   PERFIL = 'perfil',
   ADMINISTRATIVO_GRUPOS = 'administrativo/grupos',
   ADMINISTRATIVO_USUARIOS = 'administrativo/usuarios',
-  ADMINISTRATIVO_PERFIL = 'administrativo/perfil',
+  ADMINISTRATIVO_USUARIOS_PERFIL = 'administrativo/usuarios/perfil',
 }

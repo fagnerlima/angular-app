@@ -44,6 +44,7 @@ export class SidebarComponent implements OnInit {
   }
 
   initMenuItems(): void {
+    /** @todo Substituir strings por enum */
     this._menuItems = this.menuBuilder
       // Home
       .addMenu(this.menu('Home', 'fa fa-home', 'menu-dashboard', ['/home']))

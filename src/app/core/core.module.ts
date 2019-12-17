@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 
+import { UsuarioService } from '@app/administrativo/usuario/shared/usuario.service';
 import { SharedModule } from '@app/shared/shared.module';
 import { ErrorHandlerService } from './shared/error-handler.service';
 import { PageException401Component } from './page-exception-401/page-exception-401.component';
@@ -23,6 +24,9 @@ import { CoreRoutingModule } from './core-routing.module';
     SidebarComponent,
     TopbarComponent
   ],
-  providers: [ErrorHandlerService]
+  providers: [
+    ErrorHandlerService,
+    UsuarioService
+  ]
 })
 export class CoreModule { }

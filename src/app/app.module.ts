@@ -22,7 +22,6 @@ registerLocaleData(ptBR);
     SharedModule,
     CoreModule,
     SecurityModule,
-    AdministrativoModule,
     AppRoutingModule
   ],
   declarations: [

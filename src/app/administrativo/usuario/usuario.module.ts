@@ -7,7 +7,6 @@ import { UsuarioComponent } from './usuario.component';
 import { UsuarioListingComponent } from './usuario-listing/usuario-listing.component';
 import { UsuarioPerfilComponent } from './usuario-perfil/usuario-perfil.component';
 import { UsuarioRoutingModule } from './usuario-routing.module';
-import { UsuarioSerializer } from './shared/usuario-serializer';
 import { UsuarioService } from './shared/usuario.service';
 
 @NgModule({
@@ -22,9 +21,6 @@ import { UsuarioService } from './shared/usuario.service';
     UsuarioListingComponent,
     UsuarioPerfilComponent
   ],
-  providers: [
-    UsuarioSerializer,
-    UsuarioService
-  ]
+  providers: [UsuarioService]
 })
 export class UsuarioModule { }

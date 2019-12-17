@@ -12,10 +12,9 @@ import {
 import { UsuarioRequest } from './usuario-request.model';
 import { UsuarioResponse } from './usuario-response.model';
 
-@Injectable()
 export class UsuarioSerializer implements Serializer<UsuarioRequest, UsuarioResponse, UsuarioListResponse> {
 
-  constructor(private grupoSerializer: GrupoSerializer) { }
+  private grupoSerializer = new GrupoSerializer();
 
   fromJsonToResponseModel(json: any): UsuarioResponse {
     const grupos = (json.grupos as any[]).map(grupo => this.grupoSerializer.fromJsonToResponseOptionModel(grupo));

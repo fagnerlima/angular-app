@@ -12,12 +12,7 @@ import { UsuarioRegistrationComponent } from './usuario-registration/usuario-reg
 
 const routes: Routes = [
   {
-    path: Route.ADMINISTRATIVO_PERFIL,
-    component: UsuarioPerfilComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: Route.ADMINISTRATIVO_USUARIOS,
+    path: '',
     component: UsuarioComponent,
     canActivate: [AuthGuard],
     children: [
@@ -26,6 +21,11 @@ const routes: Routes = [
         component: UsuarioListingComponent,
         canActivate: [AuthorityGuard],
         data: { expectedAuthority: Authority.ROLE_USUARIO_LISTAR }
+      },
+      {
+        path: Route.PERFIL,
+        component: UsuarioPerfilComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: Route.GENERICO_CADASTRO,

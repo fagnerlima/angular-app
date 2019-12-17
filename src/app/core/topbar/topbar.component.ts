@@ -44,7 +44,7 @@ export class TopbarComponent {
       {
         label: 'Perfil de Usuário',
         icon: 'fa fa-user-o',
-        routerLink: ['/administrativo/perfil']
+        routerLink: ['/administrativo/usuarios/perfil']
       },
       { separator: true },
       {

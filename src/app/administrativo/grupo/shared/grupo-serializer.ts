@@ -12,7 +12,7 @@ import { PermissaoOptionResponse } from './permissao-option-response.model';
 @Injectable()
 export class GrupoSerializer implements Serializer<GrupoRequest, GrupoResponse, GrupoListResponse> {
 
-  constructor(private permissaoSerializer: PermissaoSerializer) { }
+  private permissaoSerializer = new PermissaoSerializer();
 
   fromJsonToResponseModel(json: any): GrupoResponse {
     const permissoes = (json.permissoes as any[]).map(permissao => this.permissaoSerializer.fromJsonToResponseGrupoModel(permissao));

@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 
 import { isString, isNullOrUndefined } from 'util';
 
+import { Observable } from 'rxjs';
+
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { environment } from '@env/environment';
@@ -16,7 +18,8 @@ import { OAuth2HttpResponse } from './oauth2-http-response';
 @Injectable()
 export class AuthService {
 
-  readonly authorizeUrl = environment.apiAuthUrl + '/oauth/token';
+  private readonly authorizeUrl = environment.apiAuthUrl + '/oauth/token';
+  private readonly usuariosUrl = environment.apiAuthUrl + '/usuarios';
 
   private jwtHelperService = new JwtHelperService();
 
@@ -56,6 +59,14 @@ export class AuthService {
         Promise.resolve();
       })
       .catch((error: any) => this.logout());
+  }
+
+  recoverySenha(email: string): Observable<any> {
+    return this.httpClient.patch(`${this.usuariosUrl}/recuperar-senha`, { email });
+  }
+
+  updateSenha(token: string, senha: string): Observable<any> {
+    return this.httpClient.patch(`${this.usuariosUrl}/atualizar-senha`, { token, senha });
   }
 
   logout(): void {

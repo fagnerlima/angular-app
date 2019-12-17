@@ -16,6 +16,11 @@ const routes: Routes = [
     canLoad: [AuthGuard]
   },
   {
+    path: Route.ADMINISTRATIVO,
+    loadChildren: () => import('./administrativo/administrativo.module').then(m => m.AdministrativoModule),
+    canLoad: [AuthGuard]
+  },
+  {
     path: '**',
     redirectTo: Route.ERRO_404
   }

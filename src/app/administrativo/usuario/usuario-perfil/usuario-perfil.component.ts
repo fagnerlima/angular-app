@@ -113,6 +113,6 @@ export class UsuarioPerfilComponent implements OnInit {
   }
 
   private initBreadcrumb(): void {
-    this.breadcrumbService.clearAndAdd('Perfil de Usuário', [`/${Route.ADMINISTRATIVO_PERFIL}`]);
+    this.breadcrumbService.clearAndAdd('Perfil de Usuário', [`/${Route.ADMINISTRATIVO_USUARIOS_PERFIL}`]);
   }
 }

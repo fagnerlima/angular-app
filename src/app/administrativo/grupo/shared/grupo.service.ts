@@ -16,15 +16,12 @@ import { GrupoSerializer } from './grupo-serializer';
 @Injectable()
 export class GrupoService extends CrudService<GrupoRequest, GrupoResponse, GrupoListResponse> {
 
-  constructor(
-    protected httpClient: HttpClient,
-    protected _serializer: GrupoSerializer
-  ) {
-    super(httpClient, environment.apiAuthUrl, '/grupos', _serializer);
+  constructor(protected httpClient: HttpClient) {
+    super(httpClient, environment.apiAuthUrl, '/grupos', new GrupoSerializer());
   }
 
   findOptions(): Observable<GrupoOptionResponse[]> {
     return this.httpClient.get<ResponseBody<GrupoOptionResponse[]>>(`${this.resourceBaseUrl}/ativos`)
-      .pipe(map(response => response.data.map(value => this._serializer.fromJsonToResponseOptionModel(value))));
+      .pipe(map(response => response.data.map(value => (this._serializer as GrupoSerializer).fromJsonToResponseOptionModel(value))));
   }
 }
