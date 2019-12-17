@@ -5,12 +5,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import ptBR from '@angular/common/locales/pt';
 
+import { ConfirmationService } from 'primeng/components/common/confirmationservice';
+import { MessageService } from 'primeng/components/common/messageservice';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SecurityModule } from './security/security.module';
 import { SharedModule } from './shared/shared.module';
-import { AdministrativoModule } from './administrativo/administrativo.module';
+import { ToastService } from './shared/service/toast.service';
 
 registerLocaleData(ptBR);
 
@@ -27,7 +30,12 @@ registerLocaleData(ptBR);
   declarations: [
     AppComponent
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'pt-PT' }],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'pt-PT' },
+    ConfirmationService,
+    MessageService,
+    ToastService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
