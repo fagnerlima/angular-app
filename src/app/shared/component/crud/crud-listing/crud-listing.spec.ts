@@ -52,6 +52,10 @@ class MockCrudListingComponent extends CrudListing<any, any, any> {
     return true;
   }
 
+  getEditarRouterLink(id: number): string | any[] {
+    return '';
+  }
+
   get title(): string {
     return 'MockCrudListagem';
   }
