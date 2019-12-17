@@ -6,9 +6,13 @@ import { PageException401Component } from './page-exception-401/page-exception-4
 import { PageException404Component } from './page-exception-404/page-exception-404.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TopbarComponent } from './topbar/topbar.component';
+import { CoreRoutingModule } from './core-routing.module';
 
 @NgModule({
-  imports: [SharedModule],
+  imports: [
+    SharedModule,
+    CoreRoutingModule
+  ],
   declarations: [
     PageException401Component,
     PageException404Component,

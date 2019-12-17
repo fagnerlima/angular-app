@@ -7,9 +7,13 @@ import { AuthService } from './shared/auth.service';
 import { TokenInterceptor } from './shared/token-interceptor';
 import { AuthGuard } from './shared/auth.guard';
 import { AuthorityGuard } from './shared/authority.guard';
+import { SecurityRoutingModule } from './security-routing.module';
 
 @NgModule({
-  imports: [SharedModule],
+  imports: [
+    SharedModule,
+    SecurityRoutingModule
+  ],
   declarations: [LoginComponent],
   providers: [
     AuthService,
