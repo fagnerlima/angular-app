@@ -62,11 +62,11 @@ export class AuthService {
   }
 
   recoverySenha(email: string): Observable<any> {
-    return this.httpClient.patch(`${this.usuariosUrl}/recuperar-senha`, { email });
+    return this.httpClient.post(`${this.usuariosUrl}/recuperacao/senha`, { email });
   }
 
   updateSenha(token: string, senha: string): Observable<any> {
-    return this.httpClient.patch(`${this.usuariosUrl}/atualizar-senha`, { token, senha });
+    return this.httpClient.patch(`${this.usuariosUrl}/senha`, { token, senha });
   }
 
   logout(): void {
