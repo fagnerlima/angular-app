@@ -104,7 +104,7 @@
           <td *ngIf="hasActions()" class="text-center">
             <span class="ui-column-title">Ações</span>
             <a pButton *ngIf="hasEditarAuthority()" class="ui-button-link btn-action btn-editar" icon="fa fa-pencil" pTooltip="Editar" tooltipPosition="top"
-              [routerLink]="['/administrativo/usuarios', rowData.id, 'editar']"></a>
+              [routerLink]="getEditarRouterLink(rowData.id)"></a>
           </td>
         </tr>
       </ng-template>

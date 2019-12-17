@@ -250,6 +250,8 @@ export abstract class CrudListing<T extends RequestModel, U extends ResponseMode
 
   abstract hasActions(): boolean;
 
+  abstract getEditarRouterLink(id: number): string | any[];
+
   abstract get title(): string;
 
   protected abstract loadAdditionalData(): Promise<void>;

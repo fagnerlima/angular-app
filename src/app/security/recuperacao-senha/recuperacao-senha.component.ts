@@ -33,20 +33,12 @@ export class RecuperacaoSenhaComponent implements OnInit {
     this.titleService.setTitle(this.token ? 'Atualização de senha' : 'Recuperação de senha');
   }
 
-  get form(): RecuperacaoSenhaForm | AtualizacaoSenhaForm {
-    return this._form;
-  }
-
-  get formSubmitted(): boolean {
-    return this._formSubmitted;
-  }
-
-  get loading(): boolean {
-    return this._loading;
-  }
-
   isModoAtualizacaoSenha(): boolean {
     return Boolean(this.token);
+  }
+
+  getLoginRouterLink(): string | any[] {
+    return [`/${Route.LOGIN}`];
   }
 
   recuperarSenha(): void {
@@ -83,5 +75,17 @@ export class RecuperacaoSenhaComponent implements OnInit {
       () => this._loading = false,
       () => this.router.navigate([`/${Route.LOGIN}`])
     );
+  }
+
+  get form(): RecuperacaoSenhaForm | AtualizacaoSenhaForm {
+    return this._form;
+  }
+
+  get formSubmitted(): boolean {
+    return this._formSubmitted;
+  }
+
+  get loading(): boolean {
+    return this._loading;
   }
 }

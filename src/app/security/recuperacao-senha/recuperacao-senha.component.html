@@ -22,7 +22,7 @@
       <div class="ui-g form-group-botoes">
         <div class="ui-g-12">
           <button pButton type="submit" class="pull-right" icon="fa fa-envelope-o" label="Enviar"></button>
-          <a pButton routerLink="/login" class="pull-left ui-button-secondary" icon="fa fa-undo" label="Voltar"></a>
+          <a pButton [routerLink]="getLoginRouterLink()" class="pull-left ui-button-secondary" icon="fa fa-undo" label="Voltar"></a>
         </div>
       </div>
     </form>
@@ -57,7 +57,7 @@
       <div class="ui-g form-group-botoes">
         <div class="ui-g-12">
           <button pButton type="submit" class="pull-right" icon="fa fa-check" label="Atualizar"></button>
-          <a pButton routerLink="/login" class="pull-left ui-button-secondary" icon="fa fa-undo" label="Voltar"></a>
+          <a pButton [routerLink]="getLoginRouterLink()" class="pull-left ui-button-secondary" icon="fa fa-undo" label="Voltar"></a>
         </div>
       </div>
     </form>
