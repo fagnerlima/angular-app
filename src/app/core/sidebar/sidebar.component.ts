@@ -8,6 +8,7 @@ import { MenuItem } from 'primeng/components/common/menuitem';
 import { UsuarioListResponse } from '@app/administrativo/usuario/shared/usuario-list-response.model';
 import { UsuarioService } from '@app/administrativo/usuario/shared/usuario.service';
 import { MenuBuilder } from '../shared/menu-builder';
+import { Route } from '@app/shared/enum/route.enum';
 
 @Component({
   selector: 'app-sidebar',
@@ -44,18 +45,17 @@ export class SidebarComponent implements OnInit {
   }
 
   initMenuItems(): void {
-    /** @todo Substituir strings por enum */
     this._menuItems = this.menuBuilder
       // Home
       .addMenu(this.menu('Home', 'fa fa-home', 'menu-dashboard', ['/home']))
       // Administrativo
-      .addMenu(this.expandedMenu('Administrativo', 'menu-administrativo', this.isExpandedMenu('/administrativo')))
-        .addMenu(this.expandedMenu('Grupo', 'submenu-grupo', this.isExpandedMenu('/administrativo/grupos')), 1)
-          .addMenu(this.listingMenu(['/administrativo/grupos']), 2)
-          .addMenu(this.registrationMenu(['/administrativo/grupos/novo']), 2)
-        .addMenu(this.expandedMenu('Usuário', 'submenu-usuario', this.isExpandedMenu('/administrativo/usuarios')), 1)
-          .addMenu(this.listingMenu(['/administrativo/usuarios']), 2)
-          .addMenu(this.registrationMenu(['/administrativo/usuarios/novo']), 2)
+      .addMenu(this.expandedMenu('Administrativo', 'menu-administrativo', this.isExpandedMenu(`/${Route.ADMINISTRATIVO}`)))
+        .addMenu(this.expandedMenu('Grupo', 'submenu-grupo', this.isExpandedMenu(`/${Route.ADMINISTRATIVO_GRUPOS}`)), 1)
+          .addMenu(this.listingMenu([`/${Route.ADMINISTRATIVO_GRUPOS}`]), 2)
+          .addMenu(this.registrationMenu([`/${Route.ADMINISTRATIVO_GRUPOS}/${Route.GENERICO_CADASTRAR}`]), 2)
+        .addMenu(this.expandedMenu('Usuário', 'submenu-usuario', this.isExpandedMenu(`/${Route.ADMINISTRATIVO_USUARIOS}`)), 1)
+          .addMenu(this.listingMenu([`/${Route.ADMINISTRATIVO_USUARIOS}`]), 2)
+          .addMenu(this.registrationMenu([`/${Route.ADMINISTRATIVO_USUARIOS}/${Route.GENERICO_CADASTRAR}`]), 2)
       .getMenuItems();
   }
 
