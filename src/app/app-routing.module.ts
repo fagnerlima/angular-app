@@ -7,13 +7,13 @@ import { AuthGuard } from './security/shared/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: Route.LOGIN, /** @todo checar viabilidade */
+    redirectTo: Route.HOME,
     pathMatch: 'full'
   },
   {
     path: Route.HOME,
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
-    canActivate: [AuthGuard] /** @todo checar canActivateChild */
+    canLoad: [AuthGuard]
   },
   {
     path: '**',
