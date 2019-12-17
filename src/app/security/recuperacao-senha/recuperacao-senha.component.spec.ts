@@ -3,8 +3,11 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { UsuarioModule } from '@app/administrativo/usuario/usuario.module';
+import { MessageService } from 'primeng/components/common/messageservice';
+
+import { ToastService } from '@app/shared/service/toast.service';
 import { SharedModule } from '@app/shared/shared.module';
+import { AuthService } from '../shared/auth.service';
 import { RecuperacaoSenhaComponent } from './recuperacao-senha.component';
 
 describe('Security: RecuperacaoSenhaComponent', () => {
@@ -17,8 +20,13 @@ describe('Security: RecuperacaoSenhaComponent', () => {
         RouterTestingModule,
         HttpClientTestingModule,
         ReactiveFormsModule,
-        SharedModule,
-        UsuarioModule
+        SharedModule
+      ],
+      declarations: [RecuperacaoSenhaComponent],
+      providers: [
+        AuthService,
+        MessageService,
+        ToastService
       ]
     })
     .compileComponents();
