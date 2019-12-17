@@ -1,6 +1,5 @@
 export interface Pageable<T> {
-  /** @todo alterar para tipo T[] */
-  content: T;
+  content: T[];
   totalPages: number;
   totalElements: number;
   last: boolean;
