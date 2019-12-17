@@ -28,13 +28,13 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
-        path: Route.GENERICO_CADASTRO,
+        path: Route.GENERICO_CADASTRAR,
         component: UsuarioRegistrationComponent,
         canActivate: [AuthorityGuard],
         data: { expectedAuthority: Authority.ROLE_USUARIO_SALVAR }
       },
       {
-        path: Route.GENERICO_EDICAO,
+        path: Route.GENERICO_EDITAR,
         component: UsuarioRegistrationComponent,
         canActivate: [AuthorityGuard],
         data: { expectedAuthority: Authority.ROLE_USUARIO_EDITAR }

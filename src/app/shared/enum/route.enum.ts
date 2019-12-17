@@ -5,8 +5,8 @@ export enum Route {
   ERRO_401 = 'erro-401',
   ERRO_404 = 'erro-404',
 
-  GENERICO_CADASTRO = 'novo',
-  GENERICO_EDICAO = ':id',
+  GENERICO_CADASTRAR = 'cadastrar',
+  GENERICO_EDITAR = ':id/editar',
 
   ADMINISTRATIVO = 'administrativo',
   GRUPOS = 'grupos',

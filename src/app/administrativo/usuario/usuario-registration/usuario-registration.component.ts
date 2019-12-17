@@ -66,7 +66,7 @@ export class UsuarioRegistrationComponent extends CrudRegistration<UsuarioReques
     this.breadcrumbService.clearAndAdd('Usuários', [`/${Route.ADMINISTRATIVO_USUARIOS}`]);
     this.isEditionMode()
       ? this.breadcrumbService.add('Edição de Usuário', [`/${Route.ADMINISTRATIVO_USUARIOS}`, this.model.id])
-      : this.breadcrumbService.add('Cadastro de Usuário', [`/${Route.ADMINISTRATIVO_USUARIOS}/${Route.GENERICO_CADASTRO}`]);
+      : this.breadcrumbService.add('Cadastro de Usuário', [`/${Route.ADMINISTRATIVO_USUARIOS}/${Route.GENERICO_CADASTRAR}`]);
   }
 
   protected redirectToListing(): void {
