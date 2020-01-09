@@ -76,6 +76,8 @@ export class DateUtils {
    * @param end Date final
    * @param start Date inicial
    * @param format Formato do resultado. Exemplos: HH:mm:ss, HH:mm:ss.SSS, HH:mm, mm:ss.
+   *
+   * @returns a diferença de tempo
    */
   static timeDifference(end: Date | string, start: Date | string, format: string = 'HH:mm:ss'): string {
     const endTime = moment.utc(end);

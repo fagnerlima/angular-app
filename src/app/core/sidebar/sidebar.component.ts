@@ -1,24 +1,27 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router, RoutesRecognized } from '@angular/router';
 
 import { Subscription } from 'rxjs';
 
 import { MenuItem } from 'primeng/components/common/menuitem';
 
+import { Route } from '@app/shared/enum/route.enum';
+import { AuthService } from '@app/security/shared/auth.service';
 import { UsuarioListResponse } from '@app/administrativo/usuario/shared/usuario-list-response.model';
 import { UsuarioService } from '@app/administrativo/usuario/shared/usuario.service';
 import { MenuBuilder } from '../shared/menu-builder';
-import { Route } from '@app/shared/enum/route.enum';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   providers: [MenuBuilder]
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit, OnDestroy {
 
   private _menuItems: MenuItem[];
+  private _today: Date;
   private _usuario: UsuarioListResponse;
+  private clockTimer: any;
   private currentUrl = '';
   private routerEventsSubscription: Subscription;
 
@@ -28,11 +31,13 @@ export class SidebarComponent implements OnInit {
   constructor(
     private menuBuilder: MenuBuilder,
     private router: Router,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
     this.loadUsuario();
+    this.clockTimer = setInterval(() => this._today = new Date(), 1000);
     this.initMenuItems();
     this.routerEventsSubscription = this.router.events.subscribe(event => {
       if (event instanceof RoutesRecognized) {
@@ -42,6 +47,10 @@ export class SidebarComponent implements OnInit {
         this.routerEventsSubscription.unsubscribe();
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.clockTimer);
   }
 
   initMenuItems(): void {
@@ -68,8 +77,16 @@ export class SidebarComponent implements OnInit {
     return this.currentUrl.startsWith(route);
   }
 
+  get loggedSince(): Date {
+    return this.authService.getLoggedSince();
+  }
+
   get menuItems(): MenuItem[] {
     return this._menuItems;
+  }
+
+  get today(): Date {
+    return this._today;
   }
 
   get usuario(): UsuarioListResponse {
