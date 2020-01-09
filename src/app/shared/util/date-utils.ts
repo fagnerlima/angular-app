@@ -84,11 +84,9 @@ export class DateUtils {
 
     const hours = durationTime.hours();
     const minutes = DateUtils.hasHoursFormat(format)
-      ? durationTime.minutes()
-      : Number(durationTime.asMinutes().toFixed());
+      ? durationTime.minutes() : Number(durationTime.asMinutes().toFixed());
     const seconds = DateUtils.hasHoursFormat(format) || DateUtils.hasMinutesFormat(format)
-      ? durationTime.seconds()
-      : Number(durationTime.asSeconds().toFixed());
+      ? durationTime.seconds() : Number(durationTime.asSeconds().toFixed());
     const milliseconds = durationTime.milliseconds();
 
     return format
@@ -108,9 +106,5 @@ export class DateUtils {
 
   private static hasMinutesFormat(format: string) {
     return format.search(DateUtils.minutesFormat) >= 0;
-  }
-
-  private static hasSecondsFormat(format: string) {
-    return format.search(DateUtils.secondsFormat) >= 0;
   }
 }
