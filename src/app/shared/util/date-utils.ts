@@ -91,7 +91,8 @@ export class DateUtils {
    * * s: seconds (0)
    * * ss: seconds (00)
    * * SSS: milliseconds
-   * @param unit Unidade base para o cálculo.
+   * @param unit Unidade base para o cálculo. Por exemplo, se for usada a unidade 'm' num intervalo de 2 horas,
+   * o cálculo retornará o valor '120:00' para o formato 'mm:ss'.
    * * y: years
    * * M: months
    * * d: days

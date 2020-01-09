@@ -2,7 +2,7 @@
   <section *ngIf="usuario" class="header-profile">
     <ul>
       <li><b>Usuário:</b> {{ usuario.nome }}</li>
-      <li><b>Tempo de sessão:</b> {{ today | timeDifference:loggedSince:'HH:mm:ss' }}</li>
+      <li><b>Tempo de sessão:</b> {{ today | timeDifference:loggedSince:'HH:mm:ss':'h' }}</li>
     </ul>
   </section>
 
