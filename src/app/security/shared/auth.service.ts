@@ -14,6 +14,7 @@ import { StorageService } from '@app/shared/service/storage.service';
 import { Authority } from './authority.enum';
 import { Credencials } from './credentials.model';
 import { OAuth2HttpResponse } from './oauth2-http-response';
+import { StorageData } from './storage-data.enum';
 
 @Injectable()
 export class AuthService {
@@ -75,19 +76,23 @@ export class AuthService {
   }
 
   getAccessToken(): string {
-    return this.storageService.getItem('access_token');
+    return this.storageService.getItem(StorageData.ACCESS_TOKEN);
   }
 
   getName(): string {
-    return this.storageService.getItem('name');
+    return this.storageService.getItem(StorageData.NAME);
   }
 
   getUsername(): string {
-    return this.storageService.getItem('username');
+    return this.storageService.getItem(StorageData.USERNAME);
   }
 
   getAuthorities(): string[] {
-    return this.storageService.getArray('authorities');
+    return this.storageService.getArray(StorageData.AUTHORITIES);
+  }
+
+  getLoggedSince(): Date {
+    return this.storageService.getObject(StorageData.LOGGED_SINCE);
   }
 
   isValidAccessToken(): boolean {
@@ -133,12 +138,13 @@ export class AuthService {
   }
 
   private putData(oauth2Response: OAuth2HttpResponse): void {
-    this.storageService.setItem('access_token', oauth2Response.access_token);
+    this.storageService.setItem(StorageData.ACCESS_TOKEN, oauth2Response.access_token);
 
     const payload = this.jwtHelperService.decodeToken(oauth2Response.access_token);
-    this.storageService.setItem('name', payload['name']);
-    this.storageService.setItem('username', payload['user_name']);
-    this.storageService.setArray('authorities', payload['authorities']);
+    this.storageService.setItem(StorageData.NAME, payload['nome']);
+    this.storageService.setItem(StorageData.USERNAME, payload['user_name']);
+    this.storageService.setArray(StorageData.AUTHORITIES, payload['authorities']);
+    this.storageService.setObject(StorageData.LOGGED_SINCE, new Date());
   }
 
   private removeData(): void {
