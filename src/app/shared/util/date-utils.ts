@@ -1,11 +1,16 @@
 import * as moment from 'moment';
 
-export class DateUtils {
+interface Duration {
+  years: number;
+  months: number;
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+  milliseconds: number;
+}
 
-  static readonly hoursFormat = 'HH';
-  static readonly minutesFormat = 'mm';
-  static readonly secondsFormat = 'ss';
-  static readonly millisecondsFormat = 'SSS';
+export class DateUtils {
 
   static serializeDate(date: Date): string {
     if (!date) {
@@ -75,38 +80,65 @@ export class DateUtils {
    *
    * @param end Date final
    * @param start Date inicial
-   * @param format Formato do resultado. Exemplos: HH:mm:ss, HH:mm:ss.SSS, HH:mm, mm:ss.
+   * @param format Formato do resultado.
+   * * y: years
+   * * M: months
+   * * d: days
+   * * H: hours (0)
+   * * HH: hours (00)
+   * * m: minutes (0)
+   * * mm: minutes (00)
+   * * s: seconds (0)
+   * * ss: seconds (00)
+   * * SSS: milliseconds
+   * @param unit Unidade base para o cálculo.
+   * * y: years
+   * * M: months
+   * * d: days
+   * * h: hours
+   * * m: minutes
+   * * s: seconds
+   * * ms: milliseconds
    *
    * @returns a diferença de tempo
    */
-  static timeDifference(end: Date | string, start: Date | string, format: string = 'HH:mm:ss'): string {
+  static timeDifference(
+    end: Date | string,
+    start: Date | string,
+    format: string = 'HH:mm:ss',
+    unit: moment.unitOfTime.DurationConstructor = 'y'): string {
+
     const endTime = moment.utc(end);
     const startTime = moment.utc(start);
-    const durationTime = moment.duration(endTime.diff(startTime));
-
-    const hours = durationTime.hours();
-    const minutes = DateUtils.hasHoursFormat(format)
-      ? durationTime.minutes() : Number(durationTime.asMinutes().toFixed());
-    const seconds = DateUtils.hasHoursFormat(format) || DateUtils.hasMinutesFormat(format)
-      ? durationTime.seconds() : Number(durationTime.asSeconds().toFixed());
-    const milliseconds = durationTime.milliseconds();
+    const momentDuration = moment.duration(endTime.diff(startTime));
+    const duration = DateUtils.mountDuration(momentDuration, unit);
 
     return format
-      .replace('HH', DateUtils.padStartWithZero(hours, 2))
-      .replace('mm', DateUtils.padStartWithZero(minutes, 2))
-      .replace('ss', DateUtils.padStartWithZero(seconds, 2))
-      .replace('SSS', DateUtils.padStartWithZero(milliseconds, 3));
+      .replace('y', duration.years.toString())
+      .replace('M', duration.months.toString())
+      .replace('d', duration.days.toString())
+      .replace('HH', DateUtils.padStartWithZero(duration.hours, 2))
+      .replace('H', duration.hours.toString())
+      .replace('mm', DateUtils.padStartWithZero(duration.minutes, 2))
+      .replace('m', duration.minutes.toString())
+      .replace('ss', DateUtils.padStartWithZero(duration.seconds, 2))
+      .replace('s', duration.seconds.toString())
+      .replace('SSS', duration.milliseconds.toString());
+  }
+
+  private static mountDuration(momentDuration: moment.Duration, unit: moment.unitOfTime.DurationConstructor): Duration {
+    return {
+      years: momentDuration.years(),
+      months: 'M' !== unit ? momentDuration.months() : Number(momentDuration.asMonths().toFixed()),
+      days: 'd' !== unit ? momentDuration.days() : Number(momentDuration.asDays().toFixed()),
+      hours: 'h' !== unit ? momentDuration.hours() : Number(momentDuration.asHours().toFixed()),
+      minutes: 'm' !== unit ? momentDuration.minutes() : Number(momentDuration.asMinutes().toFixed()),
+      seconds: 's' !== unit ? momentDuration.seconds() : Number(momentDuration.asSeconds().toFixed()),
+      milliseconds: 'ms' !== unit ? momentDuration.milliseconds() : Number(momentDuration.asMilliseconds()),
+    };
   }
 
   private static padStartWithZero(value: number, maxLength: number): string {
     return String(value).padStart(maxLength, '0');
-  }
-
-  private static hasHoursFormat(format: string) {
-    return format.search(DateUtils.hoursFormat) >= 0;
-  }
-
-  private static hasMinutesFormat(format: string) {
-    return format.search(DateUtils.minutesFormat) >= 0;
   }
 }

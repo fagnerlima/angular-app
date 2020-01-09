@@ -15,32 +15,33 @@ describe('Shared: Pipe: TimeDifferencePipe', () => {
   });
 
   it('deve calcular a diferença entre dois momentos com o formato padrão (HH:mm:ss)', () => {
-    const difference = pipe.transform(endValueTest, startValueTest);
-
-    expect(difference).toEqual('03:55:10');
+    expect(pipe.transform(endValueTest, startValueTest)).toEqual('03:55:10');
   });
 
   it('deve calcular a diferença entre dois momentos com o formato HH:mm:ss.SSS', () => {
-    const difference = pipe.transform(endValueTest, startValueTest, 'HH:mm:ss.SSS');
-
-    expect(difference).toEqual('03:55:10.475');
+    expect(pipe.transform(endValueTest, startValueTest, 'HH:mm:ss.SSS')).toEqual('03:55:10.475');
   });
 
   it('deve calcular a diferença entre dois momentos com o formato HH:mm', () => {
-    const difference = pipe.transform(endValueTest, startValueTest, 'HH:mm');
-
-    expect(difference).toEqual('03:55');
+    expect(pipe.transform(endValueTest, startValueTest, 'HH:mm')).toEqual('03:55');
+    expect(pipe.transform(endValueTest, startValueTest, 'H:m')).toEqual('3:55');
   });
 
   it('deve calcular a diferença entre dois momentos com o formato mm:ss', () => {
-    const difference = pipe.transform(endValueTest, startValueTest, 'mm:ss');
-
-    expect(difference).toEqual('235:10');
+    expect(pipe.transform(endValueTest, startValueTest, 'mm:ss', 'm')).toEqual('235:10');
   });
 
   it('deve calcular a diferença entre dois momentos com o formato ss.SSS', () => {
-    const difference = pipe.transform(endValueTest, startValueTest, 'ss.SSS');
+    expect(pipe.transform(endValueTest, startValueTest, 'ss.SSS', 's')).toEqual('14110.475');
+  });
 
-    expect(difference).toEqual('14110.475');
+  it('deve calcular a diferença entre dois momentos, em datas distintas, com o formato HH:mm:ss.SSS', () => {
+    const end = new Date('2018-03-02 00:00:00.000');
+    const start = new Date('2017-01-01 00:00:00.000');
+
+    expect(pipe.transform(end, start, 'y', 'y')).toEqual('1');
+    expect(pipe.transform(end, start, 'M', 'M')).toEqual('14');
+    expect(pipe.transform(end, start, 'd', 'd')).toEqual('425');
+    expect(pipe.transform(end, start, 'H:m:s.SSS', 'h')).toEqual('10200:0:0.0');
   });
 });

@@ -1,5 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+import * as moment from 'moment';
+
 import { DateUtils } from '../util/date-utils';
 
 @Pipe({
@@ -7,7 +9,10 @@ import { DateUtils } from '../util/date-utils';
 })
 export class TimeDifferencePipe implements PipeTransform {
 
-  transform(end: Date | string, start: Date | string, format?: string): string {
-    return DateUtils.timeDifference(end, start, format);
+  /**
+   * @see DateUtils.timeDifference()
+   */
+  transform(end: Date | string, start: Date | string, format?: string, unit?: moment.unitOfTime.DurationConstructor): string {
+    return DateUtils.timeDifference(end, start, format, unit);
   }
 }
