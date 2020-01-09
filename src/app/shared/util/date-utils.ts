@@ -1,6 +1,12 @@
 import * as moment from 'moment';
 
 export class DateUtils {
+
+  static readonly hoursFormat = 'HH';
+  static readonly minutesFormat = 'mm';
+  static readonly secondsFormat = 'ss';
+  static readonly millisecondsFormat = 'SSS';
+
   static serializeDate(date: Date): string {
     if (!date) {
       return null;
@@ -60,25 +66,51 @@ export class DateUtils {
   }
 
   static toUTCDateTime(date: Date) {
-    return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(),
-  date.getUTCSeconds(), date.getUTCMilliseconds());
-
+    return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),
+      date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds(), date.getUTCMilliseconds());
   }
 
-  static timeDifference(end: Date | string, start: Date | string): string {
+  /**
+   * Calcula a diferença de tempo entre dois Dates.
+   *
+   * @param end Date final
+   * @param start Date inicial
+   * @param format Formato do resultado. Exemplos: HH:mm:ss, HH:mm:ss.SSS, HH:mm, mm:ss.
+   */
+  static timeDifference(end: Date | string, start: Date | string, format: string = 'HH:mm:ss'): string {
     const endTime = moment.utc(end);
     const startTime = moment.utc(start);
     const durationTime = moment.duration(endTime.diff(startTime));
 
-    const hours = DateUtils.padStartWithZero(durationTime.hours(), 2);
-    const minutes = DateUtils.padStartWithZero(durationTime.minutes(), 2);
-    const seconds = DateUtils.padStartWithZero(durationTime.seconds(), 2);
-    const milliseconds = DateUtils.padStartWithZero(durationTime.milliseconds(), 3);
+    const hours = durationTime.hours();
+    const minutes = DateUtils.hasHoursFormat(format)
+      ? durationTime.minutes()
+      : Number(durationTime.asMinutes().toFixed());
+    const seconds = DateUtils.hasHoursFormat(format) || DateUtils.hasMinutesFormat(format)
+      ? durationTime.seconds()
+      : Number(durationTime.asSeconds().toFixed());
+    const milliseconds = durationTime.milliseconds();
 
-    return `${hours}:${minutes}:${seconds}.${milliseconds}`;
+    return format
+      .replace('HH', DateUtils.padStartWithZero(hours, 2))
+      .replace('mm', DateUtils.padStartWithZero(minutes, 2))
+      .replace('ss', DateUtils.padStartWithZero(seconds, 2))
+      .replace('SSS', DateUtils.padStartWithZero(milliseconds, 3));
   }
 
   private static padStartWithZero(value: number, maxLength: number): string {
     return String(value).padStart(maxLength, '0');
+  }
+
+  private static hasHoursFormat(format: string) {
+    return format.search(DateUtils.hoursFormat) >= 0;
+  }
+
+  private static hasMinutesFormat(format: string) {
+    return format.search(DateUtils.minutesFormat) >= 0;
+  }
+
+  private static hasSecondsFormat(format: string) {
+    return format.search(DateUtils.secondsFormat) >= 0;
   }
 }
