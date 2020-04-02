@@ -1,10 +1,12 @@
-import { TestBed, async, inject } from '@angular/core/testing';
+import { Injectable } from '@angular/core';
+import { TestBed, inject } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 
 import { AuthorityGuard } from './authority.guard';
 import { AuthService } from './auth.service';
 
+@Injectable()
 class MockAuthService {
   hasAnyAuthorityOrAdmin(authorities: string): boolean {
     return 'ROLE_ADMIN' === authorities;
@@ -33,7 +35,7 @@ describe('Security: AuthorityGuard', () => {
 
     activatedRoute = jasmine.createSpyObj<ActivatedRouteSnapshot>('ActivatedRouteSnapshot', ['toString']);
     routerState = jasmine.createSpyObj<RouterStateSnapshot>('RouterStateSnapshot', ['toString']);
-    router = TestBed.get(Router);
+    router = TestBed.inject(Router);
   }));
 
   beforeEach(() => {

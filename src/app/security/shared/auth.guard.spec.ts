@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { TestBed, inject } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
@@ -5,12 +6,13 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/ro
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 
+let validAccessToken: boolean;
+
+@Injectable()
 class MockAuthService {
 
-  validAccessToken: boolean;
-
   isValidAccessToken(): boolean {
-    return this.validAccessToken;
+    return validAccessToken;
   }
 }
 
@@ -34,8 +36,8 @@ describe('Security: AuthGuard', () => {
   beforeEach(inject([AuthGuard], (authGuard: AuthGuard) => {
     guard = authGuard;
     activatedRoute = jasmine.createSpyObj<ActivatedRouteSnapshot>('ActivatedRouteSnapshot', ['toString']);
-    authService = TestBed.get(AuthService);
-    router = TestBed.get(Router);
+    authService = TestBed.inject(AuthService);
+    router = TestBed.inject(Router);
     routerState = jasmine.createSpyObj<RouterStateSnapshot>('RouterStateSnapshot', ['toString']);
   }));
 
@@ -48,14 +50,14 @@ describe('Security: AuthGuard', () => {
   });
 
   it('deve ativar uma rota se o usuário estiver autenticado', () => {
-    authService.validAccessToken = true;
+    validAccessToken = true;
 
     expect(guard.canActivate(activatedRoute, routerState)).toBe(true);
     expect(router.navigate).not.toHaveBeenCalled();
   });
 
   it('não deve ativar uma rota se o usuário não estiver autenticado', () => {
-    authService.validAccessToken = false;
+    validAccessToken = false;
 
     expect(guard.canActivate(activatedRoute, routerState)).toBe(false);
     expect(router.navigate).toHaveBeenCalled();

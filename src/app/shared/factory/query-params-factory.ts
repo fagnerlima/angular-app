@@ -1,8 +1,7 @@
 import { HttpParams } from '@angular/common/http';
 
-import { isNullOrUndefined, isArray, isDate } from 'util';
-
 import { DateUtils } from '@app/shared/util/date-utils';
+import { isArray, isDate, isNullOrUndefined } from '@app/shared/util/utils';
 
 export interface ParamSort {
   field: string;

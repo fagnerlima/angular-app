@@ -3,7 +3,7 @@ import { Router, RoutesRecognized } from '@angular/router';
 
 import { Subscription } from 'rxjs';
 
-import { MenuItem } from 'primeng/components/common/menuitem';
+import { MenuItem } from 'primeng/api';
 
 import { Route } from '@app/shared/enum/route.enum';
 import { AuthService } from '@app/security/shared/auth.service';

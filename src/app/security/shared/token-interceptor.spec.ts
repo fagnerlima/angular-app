@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { MessageService } from 'primeng/components/common/messageservice';
+import { MessageService } from 'primeng/api';
 
 import { ErrorHandlerService } from '@app/core/shared/error-handler.service';
 import { ToastService } from '@app/shared/service/toast.service';

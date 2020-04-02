@@ -3,7 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 
-import { MessageService } from 'primeng/components/common/messageservice';
+import { MessageService } from 'primeng/api';
 
 import { ToastService } from '@app/shared/service/toast.service';
 import { ErrorHandlerService } from './error-handler.service';
@@ -26,8 +26,8 @@ describe('Core: ErrorHandlerService', () => {
 
   beforeEach(inject([ErrorHandlerService], (errorHandlerService: ErrorHandlerService) => {
     service = errorHandlerService;
-    toastService = TestBed.get(ToastService);
-    router = TestBed.get(Router);
+    toastService = TestBed.inject(ToastService);
+    router = TestBed.inject(Router);
   }));
 
   beforeEach(() => {

@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
-import { MenuItem } from 'primeng/components/common/menuitem';
+import { MenuItem } from 'primeng/api';
 
 import { AuthService } from '@app/security/shared/auth.service';
 import { applicationName } from '@app/shared/service/title.service';

@@ -2,13 +2,12 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
-import { isObject } from 'util';
-
 import { Route } from '@app/shared/enum/route.enum';
 import { ToastService } from '@app/shared/service/toast.service';
 import { environment } from '@env/environment';
 import { HttpStatus } from '@app/shared/enum/http-status.enum';
 import { OAuth2Error } from '@app/security/shared/oauth2-error.enum';
+import { isObject } from '@app/shared/util/utils';
 
 @Injectable()
 export class ErrorHandlerService {

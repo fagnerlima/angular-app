@@ -19,7 +19,7 @@ describe('Shared: Directive: AutoFocusDirective', () => {
   }));
 
   beforeEach(() => {
-    const element = TestBed.get(ElementRef);
+    const element = TestBed.inject(ElementRef);
     directive = new AutoFocusDirective(element);
   });
 

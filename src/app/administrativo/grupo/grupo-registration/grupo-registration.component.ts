@@ -1,7 +1,7 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { SelectItem } from 'primeng/components/common/selectitem';
+import { SelectItem } from 'primeng/api';
 
 import { CrudRegistration } from '@app/shared/component/crud/crud-registration/crud-registration';
 import { TitleService } from '@app/shared/service/title.service';

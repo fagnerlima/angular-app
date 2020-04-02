@@ -1,6 +1,6 @@
 import { Directive, ElementRef, Input, Renderer2, OnChanges, SimpleChanges, OnInit, AfterViewInit } from '@angular/core';
 
-import { isNullOrUndefined } from 'util';
+import { isNullOrUndefined } from '../util/utils';
 
 enum TagClass {
   PRIMARY = 'app-tag-primary',

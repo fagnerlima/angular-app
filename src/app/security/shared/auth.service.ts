@@ -2,13 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 
-import { isString, isNullOrUndefined } from 'util';
-
 import { Observable } from 'rxjs';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { environment } from '@env/environment';
+import { isNullOrUndefined, isString } from '@app/shared/util/utils';
 import { Route } from '@app/shared/enum/route.enum';
 import { StorageService } from '@app/shared/service/storage.service';
 import { Authority } from './authority.enum';

@@ -2,8 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
 
-import { InputTextModule } from 'primeng/components/inputtext/inputtext';
-import { KeyFilterModule } from 'primeng/components/keyfilter/keyfilter';
+import { InputTextModule } from 'primeng/inputtext';
+import { KeyFilterModule } from 'primeng/keyfilter';
 
 import { AutoFocusDirective } from '../../../directive/auto-focus.directive';
 import { BlockCopyPasteDirective } from '../../../directive/block-copy-paste.directive';

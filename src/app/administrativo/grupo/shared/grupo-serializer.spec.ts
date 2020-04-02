@@ -50,8 +50,7 @@ describe('Grupo: GrupoSerializer', () => {
     const json = {
       id: 1,
       nome: 'Nome 1',
-      ativo: true,
-      permissoes: ['Permissão 1']
+      ativo: true
     };
     const model = serializer.fromJsonToResponseListModel(json);
 
@@ -59,14 +58,13 @@ describe('Grupo: GrupoSerializer', () => {
     expect(model.id).toBe(1);
     expect(model.nome).toBe('Nome 1');
     expect(model.ativo).toBeTruthy();
-    expect(model.permissoes[0]).toBe('Permissão 1');
   });
 
   it('deve converter um ResponseModel para um Form', () => {
     const model = new GrupoResponse(
       1,
       'Nome 1',
-      [new PermissaoGrupoResponse(1, 'Papel 1')],
+      [new PermissaoGrupoResponse(1, 'PAPEL1', 'Papel 1')],
       true
     );
     const form = serializer.fromResponseModelToForm(model);

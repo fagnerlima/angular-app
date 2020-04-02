@@ -1,14 +1,16 @@
+import { Injectable } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { MenuItem } from 'primeng/components/common/menuitem';
+import { MenuItem } from 'primeng/api';
 
 import { AuthService } from '@app/security/shared/auth.service';
 import { SecurityModule } from '@app/security/security.module';
 import { CoreModule } from '../core.module';
 import { MenuBuilder } from './menu-builder';
 
+@Injectable()
 class MockAuthService extends AuthService {
   hasAnyAuthorityOrAdmin(authority: string): boolean {
     return ['ROLE_ADMIN', 'ROLE_COMUM'].includes(authority);
@@ -32,7 +34,7 @@ describe('Core: MenuBuilder', () => {
       ]
     });
 
-    builder = TestBed.get(MenuBuilder);
+    builder = TestBed.inject(MenuBuilder);
   });
 
   it('deve criar uma instância do builder', () => {

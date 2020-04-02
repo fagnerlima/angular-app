@@ -5,7 +5,7 @@ import { FormGroup } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { MessageService } from 'primeng/components/common/messageservice';
+import { MessageService } from 'primeng/api';
 
 import { Serializer } from '@app/shared/interface/serializer';
 import { CrudService } from '@app/shared/service/crud.service';

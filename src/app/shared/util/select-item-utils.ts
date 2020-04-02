@@ -1,6 +1,6 @@
-import { isNullOrUndefined, isString } from 'util';
+import { SelectItem } from 'primeng/api';
 
-import { SelectItem } from 'primeng/components/common/selectitem';
+import { isNullOrUndefined, isString } from './utils';
 
 export class SelectItemUtils {
 

@@ -1,12 +1,9 @@
-import { AfterViewInit, ChangeDetectorRef, Injectable, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Injectable, OnDestroy, OnInit, ViewChild, Directive } from '@angular/core';
 
 import { timer, Subscription } from 'rxjs';
 
-import { ConfirmationService } from 'primeng/components/common/api';
-import { LazyLoadEvent } from 'primeng/components/common/lazyloadevent';
-import { SelectItem } from 'primeng/components/common/selectitem';
-import { SortMeta } from 'primeng/components/common/sortmeta';
-import { Table } from 'primeng/components/table/table';
+import { ConfirmationService, LazyLoadEvent, SelectItem, SortMeta } from 'primeng/api';
+import { Table } from 'primeng/table';
 
 import { AuthService } from '@app/security/shared/auth.service';
 import { Pageable } from '@app/shared/interface/pageable';
@@ -20,6 +17,7 @@ import { StorageService } from '@app/shared/service/storage.service';
 import { TitleService } from '@app/shared/service/title.service';
 import { ToastService } from '@app/shared/service/toast.service';
 
+@Directive()
 @Injectable()
 export abstract class CrudListing<T extends RequestModel, U extends ResponseModel, L extends ResponseListModel>
   implements OnInit, AfterViewInit, OnDestroy {
@@ -38,7 +36,7 @@ export abstract class CrudListing<T extends RequestModel, U extends ResponseMode
   protected autoUpdatePeriod = 10000;
   protected autoUpdateSubscripion: Subscription;
 
-  @ViewChild('table', { static: false }) protected table: Table;
+  @ViewChild('table') protected table: Table;
 
   constructor(
     protected authService: AuthService,

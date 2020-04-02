@@ -67,8 +67,8 @@ describe('Shared: Service: CrudClientService', () => {
   });
 
   beforeEach(() => {
-    service = TestBed.get(CrudService);
-    mockController = TestBed.get(HttpTestingController);
+    service = TestBed.inject(CrudService);
+    mockController = TestBed.inject(HttpTestingController);
   });
 
   it('deve criar e injetar o serviço', () => {

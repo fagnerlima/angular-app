@@ -12,7 +12,7 @@ describe('Shared: Service: MediaQueryService', () => {
   });
 
   beforeEach(() => {
-    service = TestBed.get(MediaQueryService);
+    service = TestBed.inject(MediaQueryService);
   });
 
   it('deve criar e injetar o serviço', () => {

@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
 
-import { MultiSelectModule } from 'primeng/components/multiselect/multiselect';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 import { AutoFocusDirective } from '../../../directive/auto-focus.directive';
 import { ValidationComponent } from '../../validation/validation.component';

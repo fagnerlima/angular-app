@@ -12,7 +12,7 @@ describe('Shared: Service: TitleService', () => {
   });
 
   beforeEach(() => {
-    service = TestBed.get(TitleService);
+    service = TestBed.inject(TitleService);
   });
 
   it('deve criar e injetar o serviço', () => {

@@ -2,9 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
-import { ButtonModule } from 'primeng/components/button/button';
-import { PasswordModule } from 'primeng/components/password/password';
-import { TooltipModule } from 'primeng/components/tooltip/tooltip';
+import { ButtonModule } from 'primeng/button';
+import { PasswordModule } from 'primeng/password';
+import { TooltipModule } from 'primeng/tooltip';
 
 import { AutoFocusDirective } from '../../../directive/auto-focus.directive';
 import { BlockCopyPasteDirective } from '../../../directive/block-copy-paste.directive';

@@ -1,4 +1,4 @@
-import { Input } from '@angular/core';
+import { Input, Directive } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 import { StringUtils } from '../../util/string-utils';
@@ -8,6 +8,7 @@ export enum Orientation {
   VERTICAL = 'vertical'
 }
 
+@Directive()
 export class FormInput {
 
   @Input() control: FormControl;

@@ -1,9 +1,10 @@
+import { Injectable } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { CheckboxModule } from 'primeng/components/checkbox/checkbox';
+import { CheckboxModule } from 'primeng/checkbox';
 
 import { SharedModule } from '@app/shared/shared.module';
 import { TitleService } from '@app/shared/service/title.service';
@@ -11,6 +12,7 @@ import { AuthService } from '@app/security/shared/auth.service';
 import { LoginComponent } from './login.component';
 import { Credencials } from '../shared/credentials.model';
 
+@Injectable()
 class MockAuthService {
   isValidAccessToken(): boolean {
     return false;
@@ -51,7 +53,7 @@ describe('Security: LoginComponent', () => {
   });
 
   beforeEach(() => {
-    authService = TestBed.get(AuthService);
+    authService = TestBed.inject(AuthService);
   });
 
   beforeEach(() => {

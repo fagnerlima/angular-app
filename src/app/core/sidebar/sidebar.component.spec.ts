@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -9,6 +10,7 @@ import { UsuarioModule } from '@app/administrativo/usuario/usuario.module';
 import { SidebarComponent } from './sidebar.component';
 import { MenuBuilder } from '../shared/menu-builder';
 
+@Injectable()
 class MockAuthService {
   getUsername(): string {
     return 'admin';

@@ -2,7 +2,7 @@ import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CheckboxModule } from 'primeng/components/checkbox/checkbox';
+import { CheckboxModule } from 'primeng/checkbox';
 
 import { ValidationComponent } from '../../validation/validation.component';
 import { CheckboxComponent } from './checkbox.component';

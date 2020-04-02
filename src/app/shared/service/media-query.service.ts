@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { isNullOrUndefined } from 'util';
+import { isNullOrUndefined } from '@app/shared/util/utils';
 
 /**
  * @see angular2-if-media-query-directive <https://gist.github.com/davidmarquis/80e6d1ada3a024022f985a587b587825>

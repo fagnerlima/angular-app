@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MessageService } from 'primeng/components/common/messageservice';
+import { MessageService } from 'primeng/api';
 
 import { ToastService } from './toast.service';
 
@@ -17,7 +17,7 @@ describe('Shared: Service: ToastService', () => {
   });
 
   beforeEach(() => {
-    service = TestBed.get(ToastService);
+    service = TestBed.inject(ToastService);
   });
 
   it('deve criar e injetar o serviço', () => {

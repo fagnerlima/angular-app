@@ -20,7 +20,7 @@ describe('Shared: Pipe: BytePipe', () => {
   });
 
   beforeEach(() => {
-    pipe = new BytePipe(TestBed.get(DecimalPipe));
+    pipe = new BytePipe(TestBed.inject(DecimalPipe));
   });
 
   it('deve criar uma instância do pipe', () => {

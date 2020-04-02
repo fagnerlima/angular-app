@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { MenuItem } from 'primeng/components/common/menuitem';
+import { MenuItem } from 'primeng/api';
 
 @Injectable()
 export class BreadcrumbService {

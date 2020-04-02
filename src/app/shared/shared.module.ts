@@ -3,30 +3,29 @@ import { CommonModule, DecimalPipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { AccordionModule } from 'primeng/components/accordion/accordion';
-import { BreadcrumbModule } from 'primeng/components/breadcrumb/breadcrumb';
-import { ButtonModule } from 'primeng/components/button/button';
-import { CalendarModule } from 'primeng/components/calendar/calendar';
-import { CardModule } from 'primeng/components/card/card';
-import { ChartModule } from 'primeng/components/chart/chart';
-import { CheckboxModule } from 'primeng/components/checkbox/checkbox';
-import { ConfirmDialogModule } from 'primeng/components/confirmdialog/confirmdialog';
-import { DialogModule } from 'primeng/components/dialog/dialog';
-import { DropdownModule } from 'primeng/components/dropdown/dropdown';
-import { FieldsetModule } from 'primeng/components/fieldset/fieldset';
-import { GrowlModule } from 'primeng/components/growl/growl';
-import { InputSwitchModule } from 'primeng/components/inputswitch/inputswitch';
-import { InputTextModule } from 'primeng/components/inputtext/inputtext';
-import { KeyFilterModule } from 'primeng/components/keyfilter/keyfilter';
-import { PanelModule } from 'primeng/components/panel/panel';
-import { PanelMenuModule } from 'primeng/components/panelmenu/panelmenu';
-import { PasswordModule } from 'primeng/components/password/password';
-import { MenuModule } from 'primeng/components/menu/menu';
-import { MultiSelectModule } from 'primeng/components/multiselect/multiselect';
-import { SpinnerModule } from 'primeng/components/spinner/spinner';
-import { TableModule } from 'primeng/components/table/table';
+import { AccordionModule } from 'primeng/accordion';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { ButtonModule } from 'primeng/button';
+import { CalendarModule } from 'primeng/calendar';
+import { CardModule } from 'primeng/card';
+import { ChartModule } from 'primeng/chart';
+import { CheckboxModule } from 'primeng/checkbox';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DialogModule } from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
+import { FieldsetModule } from 'primeng/fieldset';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { InputTextModule } from 'primeng/inputtext';
+import { KeyFilterModule } from 'primeng/keyfilter';
+import { PanelModule } from 'primeng/panel';
+import { PanelMenuModule } from 'primeng/panelmenu';
+import { PasswordModule } from 'primeng/password';
+import { MenuModule } from 'primeng/menu';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { SpinnerModule } from 'primeng/spinner';
+import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
-import { TooltipModule } from 'primeng/components/tooltip/tooltip';
+import { TooltipModule } from 'primeng/tooltip';
 
 import { BreadcrumbComponent } from './component/breadcrumb/breadcrumb.component';
 import { CheckboxComponent } from './component/form/checkbox/checkbox.component';
@@ -68,7 +67,6 @@ const primeNgModules: Array<Type<any> | any[]> = [
   ConfirmDialogModule,
   DropdownModule,
   DialogModule,
-  GrowlModule,
   InputSwitchModule,
   InputTextModule,
   FieldsetModule,

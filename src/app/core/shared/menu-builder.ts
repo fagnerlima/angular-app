@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 
-import { isNullOrUndefined } from 'util';
+import { MenuItem } from 'primeng/api';
 
-import { MenuItem } from 'primeng/components/common/menuitem';
-
+import { isNullOrUndefined } from '@app/shared/util/utils';
 import { AuthService } from '@app/security/shared/auth.service';
 
 @Injectable()

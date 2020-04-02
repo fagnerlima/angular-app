@@ -5,8 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import ptBR from '@angular/common/locales/pt';
 
-import { ConfirmationService } from 'primeng/components/common/confirmationservice';
-import { MessageService } from 'primeng/components/common/messageservice';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';

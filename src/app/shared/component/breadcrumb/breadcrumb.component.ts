@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { MenuItem } from 'primeng/components/common/menuitem';
+import { MenuItem } from 'primeng/api';
 
 import { BreadcrumbService } from '@app/shared/service/breadcrumb.service';
 

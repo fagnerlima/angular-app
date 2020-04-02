@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
-import { SelectItem } from 'primeng/components/common/selectitem';
+import { SelectItem } from 'primeng/api';
 
 import { FormInput } from '../form-input';
 

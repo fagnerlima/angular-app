@@ -5,8 +5,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FormGroup } from '@angular/forms';
 
-import { ConfirmationService } from 'primeng/components/common/confirmationservice';
-import { MessageService } from 'primeng/components/common/messageservice';
+import { ConfirmationService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 
 import { CoreModule } from '@app/core/core.module';
 import { SecurityModule } from '@app/security/security.module';
