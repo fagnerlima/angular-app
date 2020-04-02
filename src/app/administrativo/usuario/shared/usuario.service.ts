@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '@env/environment';
-import { ResponseBody } from '@app/shared/model/response-body.model';
 import { CrudService } from '@app/shared/service/crud.service';
 import { UsuarioListResponse } from './usuario-list-response.model';
 import { UsuarioPerfilInformacoesPessoaisRequest, UsuarioPerfilSenhaRequest } from './usuario-perfil-request.model';
@@ -23,18 +22,18 @@ export class UsuarioService extends CrudService<UsuarioRequest, UsuarioResponse,
   }
 
   findPerfil(): Observable<UsuarioListResponse> {
-    return this.httpClient.get<ResponseBody<UsuarioListResponse>>(this.resourceBasePerfilUrl)
-      .pipe(map(response => this._serializer.fromJsonToResponseListModel(response.data)));
+    return this.httpClient.get<UsuarioListResponse>(this.resourceBasePerfilUrl)
+      .pipe(map(response => this._serializer.fromJsonToResponseListModel(response)));
   }
 
   updatePerfilInformacoesPessoais(model: UsuarioPerfilInformacoesPessoaisRequest): Observable<UsuarioListResponse> {
-    return this.httpClient.put<ResponseBody<UsuarioListResponse>>(this.resourceBasePerfilUrl, model)
-      .pipe(map(response => this._serializer.fromJsonToResponseListModel(response.data)));
+    return this.httpClient.put<UsuarioListResponse>(this.resourceBasePerfilUrl, model)
+      .pipe(map(response => this._serializer.fromJsonToResponseListModel(response)));
   }
 
   updatePerfilSenha(model: UsuarioPerfilSenhaRequest): Observable<UsuarioListResponse> {
-    return this.httpClient.patch<ResponseBody<UsuarioListResponse>>(`${this.resourceBasePerfilUrl}/atualizar-senha`, model)
-      .pipe(map(response => this._serializer.fromJsonToResponseListModel(response.data)));
+    return this.httpClient.patch<UsuarioListResponse>(`${this.resourceBasePerfilUrl}/atualizar-senha`, model)
+      .pipe(map(response => this._serializer.fromJsonToResponseListModel(response)));
   }
 
   get endpointPerfilUrl(): string {

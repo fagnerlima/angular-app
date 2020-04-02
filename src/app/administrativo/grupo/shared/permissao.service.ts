@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '@env/environment';
-import { ResponseBody } from '@app/shared/model/response-body.model';
 import { PermissaoOptionResponse } from './permissao-option-response.model';
 import { PermissaoSerializer } from './permissao-serializer';
 
@@ -17,8 +16,8 @@ export class PermissaoService {
   constructor(private httpClient: HttpClient) { }
 
   findOptions(): Observable<PermissaoOptionResponse[]> {
-    return this.httpClient.get<ResponseBody<PermissaoOptionResponse[]>>(`${this.resourceBaseUrl}/ativos`)
-      .pipe(map(response => response.data.map(value => this.serializer.fromJsonToResponseOptionModel(value))));
+    return this.httpClient.get<PermissaoOptionResponse[]>(`${this.resourceBaseUrl}/ativos`)
+      .pipe(map(response => response.map(value => this.serializer.fromJsonToResponseOptionModel(value))));
   }
 
   get baseUrl(): string {

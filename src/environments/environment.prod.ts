@@ -5,5 +5,5 @@ export const environment = {
       authorization: 'Basic YW5ndWxhcjphbmd1bGFy'
     }
   },
-  apiAuthUrl: 'http://localhost:8080'
+  apiAuthUrl: 'https://fl-spring-auth-service.herokuapp.com'
 };

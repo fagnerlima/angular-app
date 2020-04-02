@@ -10,7 +10,6 @@ import { ResponseListModel } from '../interface/response-list-model';
 import { ResponseModel } from '../interface/response-model';
 import { Serializer } from '../interface/serializer';
 import { ListFilter } from '../model/list-filter.model';
-import { ResponseBody } from '../model/response-body.model';
 
 export abstract class CrudService<T extends RequestModel, U extends ResponseModel, L extends ResponseListModel> {
 
@@ -26,23 +25,23 @@ export abstract class CrudService<T extends RequestModel, U extends ResponseMode
   list(listFilter: ListFilter): Observable<Pageable<L>> {
     const params = this.queryParamsFactory.create(listFilter);
 
-    return this.httpClient.get<ResponseBody<Pageable<L>>>(this.resourceBaseUrl, { params })
-      .pipe(map(response => response ? this.deserializePageable(response.data) : null));
+    return this.httpClient.get<Pageable<L>>(this.resourceBaseUrl, { params })
+      .pipe(map(response => response ? this.deserializePageable(response) : null));
   }
 
   find(id: number): Observable<U> {
-    return this.httpClient.get<ResponseBody<U>>(`${this.resourceBaseUrl}/${id}`)
-      .pipe(map(response => response ? this._serializer.fromJsonToResponseModel(response.data) : null));
+    return this.httpClient.get<U>(`${this.resourceBaseUrl}/${id}`)
+      .pipe(map(response => response ? this._serializer.fromJsonToResponseModel(response) : null));
   }
 
   save(model: T): Observable<U> {
-    return this.httpClient.post<ResponseBody<U>>(this.resourceBaseUrl, model)
-      .pipe(map(response => this._serializer.fromJsonToResponseModel(response.data)));
+    return this.httpClient.post<U>(this.resourceBaseUrl, model)
+      .pipe(map(response => this._serializer.fromJsonToResponseModel(response)));
   }
 
   update(model: T, id: number): Observable<U> {
-    return this.httpClient.put<ResponseBody<U>>(`${this.resourceBaseUrl}/${id}`, model)
-      .pipe(map(response => this._serializer.fromJsonToResponseModel(response.data)));
+    return this.httpClient.put<U>(`${this.resourceBaseUrl}/${id}`, model)
+      .pipe(map(response => this._serializer.fromJsonToResponseModel(response)));
   }
 
   delete(id: number): Observable<void> {
