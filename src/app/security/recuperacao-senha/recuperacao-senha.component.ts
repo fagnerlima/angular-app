@@ -6,7 +6,7 @@ import { ToastService } from '@app/shared/service/toast.service';
 import { TitleService } from '@app/shared/service/title.service';
 import { RecuperacaoSenhaForm } from '../shared/recuperacao-senha.form';
 import { AtualizacaoSenhaForm } from '../shared/atualizacao-senha.form';
-import { UsuarioService } from '../shared/usuario.service';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-recuperacao-senha',
@@ -24,7 +24,7 @@ export class RecuperacaoSenhaComponent implements OnInit {
     private router: Router,
     private titleService: TitleService,
     private toastService: ToastService,
-    private usuarioService: UsuarioService
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -33,20 +33,12 @@ export class RecuperacaoSenhaComponent implements OnInit {
     this.titleService.setTitle(this.token ? 'Atualização de senha' : 'Recuperação de senha');
   }
 
-  get form(): RecuperacaoSenhaForm | AtualizacaoSenhaForm {
-    return this._form;
-  }
-
-  get formSubmitted(): boolean {
-    return this._formSubmitted;
-  }
-
-  get loading(): boolean {
-    return this._loading;
-  }
-
   isModoAtualizacaoSenha(): boolean {
     return Boolean(this.token);
+  }
+
+  getLoginRouterLink(): string | any[] {
+    return [`/${Route.LOGIN}`];
   }
 
   recuperarSenha(): void {
@@ -60,7 +52,7 @@ export class RecuperacaoSenhaComponent implements OnInit {
 
     const email: string = this._form.get('email').value;
 
-    this.usuarioService.recoverySenha(email).subscribe(
+    this.authService.recoverySenha(email).subscribe(
       () => this.toastService.addSuccess('', 'Um link para recuperação da senha foi enviado para o e-mail informado.'),
       () => this._loading = false,
       () => this.router.navigate([`/${Route.LOGIN}`])
@@ -78,10 +70,22 @@ export class RecuperacaoSenhaComponent implements OnInit {
 
     const senha: string = this._form.get('senha').value;
 
-    this.usuarioService.updateSenha(this.token, senha).subscribe(
+    this.authService.updateSenha(this.token, senha).subscribe(
       () => this.toastService.addSuccess('', 'Senha atualizada com sucesso.'),
       () => this._loading = false,
       () => this.router.navigate([`/${Route.LOGIN}`])
     );
+  }
+
+  get form(): RecuperacaoSenhaForm | AtualizacaoSenhaForm {
+    return this._form;
+  }
+
+  get formSubmitted(): boolean {
+    return this._formSubmitted;
+  }
+
+  get loading(): boolean {
+    return this._loading;
   }
 }

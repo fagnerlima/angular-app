@@ -4,7 +4,7 @@ import { ReactiveFormsModule, FormControl } from '@angular/forms';
 
 import { InputSwitchModule } from 'primeng/components/inputswitch/inputswitch';
 
-import { ValidationMessageComponent } from '../../validation-message/validation-message.component';
+import { ValidationComponent } from '../../validation/validation.component';
 import { InputSwitchComponent } from './input-switch.component';
 
 describe('Shared: Component: InputSwitchComponent', () => {
@@ -20,7 +20,7 @@ describe('Shared: Component: InputSwitchComponent', () => {
       ],
       declarations: [
         InputSwitchComponent,
-        ValidationMessageComponent
+        ValidationComponent
       ]
     })
     .compileComponents();

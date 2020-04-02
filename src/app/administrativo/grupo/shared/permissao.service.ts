@@ -12,10 +12,9 @@ import { PermissaoSerializer } from './permissao-serializer';
 @Injectable()
 export class PermissaoService {
 
-  constructor(
-    private httpClient: HttpClient,
-    private serializer: PermissaoSerializer
-  ) { }
+  private serializer = new PermissaoSerializer();
+
+  constructor(private httpClient: HttpClient) { }
 
   findOptions(): Observable<PermissaoOptionResponse[]> {
     return this.httpClient.get<ResponseBody<PermissaoOptionResponse[]>>(`${this.resourceBaseUrl}/ativos`)

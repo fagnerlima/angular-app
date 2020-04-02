@@ -2,7 +2,6 @@ import { NgModule, Type } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AccordionModule } from 'primeng/components/accordion/accordion';
 import { BreadcrumbModule } from 'primeng/components/breadcrumb/breadcrumb';
@@ -12,7 +11,6 @@ import { CardModule } from 'primeng/components/card/card';
 import { ChartModule } from 'primeng/components/chart/chart';
 import { CheckboxModule } from 'primeng/components/checkbox/checkbox';
 import { ConfirmDialogModule } from 'primeng/components/confirmdialog/confirmdialog';
-import { ConfirmationService } from 'primeng/components/common/confirmationservice';
 import { DialogModule } from 'primeng/components/dialog/dialog';
 import { DropdownModule } from 'primeng/components/dropdown/dropdown';
 import { FieldsetModule } from 'primeng/components/fieldset/fieldset';
@@ -24,7 +22,6 @@ import { PanelModule } from 'primeng/components/panel/panel';
 import { PanelMenuModule } from 'primeng/components/panelmenu/panelmenu';
 import { PasswordModule } from 'primeng/components/password/password';
 import { MenuModule } from 'primeng/components/menu/menu';
-import { MessageService } from 'primeng/components/common/messageservice';
 import { MultiSelectModule } from 'primeng/components/multiselect/multiselect';
 import { SpinnerModule } from 'primeng/components/spinner/spinner';
 import { TableModule } from 'primeng/components/table/table';
@@ -42,7 +39,7 @@ import { PageHeaderComponent } from './component/page-header/page-header.compone
 import { PanelLoaderComponent } from './component/panel-loader/panel-loader.component';
 import { PasswordComponent } from './component/form/password/password.component';
 import { SpinnerComponent } from './component/form/spinner/spinner.component';
-import { ValidationMessageComponent } from './component/validation-message/validation-message.component';
+import { ValidationComponent } from './component/validation/validation.component';
 import { AutoFocusDirective } from './directive/auto-focus.directive';
 import { BlockCopyPasteDirective } from './directive/block-copy-paste.directive';
 import { TagDirective } from './directive/tag.directive';
@@ -52,12 +49,10 @@ import { TimeDifferencePipe } from './pipe/time-difference.pipe';
 import { BreadcrumbService } from './service/breadcrumb.service';
 import { StorageService } from './service/storage.service';
 import { TitleService } from './service/title.service';
-import { ToastService } from './service/toast.service';
 
 // Modules
 const angularModules: Array<Type<any> | any[]> = [
   CommonModule,
-  BrowserAnimationsModule,
   ReactiveFormsModule,
   FormsModule,
   RouterModule
@@ -102,7 +97,7 @@ const sharedComponents: Array<Type<any> | any[]> = [
   PasswordComponent,
   PanelLoaderComponent,
   SpinnerComponent,
-  ValidationMessageComponent
+  ValidationComponent
 ];
 const sharedDirectives: Array<Type<any> | any[]> = [
   AutoFocusDirective,
@@ -117,15 +112,11 @@ const sharedPipes: Array<Type<any> | any[]> = [
 
 // Services
 const angularProviders: Array<Type<any> | any[]> = [DecimalPipe];
-const primeNgProviders: Array<Type<any> | any[]> = [
-  ConfirmationService,
-  MessageService
-];
+const primeNgProviders: Array<Type<any> | any[]> = [];
 const sharedProviders: Array<Type<any> | any[]> = [
   BreadcrumbService,
   StorageService,
-  TitleService,
-  ToastService
+  TitleService
 ];
 
 @NgModule({

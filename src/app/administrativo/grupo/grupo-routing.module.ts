@@ -11,7 +11,7 @@ import { GrupoRegistrationComponent } from './grupo-registration/grupo-registrat
 
 const routes: Routes = [
   {
-    path: Route.ADMINISTRATIVO_GRUPOS,
+    path: '',
     component: GrupoComponent,
     canActivate: [AuthGuard],
     children: [
@@ -22,13 +22,13 @@ const routes: Routes = [
         data: { expectedAuthority: Authority.ROLE_GRUPO_LISTAR }
       },
       {
-        path: Route.GENERICO_CADASTRO,
+        path: Route.GENERICO_CADASTRAR,
         component: GrupoRegistrationComponent,
         canActivate: [AuthorityGuard],
         data: { expectedAuthority: Authority.ROLE_GRUPO_SALVAR }
       },
       {
-        path: Route.GENERICO_EDICAO,
+        path: Route.GENERICO_EDITAR,
         component: GrupoRegistrationComponent,
         canActivate: [AuthorityGuard],
         data: { expectedAuthority: Authority.ROLE_GRUPO_EDITAR }

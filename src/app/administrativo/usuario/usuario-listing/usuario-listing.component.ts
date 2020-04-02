@@ -37,6 +37,10 @@ export class UsuarioListingComponent extends CrudListing<UsuarioRequest, Usuario
     return this.hasAnyAuthority(Authority.ROLE_USUARIO_ALTERAR_STATUS);
   }
 
+  getEditarRouterLink(id: number): string | any[] {
+    return [`${Route.ADMINISTRATIVO_USUARIOS}/${Route.GENERICO_EDITAR}`.replace(':id', String(id))];
+  }
+
   get title(): string {
     return 'Usuários';
   }

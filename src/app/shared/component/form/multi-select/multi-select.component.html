@@ -28,5 +28,5 @@
   <ng-template #loadingOptions>
     <span class="data-loading">{{ !options ? 'Carregando opções...' : 'Nenhuma opção encontrada' }}</span>
   </ng-template>
-  <app-validation-message *ngIf="validation" [control]="control" [submitted]="submitted"></app-validation-message>
+  <app-validation *ngIf="validation" [control]="control" [submitted]="submitted"></app-validation>
 </ng-template>

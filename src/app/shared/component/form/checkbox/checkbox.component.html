@@ -19,5 +19,5 @@
 <ng-template #tplInput>
   <p-checkbox [inputId]="inputId" [name]="name || inputId" [label]="label" [formControl]="control" [binary]="binary"
     (onChange)="changed.emit($event)"></p-checkbox>
-  <app-validation-message *ngIf="validation" [control]="control" [submitted]="submitted"></app-validation-message>
+  <app-validation *ngIf="validation" [control]="control" [submitted]="submitted"></app-validation>
 </ng-template>

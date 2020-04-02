@@ -23,10 +23,10 @@ export abstract class CrudService<T extends RequestModel, U extends ResponseMode
     protected _serializer: Serializer<T, U, L>
   ) { }
 
-  list(listFilter: ListFilter): Observable<Pageable<L[]>> {
+  list(listFilter: ListFilter): Observable<Pageable<L>> {
     const params = this.queryParamsFactory.create(listFilter);
 
-    return this.httpClient.get<ResponseBody<Pageable<L[]>>>(this.resourceBaseUrl, { params })
+    return this.httpClient.get<ResponseBody<Pageable<L>>>(this.resourceBaseUrl, { params })
       .pipe(map(response => response ? this.deserializePageable(response.data) : null));
   }
 
@@ -69,7 +69,7 @@ export abstract class CrudService<T extends RequestModel, U extends ResponseMode
     return this._serializer;
   }
 
-  protected deserializePageable(pageable: Pageable<any[]>): Pageable<L[]> {
+  protected deserializePageable(pageable: Pageable<any>): Pageable<L> {
     pageable.content = pageable.content.map(item => this._serializer.fromJsonToResponseListModel(item));
 
     return pageable;

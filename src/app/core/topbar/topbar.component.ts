@@ -4,6 +4,7 @@ import { MenuItem } from 'primeng/components/common/menuitem';
 
 import { AuthService } from '@app/security/shared/auth.service';
 import { applicationName } from '@app/shared/service/title.service';
+import { Route } from '@app/shared/enum/route.enum';
 
 @Component({
   selector: 'app-topbar',
@@ -44,7 +45,7 @@ export class TopbarComponent {
       {
         label: 'Perfil de Usuário',
         icon: 'fa fa-user-o',
-        routerLink: ['/administrativo/perfil']
+        routerLink: [`/${Route.ADMINISTRATIVO_USUARIOS_PERFIL}`]
       },
       { separator: true },
       {

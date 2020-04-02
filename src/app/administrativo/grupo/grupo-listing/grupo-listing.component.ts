@@ -37,6 +37,10 @@ export class GrupoListingComponent extends CrudListing<GrupoRequest, GrupoRespon
     return this.hasAnyAuthority(Authority.ROLE_GRUPO_ALTERAR_STATUS);
   }
 
+  getEditarRouterLink(id: number): string | any[] {
+    return [`/${Route.ADMINISTRATIVO_GRUPOS}/${Route.GENERICO_EDITAR}`.replace(':id', String(id))];
+  }
+
   get title(): string {
     return 'Grupos';
   }

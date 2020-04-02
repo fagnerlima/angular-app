@@ -1,14 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement, Component, Injectable } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { Serializer } from '../../../interface/serializer';
-import { CrudService } from '../../../service/crud.service';
-import { SharedModule } from '../../../shared.module';
+import { MessageService } from 'primeng/components/common/messageservice';
+
+import { Serializer } from '@app/shared/interface/serializer';
+import { CrudService } from '@app/shared/service/crud.service';
+import { ToastService } from '@app/shared/service/toast.service';
+import { SharedModule } from '@app/shared/shared.module';
 import { CrudRegistration } from './crud-registration';
 
 class MockSerializer implements Serializer<any, any, any> {
@@ -78,7 +80,11 @@ describe('Shared: Component: CrudRegistration', () => {
           SharedModule
         ],
         declarations: [MockCrudRegistrationComponent],
-        providers: [{ provide: CrudService, useClass: MockCrudService }]
+        providers: [
+          { provide: CrudService, useClass: MockCrudService },
+          MessageService,
+          ToastService
+        ]
       }).compileComponents();
     })
   );

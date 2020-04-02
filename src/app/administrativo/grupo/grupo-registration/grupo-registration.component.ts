@@ -58,7 +58,7 @@ export class GrupoRegistrationComponent extends CrudRegistration<GrupoRequest, G
     this.breadcrumbService.clearAndAdd('Grupos', [`/${Route.ADMINISTRATIVO_GRUPOS}`]);
     this.isEditionMode()
       ? this.breadcrumbService.add('Edição de Grupo', [`/${Route.ADMINISTRATIVO_GRUPOS}`, this.model.id])
-      : this.breadcrumbService.add('Cadastro de Grupo', [`/${Route.ADMINISTRATIVO_GRUPOS}/${Route.GENERICO_CADASTRO}`]);
+      : this.breadcrumbService.add('Cadastro de Grupo', [`/${Route.ADMINISTRATIVO_GRUPOS}/${Route.GENERICO_CADASTRAR}`]);
   }
 
   protected redirectToListing(): void {

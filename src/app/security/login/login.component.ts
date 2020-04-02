@@ -30,6 +30,10 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  getRecuperacaoSenhaRouterLink(): string | any[] {
+    return [`/${Route.RECUPERACAO_SENHA}`];
+  }
+
   get form(): CredencialsForm {
     return this._form;
   }

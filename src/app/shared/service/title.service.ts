@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
-import { environment } from '@env/environment';
-
-export const applicationName = environment.applicationName;
+export const applicationName = 'Angular App';
 
 @Injectable()
 export class TitleService {

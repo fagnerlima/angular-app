@@ -5,7 +5,7 @@ import { SelectItem } from 'primeng/components/common/selectitem';
 
 import { GrupoService } from '@app/administrativo/grupo/shared/grupo.service';
 import { CrudRegistration } from '@app/shared/component/crud/crud-registration/crud-registration';
-import { ValidationMessage } from '@app/shared/component/validation-message/validation-message.model';
+import { Validation } from '@app/shared/component/validation/validation.model';
 import { BreadcrumbService } from '@app/shared/service/breadcrumb.service';
 import { TitleService } from '@app/shared/service/title.service';
 import { ToastService } from '@app/shared/service/toast.service';
@@ -52,7 +52,7 @@ export class UsuarioRegistrationComponent extends CrudRegistration<UsuarioReques
     return 'Cadastro de Usuário';
   }
 
-  get validationMessages(): ValidationMessage[] {
+  get validationMessages(): Validation[] {
     return [
       { type: 'emailConfirmado', message: 'E-mail confirmado incorretamente' }
     ];
@@ -66,7 +66,7 @@ export class UsuarioRegistrationComponent extends CrudRegistration<UsuarioReques
     this.breadcrumbService.clearAndAdd('Usuários', [`/${Route.ADMINISTRATIVO_USUARIOS}`]);
     this.isEditionMode()
       ? this.breadcrumbService.add('Edição de Usuário', [`/${Route.ADMINISTRATIVO_USUARIOS}`, this.model.id])
-      : this.breadcrumbService.add('Cadastro de Usuário', [`/${Route.ADMINISTRATIVO_USUARIOS}/${Route.GENERICO_CADASTRO}`]);
+      : this.breadcrumbService.add('Cadastro de Usuário', [`/${Route.ADMINISTRATIVO_USUARIOS}/${Route.GENERICO_CADASTRAR}`]);
   }
 
   protected redirectToListing(): void {

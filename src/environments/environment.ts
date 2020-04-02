@@ -4,7 +4,6 @@
 
 export const environment = {
   production: false,
-  applicationName: 'Angular App',
   oauth2: {
     headers: {
       authorization: 'Basic YW5ndWxhcjphbmd1bGFy'

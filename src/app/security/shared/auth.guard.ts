@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanLoad, RouterStateSnapshot, Route, Router, UrlSegment } from '@angular/router';
 
-import { Route } from '@app/shared/enum/route.enum';
+import { Route as RouteEnum } from '@app/shared/enum/route.enum';
 import { AuthService } from './auth.service';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivate, CanLoad {
 
   constructor(
     private authService: AuthService,
@@ -13,8 +13,16 @@ export class AuthGuard implements CanActivate {
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    return this.checkLogin();
+  }
+
+  canLoad(route: Route, segments: UrlSegment[]): boolean {
+    return this.checkLogin();
+  }
+
+  private checkLogin(): boolean {
     if (!this.authService.isValidAccessToken()) {
-      this.router.navigate([`/${Route.LOGIN}`]);
+      this.router.navigate([`/${RouteEnum.LOGIN}`]);
 
       return false;
     }

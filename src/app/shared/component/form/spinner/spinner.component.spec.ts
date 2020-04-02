@@ -6,7 +6,7 @@ import { SpinnerModule } from 'primeng/components/spinner/spinner';
 
 import { BlockCopyPasteDirective } from '../../../directive/block-copy-paste.directive';
 import { AutoFocusDirective } from '../../../directive/auto-focus.directive';
-import { ValidationMessageComponent } from '../../validation-message/validation-message.component';
+import { ValidationComponent } from '../../validation/validation.component';
 import { SpinnerComponent } from './spinner.component';
 
 describe('Shared: Component: SpinnerComponent', () => {
@@ -24,7 +24,7 @@ describe('Shared: Component: SpinnerComponent', () => {
         AutoFocusDirective,
         BlockCopyPasteDirective,
         SpinnerComponent,
-        ValidationMessageComponent
+        ValidationComponent
       ]
     })
     .compileComponents();

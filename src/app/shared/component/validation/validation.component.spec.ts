@@ -1,22 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, Validators } from '@angular/forms';
 
-import { ValidationMessageComponent } from './validation-message.component';
+import { ValidationComponent } from './validation.component';
 import { ValidationType } from './validation-type.enum';
 
-describe('Shared: Component: ValidationMessageComponent', () => {
-  let component: ValidationMessageComponent;
-  let fixture: ComponentFixture<ValidationMessageComponent>;
+describe('Shared: Component: ValidationComponent', () => {
+  let component: ValidationComponent;
+  let fixture: ComponentFixture<ValidationComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ValidationMessageComponent]
+      declarations: [ValidationComponent]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ValidationMessageComponent);
+    fixture = TestBed.createComponent(ValidationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -22,5 +22,5 @@
   <p-spinner [id]="inputId" [name]="name || inputId" [max]="max" [min]="min" [step]="step" [size]="size"
     [formControl]="control" [appAutoFocus]="autoFocus" [appBlockCopyPaste]="blockCopyPaste"
     (blur)="blured.emit($event)" (change)="changed.emit($event)" (focus)="focused.emit($event)"></p-spinner>
-  <app-validation-message *ngIf="validation" [control]="control" [submitted]="submitted"></app-validation-message>
+  <app-validation *ngIf="validation" [control]="control" [submitted]="submitted"></app-validation>
 </ng-template>

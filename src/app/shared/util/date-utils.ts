@@ -1,6 +1,17 @@
 import * as moment from 'moment';
 
+interface Duration {
+  years: number;
+  months: number;
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+  milliseconds: number;
+}
+
 export class DateUtils {
+
   static serializeDate(date: Date): string {
     if (!date) {
       return null;
@@ -60,22 +71,72 @@ export class DateUtils {
   }
 
   static toUTCDateTime(date: Date) {
-    return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(),
-  date.getUTCSeconds(), date.getUTCMilliseconds());
-
+    return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),
+      date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds(), date.getUTCMilliseconds());
   }
 
-  static timeDifference(end: Date | string, start: Date | string): string {
+  /**
+   * Calcula a diferença de tempo entre dois Dates.
+   *
+   * @param end Date final
+   * @param start Date inicial
+   * @param format Formato do resultado.
+   * * y: years
+   * * M: months
+   * * d: days
+   * * H: hours (0)
+   * * HH: hours (00)
+   * * m: minutes (0)
+   * * mm: minutes (00)
+   * * s: seconds (0)
+   * * ss: seconds (00)
+   * * SSS: milliseconds
+   * @param unit Unidade base para o cálculo. Por exemplo, se for usada a unidade 'm' num intervalo de 2 horas,
+   * o cálculo retornará o valor '120:00' para o formato 'mm:ss'.
+   * * y: years
+   * * M: months
+   * * d: days
+   * * h: hours
+   * * m: minutes
+   * * s: seconds
+   * * ms: milliseconds
+   *
+   * @returns a diferença de tempo
+   */
+  static timeDifference(
+    end: Date | string,
+    start: Date | string,
+    format: string = 'HH:mm:ss',
+    unit: moment.unitOfTime.DurationConstructor = 'y'): string {
+
     const endTime = moment.utc(end);
     const startTime = moment.utc(start);
-    const durationTime = moment.duration(endTime.diff(startTime));
+    const momentDuration = moment.duration(endTime.diff(startTime));
+    const duration = DateUtils.mountDuration(momentDuration, unit);
 
-    const hours = DateUtils.padStartWithZero(durationTime.hours(), 2);
-    const minutes = DateUtils.padStartWithZero(durationTime.minutes(), 2);
-    const seconds = DateUtils.padStartWithZero(durationTime.seconds(), 2);
-    const milliseconds = DateUtils.padStartWithZero(durationTime.milliseconds(), 3);
+    return format
+      .replace('y', duration.years.toString())
+      .replace('M', duration.months.toString())
+      .replace('d', duration.days.toString())
+      .replace('HH', DateUtils.padStartWithZero(duration.hours, 2))
+      .replace('H', duration.hours.toString())
+      .replace('mm', DateUtils.padStartWithZero(duration.minutes, 2))
+      .replace('m', duration.minutes.toString())
+      .replace('ss', DateUtils.padStartWithZero(duration.seconds, 2))
+      .replace('s', duration.seconds.toString())
+      .replace('SSS', duration.milliseconds.toString());
+  }
 
-    return `${hours}:${minutes}:${seconds}.${milliseconds}`;
+  private static mountDuration(momentDuration: moment.Duration, unit: moment.unitOfTime.DurationConstructor): Duration {
+    return {
+      years: momentDuration.years(),
+      months: 'M' !== unit ? momentDuration.months() : Number(momentDuration.asMonths().toFixed()),
+      days: 'd' !== unit ? momentDuration.days() : Number(momentDuration.asDays().toFixed()),
+      hours: 'h' !== unit ? momentDuration.hours() : Number(momentDuration.asHours().toFixed()),
+      minutes: 'm' !== unit ? momentDuration.minutes() : Number(momentDuration.asMinutes().toFixed()),
+      seconds: 's' !== unit ? momentDuration.seconds() : Number(momentDuration.asSeconds().toFixed()),
+      milliseconds: 'ms' !== unit ? momentDuration.milliseconds() : Number(momentDuration.asMilliseconds()),
+    };
   }
 
   private static padStartWithZero(value: number, maxLength: number): string {

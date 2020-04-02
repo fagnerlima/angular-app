@@ -18,11 +18,8 @@ export class UsuarioService extends CrudService<UsuarioRequest, UsuarioResponse,
 
   private _endpointPerfilUrl = '/me';
 
-  constructor(
-    protected httpClient: HttpClient,
-    protected _serializer: UsuarioSerializer
-  ) {
-    super(httpClient, environment.apiAuthUrl, '/usuarios', _serializer);
+  constructor(protected httpClient: HttpClient) {
+    super(httpClient, environment.apiAuthUrl, '/usuarios', new UsuarioSerializer());
   }
 
   findPerfil(): Observable<UsuarioListResponse> {
@@ -38,14 +35,6 @@ export class UsuarioService extends CrudService<UsuarioRequest, UsuarioResponse,
   updatePerfilSenha(model: UsuarioPerfilSenhaRequest): Observable<UsuarioListResponse> {
     return this.httpClient.patch<ResponseBody<UsuarioListResponse>>(`${this.resourceBasePerfilUrl}/atualizar-senha`, model)
       .pipe(map(response => this._serializer.fromJsonToResponseListModel(response.data)));
-  }
-
-  recoverySenha(email: string): Observable<any> {
-    return this.httpClient.patch(`${this.resourceBaseUrl}/recuperar-senha`, { email });
-  }
-
-  updateSenha(token: string, senha: string): Observable<any> {
-    return this.httpClient.patch(`${this.resourceBaseUrl}/atualizar-senha`, { token, senha });
   }
 
   get endpointPerfilUrl(): string {

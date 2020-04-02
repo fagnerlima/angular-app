@@ -9,20 +9,10 @@ import { UsuarioPerfilComponent } from './usuario-perfil/usuario-perfil.componen
 import { UsuarioListingComponent } from './usuario-listing/usuario-listing.component';
 import { UsuarioComponent } from './usuario.component';
 import { UsuarioRegistrationComponent } from './usuario-registration/usuario-registration.component';
-import { RecuperacaoSenhaComponent } from './recuperacao-senha/recuperacao-senha.component';
 
 const routes: Routes = [
   {
-    path: Route.ADMINISTRATIVO_RECUPERACAO_SENHA,
-    component: RecuperacaoSenhaComponent
-  },
-  {
-    path: Route.ADMINISTRATIVO_PERFIL,
-    component: UsuarioPerfilComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: Route.ADMINISTRATIVO_USUARIOS,
+    path: '',
     component: UsuarioComponent,
     canActivate: [AuthGuard],
     children: [
@@ -33,13 +23,18 @@ const routes: Routes = [
         data: { expectedAuthority: Authority.ROLE_USUARIO_LISTAR }
       },
       {
-        path: Route.GENERICO_CADASTRO,
+        path: Route.PERFIL,
+        component: UsuarioPerfilComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: Route.GENERICO_CADASTRAR,
         component: UsuarioRegistrationComponent,
         canActivate: [AuthorityGuard],
         data: { expectedAuthority: Authority.ROLE_USUARIO_SALVAR }
       },
       {
-        path: Route.GENERICO_EDICAO,
+        path: Route.GENERICO_EDITAR,
         component: UsuarioRegistrationComponent,
         canActivate: [AuthorityGuard],
         data: { expectedAuthority: Authority.ROLE_USUARIO_EDITAR }

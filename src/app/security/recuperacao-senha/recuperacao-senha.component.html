@@ -15,14 +15,14 @@
         <label for="email" class="ui-g-12 control-label">E-mail</label>
         <div class="ui-g-12">
           <input pInputText type="text" id="email" class="form-control" formControlName="email" appAutoFocus>
-          <app-validation-message [control]="form.get('email')" [submitted]="formSubmitted" mode="submitted"></app-validation-message>
+          <app-validation [control]="form.get('email')" [submitted]="formSubmitted" mode="submitted"></app-validation>
         </div>
       </div>
 
       <div class="ui-g form-group-botoes">
         <div class="ui-g-12">
           <button pButton type="submit" class="pull-right" icon="fa fa-envelope-o" label="Enviar"></button>
-          <a pButton routerLink="/login" class="pull-left ui-button-secondary" icon="fa fa-undo" label="Voltar"></a>
+          <a pButton [routerLink]="getLoginRouterLink()" class="pull-left ui-button-secondary" icon="fa fa-undo" label="Voltar"></a>
         </div>
       </div>
     </form>
@@ -40,7 +40,7 @@
         <label for="senha" class="ui-g-12 control-label">Senha</label>
         <div class="ui-g-12">
           <input pInputText type="password" id="senha" class="form-control" formControlName="senha" appAutoFocus>
-          <app-validation-message [control]="form.get('senha')" [submitted]="formSubmitted" mode="submitted"></app-validation-message>
+          <app-validation [control]="form.get('senha')" [submitted]="formSubmitted" mode="submitted"></app-validation>
         </div>
       </div>
 
@@ -48,16 +48,16 @@
         <label for="confirmacao-senha" class="ui-g-12 control-label">Confirmação de Senha</label>
         <div class="ui-g-12">
           <input pInputText type="password" id="confirmacao-senha" class="form-control" formControlName="confirmacaoSenha" />
-          <app-validation-message [control]="form.get('confirmacaoSenha')" [submitted]="formSubmitted" mode="submitted"></app-validation-message>
-          <app-validation-message [control]="form" [submitted]="formSubmitted"
-            [messages]="[{ type: 'senhaConfirmada', message: 'As senhas não conferem' }]" mode="submitted"></app-validation-message>
+          <app-validation [control]="form.get('confirmacaoSenha')" [submitted]="formSubmitted" mode="submitted"></app-validation>
+          <app-validation [control]="form" [submitted]="formSubmitted"
+            [messages]="[{ type: 'senhaConfirmada', message: 'As senhas não conferem' }]" mode="submitted"></app-validation>
         </div>
       </div>
 
       <div class="ui-g form-group-botoes">
         <div class="ui-g-12">
           <button pButton type="submit" class="pull-right" icon="fa fa-check" label="Atualizar"></button>
-          <a pButton routerLink="/login" class="pull-left ui-button-secondary" icon="fa fa-undo" label="Voltar"></a>
+          <a pButton [routerLink]="getLoginRouterLink()" class="pull-left ui-button-secondary" icon="fa fa-undo" label="Voltar"></a>
         </div>
       </div>
     </form>

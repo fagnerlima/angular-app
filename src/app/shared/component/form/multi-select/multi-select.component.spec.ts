@@ -5,7 +5,7 @@ import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { MultiSelectModule } from 'primeng/components/multiselect/multiselect';
 
 import { AutoFocusDirective } from '../../../directive/auto-focus.directive';
-import { ValidationMessageComponent } from '../../validation-message/validation-message.component';
+import { ValidationComponent } from '../../validation/validation.component';
 import { MultiSelectComponent } from './multi-select.component';
 
 describe('Shared: Component: MultiSelectComponent', () => {
@@ -22,7 +22,7 @@ describe('Shared: Component: MultiSelectComponent', () => {
       declarations: [
         AutoFocusDirective,
         MultiSelectComponent,
-        ValidationMessageComponent
+        ValidationComponent
       ]
     })
     .compileComponents();

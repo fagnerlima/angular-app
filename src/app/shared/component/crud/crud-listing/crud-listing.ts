@@ -9,16 +9,16 @@ import { SortMeta } from 'primeng/components/common/sortmeta';
 import { Table } from 'primeng/components/table/table';
 
 import { AuthService } from '@app/security/shared/auth.service';
-import { Pageable } from '../../../interface/pageable';
-import { RequestModel } from '../../../interface/request-model';
-import { ResponseListModel } from '../../../interface/response-list-model';
-import { ResponseModel } from '../../../interface/response-model';
-import { ListFilter } from '../../../model/list-filter.model';
-import { BreadcrumbService } from '../../../service/breadcrumb.service';
-import { CrudService } from '../../../service/crud.service';
-import { StorageService } from '../../../service/storage.service';
-import { TitleService } from '../../../service/title.service';
-import { ToastService } from '../../../service/toast.service';
+import { Pageable } from '@app/shared/interface/pageable';
+import { RequestModel } from '@app/shared/interface/request-model';
+import { ResponseListModel } from '@app/shared/interface/response-list-model';
+import { ResponseModel } from '@app/shared/interface/response-model';
+import { ListFilter } from '@app/shared/model/list-filter.model';
+import { BreadcrumbService } from '@app/shared/service/breadcrumb.service';
+import { CrudService } from '@app/shared/service/crud.service';
+import { StorageService } from '@app/shared/service/storage.service';
+import { TitleService } from '@app/shared/service/title.service';
+import { ToastService } from '@app/shared/service/toast.service';
 
 @Injectable()
 export abstract class CrudListing<T extends RequestModel, U extends ResponseModel, L extends ResponseListModel>
@@ -72,7 +72,7 @@ export abstract class CrudListing<T extends RequestModel, U extends ResponseMode
     this._loadingDataTable = true;
     this.filter.page = page;
 
-    this.service.list(this.filter).subscribe((pageable: Pageable<L[]>) => {
+    this.service.list(this.filter).subscribe((pageable: Pageable<L>) => {
       if (pageable) {
         this._registerList = pageable.content;
         this._rows = pageable.size;
@@ -249,6 +249,8 @@ export abstract class CrudListing<T extends RequestModel, U extends ResponseMode
   }
 
   abstract hasActions(): boolean;
+
+  abstract getEditarRouterLink(id: number): string | any[];
 
   abstract get title(): string;
 

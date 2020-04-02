@@ -5,11 +5,15 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FormGroup } from '@angular/forms';
 
+import { ConfirmationService } from 'primeng/components/common/confirmationservice';
+import { MessageService } from 'primeng/components/common/messageservice';
+
 import { CoreModule } from '@app/core/core.module';
 import { SecurityModule } from '@app/security/security.module';
-import { Serializer } from '../../../interface/serializer';
-import { CrudService } from '../../../service/crud.service';
-import { SharedModule } from '../../../shared.module';
+import { Serializer } from '@app/shared/interface/serializer';
+import { CrudService } from '@app/shared/service/crud.service';
+import { ToastService } from '@app/shared/service/toast.service';
+import { SharedModule } from '@app/shared/shared.module';
 import { CrudListing } from './crud-listing';
 
 class MockSerializer implements Serializer<any, any, any> {
@@ -48,6 +52,10 @@ class MockCrudListingComponent extends CrudListing<any, any, any> {
     return true;
   }
 
+  getEditarRouterLink(id: number): string | any[] {
+    return '';
+  }
+
   get title(): string {
     return 'MockCrudListagem';
   }
@@ -75,7 +83,12 @@ describe('Shared: Component: CrudListing', () => {
         SharedModule
       ],
       declarations: [MockCrudListingComponent],
-      providers: [{ provide: CrudService, useClass: MockCrudService }]
+      providers: [
+        { provide: CrudService, useClass: MockCrudService },
+        ConfirmationService,
+        MessageService,
+        ToastService
+      ]
     })
     .compileComponents();
   }));
