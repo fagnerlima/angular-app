@@ -4,6 +4,7 @@ export class PermissaoGrupoResponse implements ResponseModel {
 
   constructor(
     public id: number,
-    public papel: string
+    public papel: string,
+    public descricao: string
   ) { }
 }

@@ -102,7 +102,7 @@
                   <dt>Permissões</dt>
                   <dd>
                     <ul class="list-unstyled no-margin" *ngIf="register.permissoes && register.permissoes.length; else tplNoData">
-                      <li *ngFor="let permissao of register.permissoes">{{permissao.papel}}</li>
+                      <li *ngFor="let permissao of register.permissoes">{{permissao.descricao}}</li>
                     </ul>
                   </dd>
                 </dl>
