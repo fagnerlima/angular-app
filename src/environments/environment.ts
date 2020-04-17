@@ -6,10 +6,10 @@ export const environment = {
   production: false,
   oauth2: {
     headers: {
-      authorization: 'Basic YW5ndWxhcjphbmd1bGFy'
+      authorization: 'Basic YXV0aDpQQDU1LUB1dGgtMTkzNw=='
     }
   },
-  apiAuthUrl: 'http://localhost:9001'
+  apiAuthUrl: 'http://localhost:8080'
 };
 
 /*
