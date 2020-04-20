@@ -1,49 +1,119 @@
-$color: #2d353c;
-$fontSize: 14px;
+// breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
 
-// Button
-$buttonPrimaryBackgroundColor: #1a7bb9;
-$buttonPrimaryBackgroundColorHover: #096aa8;
-$buttonSecondaryBackgroundColor: #e6e6e6;
-$buttonSecondaryBackgroundColorHover: #d5d5d5;
-$buttonSecondaryBorderColor: #ccc;
-$buttonSuccessBackgroundColor: #18a689;
-$buttonSuccessBackgroundColorHover: #079578;
-$buttonInfoBackgroundColor: #21b9bb;
-$buttonInfoBackgroundColorHover: #10a8aa;
-$buttonWarningBackgroundColor: #f7a54a;
-$buttonWarningBackgroundColorHover: #e69439;
-$buttonDangerBackgroundColor: #ec4758;
-$buttonDangerBackgroundColorHover: #db3647;
+// body
+$body-background-color: #fafafa;
+$body-background-color-dark: #333;
+$body-color: #333;
+$body-color-dark: #fff;
+$body-font-family: 'Roboto', sans-serif;
+$body-font-size: 14px;
+$body-line-height: 1.4rem;
 
-// Link
-$linkColor: #007bff;
-$linkColorHover: #0056b3;
+// main-color
+$main-color-blue: #0844a4;
+$main-color-blue-hover: #0844c4;
+$main-color-black: #042260;
+$main-color-black-hover: #222;
+$main-color-white: #fff;
 
-// Disabled
-$opacityDisabled: .35;
+// hx
+$hx-color: #444;
+$hx-font-weight: 100;
+$hx-line-height: 1.1;
 
-// Sidebar
-$sidebarBackgroundColor: #2f4050;
-$sidebarBackgroundColorActive: #293846;
-$sidebarColorLink: #a7b1c2;
-$sidebarColorLinkActive: #fff;
-$sidebarBreakpoint: 768px;
-$sidebarTransition: all 0.5s ease;
+// h1
+$h1-font-size: 30px;
+$h1-margin-bottom: 10px;
 
-// Topbar
-$topbarColor: #2f4050;
-$topbarColorLink: #a7b1c2;
-$topbarColorLinkActive: #fff;
+// h2
+$h2-font-size: 24px;
+$h2-margin-top: 5px;
 
-// Table
-$tableBorder: 1px solid #dee2e6;
+// h3
+$h3-font-size: 16px;
+$h3-font-weight: 600;
+$h3-margin-top: 5px;
 
-// Status
-$statusSuccess: #18a689;
-$statusWarning: #f7a54a;
-$statusError: #ec4758;
-$statusRunning: #21b9bb;
+// h4
+$h4-font-size: 14px;
+$h4-margin-top: 5px;
 
-// Validation
-$validationColorError: #ab1a0f;
+// h5
+$h5-font-size: 12px;
+$h5-margin-top: 5px;
+
+// h6
+$h6-font-size: 10px;
+$h6-margin: 10px 0;
+
+// a
+$a-color: #007bff;
+$a-color-hover: #0056b3;
+$a-button-color-hover: #fff;
+
+// button
+$button-border: 1px solid transparent;
+$button-border-radius: 3px;
+$button-font-weight: 600;
+$button-margin: 0 .5em 0 0;
+$button-margin-last-of-type: 0;
+$button-padding: .3em;
+$button-primary-background-color: #1a7bb9;
+$button-primary-background-color-hover: #096aa8;
+$button-secondary-background-color: #e6e6e6;
+$button-secondary-background-color-hover: #d5d5d5;
+$button-secondary-color: #555;
+$button-secondary-border-color: #ccc;
+$button-success-background-color: #18a689;
+$button-success-background-color-hover: #079578;
+$button-info-background-color: #21b9bb;
+$button-info-background-color-hover: #10a8aa;
+$button-warning-background-color: #f7a54a;
+$button-warning-background-color-hover: #e69439;
+$button-danger-background-color: #ec4758;
+$button-danger-background-color-hover: #db3647;
+$button-link-background-color: transparent;
+$button-link-background-color-hover: $button-link-background-color;
+$button-link-border-color: transparent;
+$button-link-color: $a-color;
+$button-link-color-hover: $a-color-hover;
+$button-sm-font-size: .8em;
+$button-sm-padding: .2em;
+$button-lg-font-size: 1.1em;
+$button-icon-only-padding: 0;
+
+// disabled
+$opacity-disabled: .35;
+
+// sidebar
+$sidebar-background-color: #2f4050;
+$sidebar-background-color-active: #293846;
+$sidebar-color-link: #a7b1c2;
+$sidebar-color-link-active: #fff;
+$sidebar-breakpoint: 768px;
+$sidebar-transition: all 0.5s ease;
+
+// topbar
+$topbar-color: #2f4050;
+$topbar-color-link: #a7b1c2;
+$topbar-color-link-active: #fff;
+
+// table
+$table-border: 1px solid #dee2e6;
+
+// status
+$status-success: #18a689;
+$status-warning: #f7a54a;
+$status-error: #ec4758;
+$status-running: #21b9bb;
+
+// validation
+$validation-color-error: #ab1a0f;
+
+// accordion
+$accordion-header-padding: .5em;
+$accordion-content-padding: 1em;

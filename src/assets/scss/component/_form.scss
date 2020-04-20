@@ -168,7 +168,7 @@ body form {
   // Calendar
   .ui-calendar {
     .ui-inputtext {
-      font-size: $fontSize;
+      font-size: inherit;
       height: inherit;
       width: calc(100% - 35px);
     }
@@ -237,8 +237,8 @@ body form {
 
     &.ui-message-error {
       background-color: inherit;
-      border-left: 3px solid $validationColorError;
-      color: $validationColorError;
+      border-left: 3px solid $validation-color-error;
+      color: $validation-color-error;
     }
   }
 }

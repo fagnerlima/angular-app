@@ -31,14 +31,14 @@ body .ui-table {
       }
     }
 
-    td, th { border: $tableBorder }
+    td, th { border: $table-border }
 
     .emptymessage { text-align: center }
   }
 
   // Paginator
   .ui-paginator.ui-paginator-bottom {
-    border-bottom: $tableBorder;
+    border-bottom: $table-border;
     font-size: .9em;
 
     .ui-paginator-element {
@@ -55,7 +55,7 @@ body .ui-table {
   // Summary
   .ui-table-caption,
   .ui-table-summary {
-    border: $tableBorder;
+    border: $table-border;
     color: #555;
     padding: .5em;
   }

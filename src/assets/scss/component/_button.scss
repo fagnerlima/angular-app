@@ -1,81 +1,77 @@
 body .ui-button,
 body .ui-button.ui-state-default {
-  background-color: $buttonPrimaryBackgroundColor;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  font-weight: 600;
-  margin-right: .5em;
-  padding: .3em;
+  background-color: $button-primary-background-color;
+  border: $button-border;
+  border-radius: $button-border-radius;
+  font-weight: $button-font-weight;
+  margin: $button-margin;
+  padding: $button-padding;
 
-  &:last-of-type { margin-right: 0 }
+  &:last-of-type { margin: $button-margin-last-of-type }
 
   &:enabled:hover,
-  &:focus { background-color: $buttonPrimaryBackgroundColorHover }
+  &:focus { background-color: $button-primary-background-color-hover }
 
   &.ui-button-secondary {
-    background-color: $buttonSecondaryBackgroundColor;
-    border-color: $buttonSecondaryBorderColor;
-    color: #555;
+    background-color: $button-secondary-background-color;
+    border-color: $button-secondary-border-color;
+    color: $button-secondary-color;
 
     &:enabled:hover,
-    &:focus { background-color: $buttonSecondaryBackgroundColorHover }
+    &:focus { background-color: $button-secondary-background-color-hover }
   }
 
   &.ui-button-success {
-    background-color: $buttonSuccessBackgroundColor;
-    border-color: transparent;
+    background-color: $button-success-background-color;
 
     &:enabled:hover,
-    &:focus { background-color: $buttonSuccessBackgroundColorHover }
+    &:focus { background-color: $button-success-background-color-hover }
   }
 
   &.ui-button-info {
-    background-color: $buttonInfoBackgroundColor;
-    border-color: transparent;
+    background-color: $button-info-background-color;
 
     &:enabled:hover,
-    &:focus { background-color: $buttonInfoBackgroundColorHover }
+    &:focus { background-color: $button-info-background-color-hover }
   }
 
   &.ui-button-warning {
-    background-color: $buttonWarningBackgroundColor;
-    border-color: transparent;
+    background-color: $button-warning-background-color;
 
     &:enabled:hover,
-    &:focus { background-color: $buttonWarningBackgroundColorHover }
+    &:focus { background-color: $button-warning-background-color-hover }
   }
 
   &.ui-button-danger {
-    background-color: $buttonDangerBackgroundColor;
-    border-color: transparent;
+    background-color: $button-danger-background-color;
 
     &:enabled:hover,
-    &:focus { background-color: $buttonDangerBackgroundColorHover }
+    &:focus { background-color: $button-danger-background-color-hover }
   }
 
   &.ui-button-link {
-    background-color: transparent;
-    border-color: transparent;
-    color: $linkColor;
+    background-color: $button-link-background-color;
+    border-color: $button-link-border-color;
+    color: $button-link-color;
 
     &:enabled:hover,
     &:focus {
-      background-color: transparent;
-      color: $linkColorHover;
+      background-color: $button-link-background-color-hover;
+      color: $button-link-color-hover;
     }
   }
 
   // Icon-only
   &.ui-button-icon-only {
-    .ui-button-text { padding: 0 }
+    .ui-button-text { padding: $button-icon-only-padding }
   }
 
   /* Size */
 
   &.ui-button-sm {
-    font-size: .8em;
-    padding: .2em;
+    font-size: $button-sm-font-size;
+    padding: $button-sm-padding;
   }
 
-  &.ui-button-lg { font-size: 1.1em }
+  &.ui-button-lg { font-size: $button-lg-font-size }
 }

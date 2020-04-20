@@ -47,34 +47,34 @@ body .dashboard {
     }
 
     &.colorbox-success {
-      background-color: $buttonSuccessBackgroundColor;
+      background-color: $button-success-background-color;
 
       div:first-child {
-        background-color: $buttonSuccessBackgroundColorHover;
+        background-color: $button-success-background-color-hover;
       }
     }
 
     &.colorbox-warning {
-      background-color: $buttonWarningBackgroundColor;
+      background-color: $button-warning-background-color;
 
       div:first-child {
-        background-color: $buttonWarningBackgroundColorHover;
+        background-color: $button-warning-background-color-hover;
       }
     }
 
     &.colorbox-danger {
-      background-color: $buttonDangerBackgroundColor;
+      background-color: $button-danger-background-color;
 
       div:first-child {
-        background-color: $buttonDangerBackgroundColorHover;
+        background-color: $button-danger-background-color-hover;
       }
     }
 
     &.colorbox-info {
-      background-color: $buttonInfoBackgroundColor;
+      background-color: $button-info-background-color;
 
       div:first-child {
-        background-color: $buttonInfoBackgroundColorHover;
+        background-color: $button-info-background-color-hover;
       }
     }
   }
@@ -83,9 +83,9 @@ body .dashboard {
     &.group {
       .ui-panel-titlebar .ui-panel-title { font-size: 2em }
 
-      &.status-success { border-color: $statusSuccess }
-      &.status-warning { border-color: $statusWarning }
-      &.status-error { border-color: $statusError }
+      &.status-success { border-color: $status-success }
+      &.status-warning { border-color: $status-warning }
+      &.status-error { border-color: $status-error }
     }
   }
 

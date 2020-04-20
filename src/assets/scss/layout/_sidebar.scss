@@ -1,7 +1,7 @@
-$borderLeftActiveMenu: 4px solid #19aa8d;
+$borderLeft-activeMenu: 4px solid #19aa8d;
 
 #app-sidebar {
-  background-color: $sidebarBackgroundColor;
+  background-color: $sidebar-background-color;
   box-shadow: 0 0 5px 0 rgba(0,0,0,.3);
   font-size: .9em;
   height: calc(100% - 60px);
@@ -17,7 +17,7 @@ $borderLeftActiveMenu: 4px solid #19aa8d;
   &.active { left: 0 }
 
   .header-profile {
-    background-color: $sidebarBackgroundColor;
+    background-color: $sidebar-background-color;
     background-image: url('assets/image/background-header-profile.png');
     color: #fff;
     padding: 1em;
@@ -41,23 +41,23 @@ $borderLeftActiveMenu: 4px solid #19aa8d;
         border: none;
         padding: .9em .75em;
 
-        span { color: $sidebarColorLink }
+        span { color: $sidebar-color-link }
 
-        &.ui-state-active { border-left: $borderLeftActiveMenu }
+        &.ui-state-active { border-left: $borderLeft-activeMenu }
 
         &:hover span { color: #fff }
       }
 
       &.ui-state-active {
         .ui-panelmenu-header-link,
-        + .ui-panelmenu-content-wrapper { border-left: $borderLeftActiveMenu }
+        + .ui-panelmenu-content-wrapper { border-left: $borderLeft-activeMenu }
 
         + .ui-panelmenu-content-wrapper {
-          background-color: $sidebarBackgroundColorActive;
+          background-color: $sidebar-background-color-active;
           padding-bottom: .8em;
         }
 
-        span { color: $sidebarColorLinkActive }
+        span { color: $sidebar-color-link-active }
       }
     }
 
@@ -74,12 +74,12 @@ $borderLeftActiveMenu: 4px solid #19aa8d;
         .ui-menuitem-link {
           padding: .6em 0 .6em 2em;
 
-          span { color: $sidebarColorLink }
+          span { color: $sidebar-color-link }
 
           &:hover { background-color: #293846 }
 
           &:hover span,
-          &.ui-state-active span { color: $sidebarColorLinkActive }
+          &.ui-state-active span { color: $sidebar-color-link-active }
         }
       }
 
@@ -89,8 +89,8 @@ $borderLeftActiveMenu: 4px solid #19aa8d;
     .ui-panelmenu-icon { margin-right: .5em }
 
     .ui-state-active {
-      background-color: $sidebarBackgroundColorActive;
-      color: $sidebarColorLinkActive;
+      background-color: $sidebar-background-color-active;
+      color: $sidebar-color-link-active;
     }
 
     .ui-panelmenu-content-wrapper .ui-widget-content { border: none }

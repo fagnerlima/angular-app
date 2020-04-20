@@ -1,17 +1,17 @@
 body a {
-  color: $linkColor;
+  color: $a-color;
   outline: 0;
 
   &:hover {
-    color: $linkColorHover;
+    color: $a-color-hover;
     text-decoration: none;
   }
 
-  &.ui-button:hover { color: #fff }
+  &.ui-button:hover { color: $a-button-color-hover }
 
   &.disabled {
     cursor: default;
-    opacity: $opacityDisabled;
+    opacity: $opacity-disabled;
     pointer-events: none;
   }
 }

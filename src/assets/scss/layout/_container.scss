@@ -7,10 +7,10 @@ body {
   #app-wrapper {
     padding-left: 0;
     position: relative;
-    transition: $sidebarTransition;
+    transition: $sidebar-transition;
 
     &.toggled {
-      @media screen and (min-width: $sidebarBreakpoint) { padding-left: 250px }
+      @media screen and (min-width: $sidebar-breakpoint) { padding-left: 250px }
     }
   }
 
@@ -25,7 +25,7 @@ body {
     z-index: 998;
 
     #app-wrapper.toggled & {
-      @media screen and (max-width: $sidebarBreakpoint - 1) { display: block }
+      @media screen and (max-width: $sidebar-breakpoint - 1) { display: block }
     }
   }
 
