@@ -1,3 +1,6 @@
+$accordion-header-padding: .5em;
+$accordion-content-padding: 1em;
+
 body .ui-accordion {
   .ui-accordion-header {
     a { padding: $accordion-header-padding }

@@ -1,3 +1,42 @@
+$button-border: 1px solid transparent;
+$button-border-radius: 3px;
+$button-font-weight: 600;
+$button-margin: 0 .5em 0 0;
+$button-margin-last-of-type: 0;
+$button-padding: .3em;
+
+$button-primary-background-color: #1a7bb9;
+$button-primary-background-color-hover: #096aa8;
+
+$button-secondary-background-color: #e6e6e6;
+$button-secondary-background-color-hover: #d5d5d5;
+$button-secondary-color: #555;
+$button-secondary-border-color: #ccc;
+
+$button-success-background-color: #18a689;
+$button-success-background-color-hover: #079578;
+
+$button-info-background-color: #21b9bb;
+$button-info-background-color-hover: #10a8aa;
+
+$button-warning-background-color: #f7a54a;
+$button-warning-background-color-hover: #e69439;
+
+$button-danger-background-color: #ec4758;
+$button-danger-background-color-hover: #db3647;
+
+$button-link-background-color: transparent;
+$button-link-background-color-hover: $button-link-background-color;
+$button-link-border-color: transparent;
+$button-link-color: $a-color;
+$button-link-color-hover: $a-color-hover;
+
+$button-sm-font-size: .8em;
+$button-sm-padding: .2em;
+
+$button-lg-font-size: 1.1em;
+$button-icon-only-padding: 0;
+
 body .ui-button,
 body .ui-button.ui-state-default {
   background-color: $button-primary-background-color;

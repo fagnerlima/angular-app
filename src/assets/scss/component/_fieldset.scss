@@ -1,20 +1,31 @@
+$fieldset-border: 1px solid #ddd;
+$fieldset-border-radius: 5px;
+$fieldset-margin: 0 0 10px 0;
+$fieldset-padding: 10px;
+$fieldset-legend-font-size: 1em;
+$fieldset-legend-font-weight: 600;
+$fieldset-legend-padding: 0;
+$fieldset-legend-width: auto;
+$fieldset-legend-a-border: 1px solid #ddd;
+$fieldset-legend-a-margin: 0 -4px;
+$fieldset-legend-a-padding: 0 5px;
+
 body .ui-fieldset {
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  padding: 10px;
+  border: $fieldset-border;
+  border-radius: $fieldset-border-radius;
+  margin: $fieldset-margin;
+  padding: $fieldset-padding;
 
   .ui-fieldset-legend {
-    font-size: 1em;
-    font-weight: 600;
-    width: auto;
-    padding: 0;
+    font-size: $fieldset-legend-font-size;
+    font-weight: $fieldset-legend-font-weight;
+    padding: $fieldset-legend-padding;
+    width: $fieldset-legend-width;
 
     a {
-      border: 1px solid #ddd;
-      // color: $a-color;
-      margin: 0 -4px;
-      padding: 0 5px;
+      border: $fieldset-legend-a-border;
+      margin: $fieldset-legend-a-margin;
+      padding: $fieldset-legend-a-padding;
     }
   }
 

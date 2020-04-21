@@ -1,3 +1,28 @@
+$form-control-label-required-color: #a00;
+$form-control-label-required-content: '*';
+$form-control-label-required-margin: .2em;
+
+$form-control-box-shadow: 0 0 .2em #80bdff;
+
+$form-message-background-color: transparent;
+$form-message-border: none;
+$form-message-font-size: .8em;
+$form-message-margin: 0;
+$form-message-padding: 2px 0 2px 3px;
+$form-message-first-of-type-margin: .25em 0 0 0;
+
+$form-message-error-backgroud-color: inherit;
+$form-message-error-border-left: 3px solid $validation-color-error;
+$form-message-error-color: $validation-color-error;
+
+$inputswitch-background-color: transparent;
+$inputswitch-checked-background-color: #007ad9;
+$inputswitch-slider-background-color: #ccc;
+$inputswitch-slider-border-radius: 30px;
+$inputswitch-slider-transition: background-color 0.2s;
+$inputswitch-slider-before-background-color: #fff;
+$inputswitch-slider-before-transition: .3s;
+
 @mixin border-form-control() {
   border: 1px solid #e5e6e7;
   border-radius: 1px;
@@ -8,16 +33,16 @@ body form {
     .control-label {
       &.required {
         &::after {
-          color: #a00;
-          content: '*';
-          margin-left: .2em;
+          color: $form-control-label-required-color;
+          content: $form-control-label-required-content;
+          margin-left: $form-control-label-required-margin;
         }
       }
     }
   }
 
   &.form-horizontal {
-    @media screen and (min-width: 641px) {
+    @media screen and (min-width: $breakpoint-sm) {
       .control-label {
         padding-top: 1.2em;
         text-align: right;
@@ -29,9 +54,9 @@ body form {
           }
 
           &::before {
-            color: #a00;
-            content: '*';
-            margin-right: .2em;
+            color: $form-control-label-required-color;
+            content: $form-control-label-required-content;
+            margin-right: $form-control-label-required-margin;
           }
         }
       }
@@ -48,7 +73,7 @@ body form {
     display: block;
     width: 100% !important;
 
-    &:focus { box-shadow: 0 0 0.2em #80bdff }
+    &:focus { box-shadow: $form-control-box-shadow }
   }
 
   // Spinner
@@ -112,21 +137,21 @@ body form {
 
   // InputSwitch
   .ui-inputswitch {
-    background-color: transparent;
+    background-color: $inputswitch-background-color;
     margin-top: .5em;
 
     &.ui-inputswitch-checked {
-      .ui-inputswitch-slider { background-color: #007ad9 }
+      .ui-inputswitch-slider { background-color: $inputswitch-checked-background-color }
     }
 
     .ui-inputswitch-slider {
-      background: #cccccc;
-      border-radius: 30px;
-      transition: background-color 0.2s;
+      background: $inputswitch-slider-background-color;
+      border-radius: $inputswitch-slider-border-radius;
+      transition: $inputswitch-slider-transition;
 
       &::before {
-        background-color: #fff;
-        transition: .3s;
+        background-color: $inputswitch-slider-before-background-color;
+        transition: $inputswitch-slider-before-transition;
       }
     }
   }
@@ -226,19 +251,19 @@ body form {
   .ng-touched.ng-invalid { border-bottom-color: #e13131 }
 
   .ui-message {
-    background-color: transparent;
+    background-color: $form-message-background-color;
+    border: $form-message-border;
     display: block;
-    font-size: .8em;
-    border: none;
-    margin: 0;
-    padding: 2px 0 2px 3px;
+    font-size: $form-message-font-size;
+    margin: $form-message-margin;
+    padding: $form-message-padding;
 
-    &:first-of-type { margin-top: .25em }
+    &:first-of-type { margin: $form-message-first-of-type-margin }
 
     &.ui-message-error {
-      background-color: inherit;
-      border-left: 3px solid $validation-color-error;
-      color: $validation-color-error;
+      background-color: $form-message-error-backgroud-color;
+      border-left: $form-message-error-border-left;
+      color: $form-message-error-color;
     }
   }
 }
