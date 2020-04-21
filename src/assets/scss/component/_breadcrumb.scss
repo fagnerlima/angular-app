@@ -1,6 +1,3 @@
-$breadcrumb-border: none;
-$breadcrumb-padding: 0;
-$breadcrumb-chevron-margin: 0 .1em;
 $breadcrumb-chevron-before-font-size: 1em;
 $breadcrumb-chevron-before-font-weight: normal;
 $breadcrumb-menuitem-link-background-color: transparent;
@@ -9,12 +6,12 @@ $breadcrumb-menuitem-link-active-font-weight: #333;
 
 #app-breadcrumb {
   .ui-breadcrumb {
-    border: $breadcrumb-border;
-    padding: $breadcrumb-padding;
+    border: none;
+    padding: 0;
   }
 
   .ui-breadcrumb-chevron {
-    margin: $breadcrumb-chevron-margin;
+    margin: 0 .1em;
 
     &::before {
       font-size: $breadcrumb-chevron-before-font-size;

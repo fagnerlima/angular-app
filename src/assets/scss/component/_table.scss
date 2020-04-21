@@ -1,3 +1,26 @@
+$table-border: 1px solid #dee2e6;
+
+$table-thead-background-color: #fff;
+$table-thead-font-weight: 600;
+$table-thead-text-align: center;
+
+$table-tbody-tr-background-color: #fff;
+$table-tbody-tr-odd-background-color: rgba(#000, .05);
+
+$table-paginator-font-size: .9em;
+
+$table-summary-color: #555;
+
+$table-loading-opacity: .1;
+
+$table-expanded-row-content-scroll-max-height: 1000px;
+$table-expanded-row-content-scroll-padding: 10px;
+$table-expanded-row-content-scroll-panel-border-color: #ddd;
+$table-expanded-row-content-scroll-panel-border-style: solid;
+$table-expanded-row-content-scroll-panel-border-width: 1px;
+$table-expanded-row-content-scroll-panel-titlebar-color: #555;
+$table-expanded-row-content-scroll-panel-titlebar-font-weight: 600;
+
 body .ui-table {
   table {
     thead th,
@@ -6,19 +29,19 @@ body .ui-table {
 
     thead {
       th, td {
-        background-color: #fff;
-        font-weight: 600;
-        text-align: center;
+        background-color: $table-thead-background-color;
+        font-weight: $table-thead-font-weight;
+        text-align: $table-thead-text-align;
       }
     }
 
     tbody {
-      tr { background-color: #fff }
-      tr:nth-of-type(odd) { background-color: rgba(0,0,0,.05) }
+      tr { background-color: $table-tbody-tr-background-color }
+      tr:nth-of-type(odd) { background-color: $table-tbody-tr-odd-background-color }
 
       td {
         &.text-center {
-          @media screen and (max-width: 640px) { text-align: left !important }
+          @media screen and (max-width: $breakpoint-sm) { text-align: left !important }
         }
 
         .btn-action {
@@ -39,7 +62,7 @@ body .ui-table {
   // Paginator
   .ui-paginator.ui-paginator-bottom {
     border-bottom: $table-border;
-    font-size: .9em;
+    font-size: $table-paginator-font-size;
 
     .ui-paginator-element {
       height: 2.286em;
@@ -56,12 +79,12 @@ body .ui-table {
   .ui-table-caption,
   .ui-table-summary {
     border: $table-border;
-    color: #555;
+    color: $table-summary-color;
     padding: .5em;
   }
 
   // Loading
-  .ui-table-loading { opacity: .1 }
+  .ui-table-loading { opacity: $table-loading-opacity }
   .ui-table-loading-content {
     left: calc(50% - 20px);
     top: calc(50% - 20px);
@@ -70,20 +93,22 @@ body .ui-table {
   // Expanded row
   .expanded-row-content {
     .scroll {
-      max-height: 1000px;
+      max-height: $table-expanded-row-content-scroll-max-height;
       overflow: auto;
-      padding: 10px;
+      padding: $table-expanded-row-content-scroll-padding;
 
       .ui-panel {
         background-color: transparent;
-        border: 1px solid #ddd;
+        border-color: $table-expanded-row-content-scroll-panel-border-color;
+        border-style: $table-expanded-row-content-scroll-panel-border-style;
+        border-width: $table-expanded-row-content-scroll-panel-border-width;
         margin-bottom: .5em;
 
         .ui-panel-titlebar {
           background-color: transparent;
-          border-bottom-color: #ddd;
-          color: #555;
-          font-weight: 600;
+          border-bottom-color: $table-expanded-row-content-scroll-panel-border-color;
+          color: $table-expanded-row-content-scroll-panel-titlebar-color;
+          font-weight: $table-expanded-row-content-scroll-panel-titlebar-font-weight;
           padding: .3em .7em;
         }
 

@@ -1,0 +1,17 @@
+body {
+  .ui-inputgroup {
+    .ui-button {
+      width: 2.8em;
+
+      &:first-child {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+      }
+
+      &:last-child {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+      }
+    }
+  }
+}

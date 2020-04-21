@@ -1,3 +1,28 @@
+$tag-primary-background-color: #1a7bb9;
+$tag-primary-background-color-hover: #096aa8;
+$tag-primary-color: #fff;
+
+$tag-secondary-background-color: #fff;
+$tag-secondary-background-color-hover: #e6e6e6;
+$tag-secondary-border-color: #d7dadc;
+$tag-secondary-color: #333;
+
+$tag-success-background-color: #18a689;
+$tag-success-background-color-hover: #079578;
+$tag-success-color: #fff;
+
+$tag-info-background-color: #21b9bb;
+$tag-info-background-color-hover: #10a8aa;
+$tag-info-color: #fff;
+
+$tag-warning-background-color: #f7a54a;
+$tag-warning-background-color-hover: #e69439;
+$tag-warning-color: #fff;
+
+$tag-danger-background-color: #ec4758;
+$tag-danger-background-color-hover: #db3647;
+$tag-danger-color: #fff;
+
 body .app-tag,
 body .app-tag.ui-button {
   border: 1px solid transparent;
@@ -7,53 +32,52 @@ body .app-tag.ui-button {
   padding: 3px 8px;
 
   &.app-tag-primary {
-    background-color: #1a7bb9;
-    color: #fff;
+    background-color: $tag-primary-background-color;
+    color: $tag-primary-color;
 
     &:enabled:hover,
-    &:focus { background-color: #096aa8 }
+    &:focus { background-color: $tag-primary-background-color-hover }
   }
 
   &.app-tag-secondary {
-    background-color: #fff;
-    border-color: #d7dadc;
-    color: #333;
+    background-color: $tag-secondary-background-color;
+    border-color: $tag-secondary-border-color;
+    color: $tag-secondary-color;
 
     &:enabled:hover,
-    &:focus { background-color: #e6e6e6 }
+    &:focus { background-color: $tag-secondary-background-color-hover }
   }
 
   &.app-tag-success {
-    background-color: #18a689;
-    color: #fff;
+    background-color: $tag-success-background-color;
+    color: $tag-success-color;
 
     &:enabled:hover,
-    &:focus { background-color: #079578 }
-  }
-
-  &.app-tag-danger {
-    background-color: #ec4758;
-    color: #fff;
-
-    &:enabled:hover,
-    &:focus { background-color: #db3647 }
-  }
-
-  &.app-tag-warning {
-    background-color: #f7a54a;
-    color: #333;
-
-    &:enabled:hover,
-    &:focus { background-color: #e69439 }
+    &:focus { background-color: $tag-success-background-color-hover }
   }
 
   &.app-tag-info {
-    background-color: #21b9bb;
-    color: #fff;
+    background-color: $tag-info-background-color;
+    color: $tag-info-color;
 
     &:enabled:hover,
-    &:focus { background-color: #10a8aa }
+    &:focus { background-color: $tag-info-background-color-hover }
   }
 
-  .ui-button-text { padding: 0 }
+  &.app-tag-warning {
+    background-color: $tag-warning-background-color;
+    color: $tag-warning-color;
+
+    &:enabled:hover,
+    &:focus { background-color: $tag-warning-background-color-hover }
+  }
+
+  &.app-tag-danger {
+    background-color: $tag-danger-background-color;
+    color: $tag-danger-color;
+
+    &:enabled:hover,
+    &:focus { background-color: $tag-danger-background-color-hover }
+  }
+
 }

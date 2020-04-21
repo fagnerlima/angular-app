@@ -1,0 +1,50 @@
+body {
+  .ui-calendar {
+    .ui-inputtext {
+      font-size: inherit;
+      height: inherit;
+      width: calc(100% - 35px);
+    }
+
+    &.form-control {
+      border: none;
+      padding: 0;
+    }
+
+    .ui-calendar-button {
+      height: inherit;
+      width: 35px;
+    }
+
+    .ui-datepicker {
+      display: block;
+      font-size: .9em;
+
+      .ui-datepicker-header {
+        padding: .5em 0;
+
+        .ui-datepicker-prev,
+        .ui-datepicker-next { top: .9em }
+
+        .ui-datepicker-title {
+          font-weight: 600;
+
+          select.ui-datepicker-month,
+          select.ui-datepicker-year {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            padding: .1em;
+          }
+        }
+      }
+
+      table.ui-datepicker-calendar {
+        margin: .4em 0;
+
+        th { padding: .3em }
+        td { cursor: pointer }
+      }
+    }
+  }
+}

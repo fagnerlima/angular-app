@@ -1,29 +1,27 @@
-$button-border: 1px solid transparent;
-$button-border-radius: 3px;
-$button-font-weight: 600;
-$button-margin: 0 .5em 0 0;
-$button-margin-last-of-type: 0;
-$button-padding: .3em;
-
 $button-primary-background-color: #1a7bb9;
 $button-primary-background-color-hover: #096aa8;
+$button-primary-color: #fff;
 
 $button-secondary-background-color: #e6e6e6;
 $button-secondary-background-color-hover: #d5d5d5;
-$button-secondary-color: #555;
 $button-secondary-border-color: #ccc;
+$button-secondary-color: #555;
 
 $button-success-background-color: #18a689;
 $button-success-background-color-hover: #079578;
+$button-success-color: #fff;
 
 $button-info-background-color: #21b9bb;
 $button-info-background-color-hover: #10a8aa;
+$button-info-color: #fff;
 
 $button-warning-background-color: #f7a54a;
 $button-warning-background-color-hover: #e69439;
+$button-warning-color: #fff;
 
 $button-danger-background-color: #ec4758;
 $button-danger-background-color-hover: #db3647;
+$button-danger-color: #fff;
 
 $button-link-background-color: transparent;
 $button-link-background-color-hover: $button-link-background-color;
@@ -40,13 +38,14 @@ $button-icon-only-padding: 0;
 body .ui-button,
 body .ui-button.ui-state-default {
   background-color: $button-primary-background-color;
-  border: $button-border;
-  border-radius: $button-border-radius;
-  font-weight: $button-font-weight;
-  margin: $button-margin;
-  padding: $button-padding;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  color: $button-primary-color;
+  font-weight: 600;
+  margin: 0 .5em 0 0;
+  padding: .3em;
 
-  &:last-of-type { margin: $button-margin-last-of-type }
+  &:last-of-type { margin: 0 }
 
   &:enabled:hover,
   &:focus { background-color: $button-primary-background-color-hover }
@@ -62,6 +61,7 @@ body .ui-button.ui-state-default {
 
   &.ui-button-success {
     background-color: $button-success-background-color;
+    color: $button-success-color;
 
     &:enabled:hover,
     &:focus { background-color: $button-success-background-color-hover }
@@ -69,6 +69,7 @@ body .ui-button.ui-state-default {
 
   &.ui-button-info {
     background-color: $button-info-background-color;
+    color: $button-info-color;
 
     &:enabled:hover,
     &:focus { background-color: $button-info-background-color-hover }
@@ -76,6 +77,7 @@ body .ui-button.ui-state-default {
 
   &.ui-button-warning {
     background-color: $button-warning-background-color;
+    color: $button-warning-color;
 
     &:enabled:hover,
     &:focus { background-color: $button-warning-background-color-hover }
@@ -83,6 +85,7 @@ body .ui-button.ui-state-default {
 
   &.ui-button-danger {
     background-color: $button-danger-background-color;
+    color: $button-danger-color;
 
     &:enabled:hover,
     &:focus { background-color: $button-danger-background-color-hover }
