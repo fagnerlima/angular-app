@@ -2,6 +2,15 @@ import { NgModule, Type } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AccordionModule } from 'primeng/accordion';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
@@ -45,6 +54,7 @@ import { BytePipe } from './pipe/byte.pipe';
 import { StatusPipe } from './pipe/status.pipe';
 import { TimeDifferencePipe } from './pipe/time-difference.pipe';
 import { BreadcrumbService } from './service/breadcrumb.service';
+import { FormValidationService } from './service/form-validation.service';
 import { StorageService } from './service/storage.service';
 import { TitleService } from './service/title.service';
 
@@ -53,7 +63,17 @@ const angularModules: Array<Type<any> | any[]> = [
   CommonModule,
   ReactiveFormsModule,
   FormsModule,
-  RouterModule
+  RouterModule,
+  FlexLayoutModule
+];
+const materialModules: Array<Type<any> | any[]> = [
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatProgressSpinnerModule
 ];
 const primeNgModules: Array<Type<any> | any[]> = [
   AccordionModule,
@@ -111,6 +131,7 @@ const angularProviders: Array<Type<any> | any[]> = [DecimalPipe];
 const primeNgProviders: Array<Type<any> | any[]> = [];
 const sharedProviders: Array<Type<any> | any[]> = [
   BreadcrumbService,
+  FormValidationService,
   StorageService,
   TitleService
 ];
@@ -118,10 +139,12 @@ const sharedProviders: Array<Type<any> | any[]> = [
 @NgModule({
   imports: [
     angularModules,
+    materialModules,
     primeNgModules
   ],
   exports: [
     angularModules,
+    materialModules,
     primeNgModules,
     sharedComponents,
     sharedDirectives,

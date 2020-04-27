@@ -1,43 +1,77 @@
-<section class="login-form">
+<mat-card class="login-box">
   <app-panel-loader [visible]="loading"></app-panel-loader>
 
-  <div class="image">
-    <img class="logo" src="assets/image/logo.png" alt="Angular App" title="Angular App">
+  <div fxLayout="row">
+    <div fxFlex="100%" class="text-center">
+      <img class="logo" src="assets/image/logo.png" alt="Angular App" title="Angular App">
+    </div>
   </div>
 
-  <form class="form form-login" [formGroup]="form" autocomplete="off" [class.submitted]="formSubmitted" (ngSubmit)="login()">
-    <div class="ui-g">
-      <div class="ui-g-12">
-        <h1 class="text-center">Login</h1>
+  <div fxLayout="row">
+    <div fxFlex="100%" class="text-center">
+      <h1>Login</h1>
+    </div>
+  </div>
+
+  <form
+      class="form login-form"
+      [formGroup]="form"
+      autocomplete="off"
+      [class.submitted]="formSubmitted"
+      (ngSubmit)="login()">
+    <div fxLayout="row">
+      <div fxFlex="100%">
+        <mat-form-field>
+          <mat-label>Usuário</mat-label>
+          <input matInput
+            id="username"
+            formControlName="username"
+            appAutoFocus>
+          <mat-error *ngFor="let errorMessage of getErrorMessages(form.get('username'))">
+            {{ errorMessage }}
+          </mat-error>
+        </mat-form-field>
       </div>
     </div>
 
-    <div class="ui-g form-group-username">
-      <label for="username" class="ui-g-12 control-label">Usuário</label>
-      <div class="ui-g-12">
-        <input pInputText type="email" class="form-control" id="username" formControlName="username" appAutoFocus>
-        <app-validation [control]="form.get('username')" [submitted]="formSubmitted" mode="submitted"></app-validation>
+    <div fxLayout="row">
+      <div fxFlex="100%">
+        <mat-form-field>
+          <mat-label>Senha</mat-label>
+          <input matInput
+            type="password"
+            id="password"
+            formControlName="password">
+          <mat-error *ngFor="let errorMessage of getErrorMessages(form.get('password'))">
+            {{ errorMessage }}
+          </mat-error>
+        </mat-form-field>
       </div>
     </div>
 
-    <div class="ui-g form-group-password">
-      <label for="password" class="ui-g-12 control-label">Senha</label>
-      <div class="ui-g-12">
-        <input pInputText type="password" class="form-control" id="password" formControlName="password">
-        <app-validation [control]="form.get('password')" [submitted]="formSubmitted" mode="submitted"></app-validation>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div fxFlex="50%">
+        <mat-checkbox
+            id="lembrar-acesso"
+            name="lembrar-acesso"
+            formControlName="remember">
+            Lembrar
+          </mat-checkbox>
+      </div>
+      <div fxFlex="50%">
+        <button mat-raised-button
+          color="primary"
+          type="submit"
+          class="pull-right">
+          Entrar
+        </button>
       </div>
     </div>
 
-    <div class="ui-g form-group-botoes">
-      <div class="ui-g-12">
-        <div class="pull-left" style="margin-top: 3px">
-          <p-checkbox inputId="lembrar-acesso" name="lembrar-acesso" label="Lembrar acesso" formControlName="remember" [binary]="true"></p-checkbox>
-        </div>
-        <button pButton type="submit" class="pull-right" icon="fa fa-sign-in" label="Entrar"></button>
-      </div>
-      <div class="ui-g-12 text-center">
+    <div fxLayout="row">
+      <div fxFlex="100%" class="text-center">
         <a id="recuperar-senha" [routerLink]="getRecuperacaoSenhaRouterLink()">Esqueceu a senha? Clique aqui</a>
       </div>
     </div>
   </form>
-</section>
+</mat-card>

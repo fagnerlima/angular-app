@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AbstractControl } from '@angular/forms';
 
 import { Route } from '@app/shared/enum/route.enum';
+import { FormValidationService } from '@app/shared/service/form-validation.service';
 import { TitleService } from '@app/shared/service/title.service';
 import { AuthService } from '../shared/auth.service';
 import { CredencialsForm } from '../shared/credencials.form';
@@ -18,6 +20,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private formValidationService: FormValidationService,
     private titleService: TitleService,
     private router: Router
   ) { }
@@ -28,6 +31,10 @@ export class LoginComponent implements OnInit {
     if (this.authService.isValidAccessToken()) {
       this.router.navigate([`/${Route.HOME}`]);
     }
+  }
+
+  getErrorMessages(control: AbstractControl) {
+    return this.formValidationService.getErrorMessages(control);
   }
 
   getRecuperacaoSenhaRouterLink(): string | any[] {
