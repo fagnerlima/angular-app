@@ -42,21 +42,12 @@
 }
 
 .panel-loader {
-  &.overlay {
-    background-color: #424242;
-    height: 100%;
-    left: 0;
-    opacity: .1;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-  }
-
-  &.content {
-    left: calc(50% - 20px);
-    position: absolute;
-    top: calc(50% - 20px);
-    z-index: 2;
-  }
+  @include flex-center;
+  background-color: rgba(#424242, .5);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 100;
 }
