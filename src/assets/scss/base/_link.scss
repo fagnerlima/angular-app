@@ -1,17 +1,15 @@
-$a-color: #007bff;
-$a-color-hover: #0056b3;
-$a-button-color-hover: #fff;
+$a-color: #ddd;
+$a-color-hover: #ddd;
 
 body a {
   color: $a-color;
   outline: 0;
+  text-decoration: none;
 
   &:hover {
     color: $a-color-hover;
-    text-decoration: none;
+    text-decoration: underline;
   }
-
-  &.ui-button:hover { color: $a-button-color-hover }
 
   &.disabled {
     cursor: default;

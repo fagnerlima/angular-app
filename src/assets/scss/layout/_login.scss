@@ -1,36 +1,30 @@
 body {
   .wrapper.login {
-    align-items: center;
-    display: flex;
+    @include flex-center;
     height: 100vh;
-    justify-content: center;
     margin: 0;
     padding: 0;
     width: 100vw;
 
-    .login-form {
-      background-color: #fff;
-      margin: 0 10px;
-      padding: 20px;
-      position: relative;
-      width: calc(100% - 20px);
+    .login-box {
+      width: 250px;
 
-      @media screen and (min-width: 300px) {
-        max-width: 350px;
-      }
-
-      .image {
-        text-align: center;
-
-        .logo {
-          margin-bottom: 1em;
-          height: 100px;
-        }
+      .logo {
+        height: 100px;
       }
 
       h1 {
         font-size: 1.6em;
         margin-bottom: 0;
+      }
+
+      .mat-form-field {
+        width: 100%;
+      }
+
+      #recuperar-senha {
+        display: inline-block;
+        margin-top: 1em;
       }
     }
   }
