@@ -1,0 +1,73 @@
+<mat-card class="login-box">
+  <app-panel-loader [visible]="loading"></app-panel-loader>
+
+  <div fxLayout="row">
+    <div fxFlex="100%" class="text-center">
+      <img class="logo" src="assets/image/logo.png" alt="Angular App" title="Angular App">
+    </div>
+  </div>
+
+  <div fxLayout="row">
+    <div fxFlex="100%" class="text-center">
+      <h1>Atualização de Senha</h1>
+    </div>
+  </div>
+
+  <form
+      class="form form-atualizacao-senha"
+      [formGroup]="form"
+      autocomplete="off"
+      (ngSubmit)="atualizarSenha()">
+    <div fxLayout="row">
+      <div fxFlex="100%">
+        <mat-form-field>
+          <mat-label>Senha</mat-label>
+          <input matInput
+              type="password"
+              id="senha"
+              formControlName="senha"
+              appAutoFocus>
+          <mat-error *ngFor="let errorMessage of getErrorMessages(form.get('senha'))">
+            {{ errorMessage }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div fxFlex="100%">
+        <mat-form-field>
+          <mat-label>Confirmação de Senha</mat-label>
+          <input
+              matInput
+              type="password"
+              id="confirmacao-senha"
+              formControlName="confirmacaoSenha"
+              [errorStateMatcher]="form.confirmacaoSenhaErrorStateMacher">
+          <mat-error *ngFor="let errorMessage of getErrorMessages(form.get('confirmacaoSenha'))">
+            {{ errorMessage }}
+          </mat-error>
+          <mat-error *ngFor="let errorMessage of getErrorMessages(form)">
+            {{ errorMessage }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div fxLayout="row">
+      <div fxFlex="100%">
+        <button mat-raised-button
+            type="submit"
+            color="primary"
+            id="atualizar"
+            class="pull-right">
+          Atualizar
+        </button>
+        <a mat-raised-button
+            id="voltar"
+            class="pull-left"
+            [routerLink]="getLoginRouterLink()">
+          Voltar
+        </a>
+      </div>
+    </div>
+  </form>
+</mat-card>

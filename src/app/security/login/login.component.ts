@@ -15,7 +15,6 @@ import { CredencialsForm } from '../shared/credencials.form';
 export class LoginComponent implements OnInit {
 
   private _form = new CredencialsForm();
-  private _formSubmitted = false;
   private _loading = false;
 
   constructor(
@@ -45,17 +44,12 @@ export class LoginComponent implements OnInit {
     return this._form;
   }
 
-  get formSubmitted(): boolean {
-    return this._formSubmitted;
-  }
-
   get loading(): boolean {
     return this._loading;
   }
 
   async login(): Promise<void> {
     this._loading = true;
-    this._formSubmitted = true;
 
     if (this._form.valid) {
       await this.authService.login(this._form.toModel(), this._form.get('remember').value);

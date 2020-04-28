@@ -1,24 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AbstractControl } from '@angular/forms';
 
 import { Route } from '@app/shared/enum/route.enum';
 import { FormValidationService } from '@app/shared/service/form-validation.service';
 import { ToastService } from '@app/shared/service/toast.service';
 import { TitleService } from '@app/shared/service/title.service';
-import { RecuperacaoSenhaForm } from '../shared/recuperacao-senha.form';
+import { AtualizacaoSenhaForm } from '../shared/atualizacao-senha.form';
 import { AuthService } from '../shared/auth.service';
 
 @Component({
-  selector: 'app-recuperacao-senha',
-  templateUrl: './recuperacao-senha.component.html'
+  selector: 'app-atualizacao-senha',
+  templateUrl: './atualizacao-senha.component.html'
 })
-export class RecuperacaoSenhaComponent implements OnInit {
+export class AtualizacaoSenhaComponent implements OnInit {
 
-  private _form = new RecuperacaoSenhaForm();
+  private _form = new AtualizacaoSenhaForm();
   private _loading = false;
+  private token: string;
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     private router: Router,
     private titleService: TitleService,
     private toastService: ToastService,
@@ -27,7 +29,11 @@ export class RecuperacaoSenhaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('Recuperação de senha');
+    this.token = this.activatedRoute.snapshot.queryParams['token'];
+    this.titleService.setTitle('Atualização de senha');
+    this.formValidationService.customErrorsMessages = [
+      { type: 'senhaConfirmada', message: 'As senhas não conferem' }
+    ];
   }
 
   getErrorMessages(control: AbstractControl) {
@@ -38,23 +44,23 @@ export class RecuperacaoSenhaComponent implements OnInit {
     return [`/${Route.LOGIN}`];
   }
 
-  recuperarSenha(): void {
+  atualizarSenha(): void {
     if (this._form.invalid) {
       return;
     }
 
     this._loading = true;
 
-    const email: string = this._form.get('email').value;
+    const senha: string = this._form.get('senha').value;
 
-    this.authService.recoverySenha(email).subscribe(
-      () => this.toastService.addSuccess('', 'Um link para recuperação da senha foi enviado para o e-mail informado.'),
+    this.authService.updateSenha(this.token, senha).subscribe(
+      () => this.toastService.addSuccess('', 'Senha atualizada com sucesso.'),
       () => this._loading = false,
       () => this.router.navigate([`/${Route.LOGIN}`])
     );
   }
 
-  get form(): RecuperacaoSenhaForm {
+  get form(): AtualizacaoSenhaForm {
     return this._form;
   }
 
