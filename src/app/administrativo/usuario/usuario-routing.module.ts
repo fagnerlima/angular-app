@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { Route } from '@app/shared/enum/route.enum';
+import { AppRoute } from '@app/shared/enum/app-route.enum';
 import { AuthGuard } from '@app/security/shared/auth.guard';
 import { Authority } from '@app/security/shared/authority.enum';
 import { AuthorityGuard } from '@app/security/shared/authority.guard';
@@ -23,18 +23,18 @@ const routes: Routes = [
         data: { expectedAuthority: Authority.ROLE_USUARIO_LISTAR }
       },
       {
-        path: Route.PERFIL,
+        path: AppRoute.PERFIL,
         component: UsuarioPerfilComponent,
         canActivate: [AuthGuard]
       },
       {
-        path: Route.GENERICO_CADASTRAR,
+        path: AppRoute.GENERICO_CADASTRAR,
         component: UsuarioRegistrationComponent,
         canActivate: [AuthorityGuard],
         data: { expectedAuthority: Authority.ROLE_USUARIO_SALVAR }
       },
       {
-        path: Route.GENERICO_EDITAR,
+        path: AppRoute.GENERICO_EDITAR,
         component: UsuarioRegistrationComponent,
         canActivate: [AuthorityGuard],
         data: { expectedAuthority: Authority.ROLE_USUARIO_EDITAR }

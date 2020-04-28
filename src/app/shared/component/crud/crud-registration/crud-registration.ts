@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
 
-import { Route } from '@app/shared/enum/route.enum';
+import { AppRoute } from '@app/shared/enum/app-route.enum';
 import { HttpStatus } from '@app/shared/enum/http-status.enum';
 import { RequestModel } from '@app/shared/interface/request-model';
 import { ResponseListModel } from '@app/shared/interface/response-list-model';
@@ -121,10 +121,10 @@ export abstract class CrudRegistration<T extends RequestModel, U extends Respons
   private errorRedirect(status: HttpStatus): void {
     switch (status) {
       case HttpStatus.UNAUTHORIZED:
-        this.router.navigate([`/${Route.ERRO_401}`]);
+        this.router.navigate([`/${AppRoute.ERRO_401}`]);
         break;
       case HttpStatus.NOT_FOUND:
-        this.router.navigate([`/${Route.ERRO_404}`]);
+        this.router.navigate([`/${AppRoute.ERRO_404}`]);
     }
   }
 

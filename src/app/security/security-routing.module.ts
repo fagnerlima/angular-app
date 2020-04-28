@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { Route } from '@app/shared/enum/route.enum';
+import { AppRoute } from '@app/shared/enum/app-route.enum';
 import { LoginComponent } from './login/login.component';
 import { RecuperacaoSenhaComponent } from './recuperacao-senha/recuperacao-senha.component';
 import { AtualizacaoSenhaComponent } from './atualizacao-senha/atualizacao-senha.component';
 
 const routes: Routes = [
   {
-    path: Route.LOGIN,
+    path: AppRoute.LOGIN,
     component: LoginComponent
   },
   {
-    path: Route.RECUPERACAO_SENHA,
+    path: AppRoute.RECUPERACAO_SENHA,
     component: RecuperacaoSenhaComponent
   },
   {
-    path: Route.ATUALIZACAO_SENHA,
+    path: AppRoute.ATUALIZACAO_SENHA,
     component: AtualizacaoSenhaComponent
   }
 ];

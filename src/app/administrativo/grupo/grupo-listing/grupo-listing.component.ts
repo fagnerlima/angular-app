@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { Authority } from '@app/security/shared/authority.enum';
 import { CrudListing } from '@app/shared/component/crud/crud-listing/crud-listing';
 import { CrudService } from '@app/shared/service/crud.service';
-import { Route } from '@app/shared/enum/route.enum';
+import { AppRoute } from '@app/shared/enum/app-route.enum';
 import { GrupoListFilter } from '../shared/grupo-list-filter.model';
 import { GrupoListResponse } from './../shared/grupo-list-response.model';
 import { GrupoResponse } from './../shared/grupo-response.model';
@@ -38,7 +38,7 @@ export class GrupoListingComponent extends CrudListing<GrupoRequest, GrupoRespon
   }
 
   getEditarRouterLink(id: number): string | any[] {
-    return [`/${Route.ADMINISTRATIVO_GRUPOS}/${Route.GENERICO_EDITAR}`.replace(':id', String(id))];
+    return [`/${AppRoute.ADMINISTRATIVO_GRUPOS}/${AppRoute.GENERICO_EDITAR}`.replace(':id', String(id))];
   }
 
   get title(): string {
@@ -50,6 +50,6 @@ export class GrupoListingComponent extends CrudListing<GrupoRequest, GrupoRespon
   }
 
   protected initBreadcrumb(): void {
-    this.breadcrumbService.clearAndAdd('Grupos', [`/${Route.ADMINISTRATIVO_GRUPOS}`]);
+    this.breadcrumbService.clearAndAdd('Grupos', [`/${AppRoute.ADMINISTRATIVO_GRUPOS}`]);
   }
 }

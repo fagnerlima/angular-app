@@ -1,7 +1,8 @@
-export enum Route {
+export enum AppRoute {
   LOGIN = 'login',
   RECUPERACAO_SENHA = 'recuperacao-senha',
   ATUALIZACAO_SENHA = 'atualizacao-senha',
+
   HOME = 'home',
   ERRO_401 = 'erro-401',
   ERRO_404 = 'erro-404',

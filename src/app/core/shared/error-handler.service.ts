@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
-import { Route } from '@app/shared/enum/route.enum';
+import { AppRoute } from '@app/shared/enum/app-route.enum';
 import { ToastService } from '@app/shared/service/toast.service';
 import { environment } from '@env/environment';
 import { HttpStatus } from '@app/shared/enum/http-status.enum';
@@ -16,8 +16,8 @@ export class ErrorHandlerService {
   ) { }
 
   handleHttpErrorResponse(httpErrorResponse: HttpErrorResponse): void {
-    if (HttpStatus.UNAUTHORIZED === httpErrorResponse.status && this.router.url !== `/${Route.LOGIN}`) {
-      this.router.navigate([`/${Route.LOGIN}`]);
+    if (HttpStatus.UNAUTHORIZED === httpErrorResponse.status && this.router.url !== `/${AppRoute.LOGIN}`) {
+      this.router.navigate([`/${AppRoute.LOGIN}`]);
     }
 
     if (!environment.production) {

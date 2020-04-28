@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AbstractControl } from '@angular/forms';
 
-import { Route } from '@app/shared/enum/route.enum';
+import { AppRoute } from '@app/shared/enum/app-route.enum';
 import { FormValidationService } from '@app/shared/service/form-validation.service';
 import { ToastService } from '@app/shared/service/toast.service';
 import { TitleService } from '@app/shared/service/title.service';
@@ -35,7 +35,7 @@ export class RecuperacaoSenhaComponent implements OnInit {
   }
 
   getLoginRouterLink(): string | any[] {
-    return [`/${Route.LOGIN}`];
+    return [`/${AppRoute.LOGIN}`];
   }
 
   recuperarSenha(): void {
@@ -53,7 +53,7 @@ export class RecuperacaoSenhaComponent implements OnInit {
         this._loading = false;
         this._form.reset();
       },
-      () => this.router.navigate([`/${Route.LOGIN}`])
+      () => this.router.navigate([`/${AppRoute.LOGIN}`])
     );
   }
 

@@ -8,7 +8,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { environment } from '@env/environment';
 import { isNullOrUndefined, isString } from '@app/shared/util/utils';
-import { Route } from '@app/shared/enum/route.enum';
+import { AppRoute } from '@app/shared/enum/app-route.enum';
 import { StorageService } from '@app/shared/service/storage.service';
 import { Authority } from './authority.enum';
 import { Credencials } from './credentials.model';
@@ -41,7 +41,7 @@ export class AuthService {
       .then(response => {
         this.selectStorage(remember);
         this.putData(response);
-        this.router.navigate([`/${Route.HOME}`]);
+        this.router.navigate([`/${AppRoute.HOME}`]);
         Promise.resolve();
       })
       .catch((error: any) => {});
@@ -71,7 +71,7 @@ export class AuthService {
 
   logout(): void {
     this.removeData();
-    this.router.navigate([`/${Route.LOGIN}`]);
+    this.router.navigate([`/${AppRoute.LOGIN}`]);
   }
 
   getAccessToken(): string {

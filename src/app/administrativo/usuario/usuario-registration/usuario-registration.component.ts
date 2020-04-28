@@ -14,7 +14,7 @@ import { UsuarioForm } from '../shared/usuario.form';
 import { UsuarioRequest } from '../shared/usuario-request.model';
 import { UsuarioResponse } from '../shared/usuario-response.model';
 import { UsuarioService } from '../shared/usuario.service';
-import { Route } from '@app/shared/enum/route.enum';
+import { AppRoute } from '@app/shared/enum/app-route.enum';
 
 @Component({
   selector: 'app-usuario-registration',
@@ -63,14 +63,14 @@ export class UsuarioRegistrationComponent extends CrudRegistration<UsuarioReques
   }
 
   protected initBreadcrumb(): void {
-    this.breadcrumbService.clearAndAdd('Usuários', [`/${Route.ADMINISTRATIVO_USUARIOS}`]);
+    this.breadcrumbService.clearAndAdd('Usuários', [`/${AppRoute.ADMINISTRATIVO_USUARIOS}`]);
     this.isEditionMode()
-      ? this.breadcrumbService.add('Edição de Usuário', [`/${Route.ADMINISTRATIVO_USUARIOS}`, this.model.id])
-      : this.breadcrumbService.add('Cadastro de Usuário', [`/${Route.ADMINISTRATIVO_USUARIOS}/${Route.GENERICO_CADASTRAR}`]);
+      ? this.breadcrumbService.add('Edição de Usuário', [`/${AppRoute.ADMINISTRATIVO_USUARIOS}`, this.model.id])
+      : this.breadcrumbService.add('Cadastro de Usuário', [`/${AppRoute.ADMINISTRATIVO_USUARIOS}/${AppRoute.GENERICO_CADASTRAR}`]);
   }
 
   protected redirectToListing(): void {
-    this.router.navigate([`/${Route.ADMINISTRATIVO_USUARIOS}`]);
+    this.router.navigate([`/${AppRoute.ADMINISTRATIVO_USUARIOS}`]);
   }
 
   private async loadGrupoOptions(): Promise<void> {

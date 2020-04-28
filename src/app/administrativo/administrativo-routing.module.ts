@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AuthGuard } from '@app/security/shared/auth.guard';
-import { Route } from '@app/shared/enum/route.enum';
+import { AppRoute } from '@app/shared/enum/app-route.enum';
 import { AdministrativoComponent } from './administrativo.component';
 
 const routes: Routes = [
@@ -12,12 +12,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
-        path: Route.GRUPOS,
+        path: AppRoute.GRUPOS,
         loadChildren: () => import('./grupo/grupo.module').then(m => m.GrupoModule),
         canLoad: [AuthGuard]
       },
       {
-        path: Route.USUARIOS,
+        path: AppRoute.USUARIOS,
         loadChildren: () => import('./usuario/usuario.module').then(m => m.UsuarioModule),
         canLoad: [AuthGuard]
       }

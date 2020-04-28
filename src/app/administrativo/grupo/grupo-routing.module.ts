@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { Route } from '@app/shared/enum/route.enum';
+import { AppRoute } from '@app/shared/enum/app-route.enum';
 import { Authority } from '@app/security/shared/authority.enum';
 import { AuthGuard } from '@app/security/shared/auth.guard';
 import { AuthorityGuard } from '@app/security/shared/authority.guard';
@@ -22,13 +22,13 @@ const routes: Routes = [
         data: { expectedAuthority: Authority.ROLE_GRUPO_LISTAR }
       },
       {
-        path: Route.GENERICO_CADASTRAR,
+        path: AppRoute.GENERICO_CADASTRAR,
         component: GrupoRegistrationComponent,
         canActivate: [AuthorityGuard],
         data: { expectedAuthority: Authority.ROLE_GRUPO_SALVAR }
       },
       {
-        path: Route.GENERICO_EDITAR,
+        path: AppRoute.GENERICO_EDITAR,
         component: GrupoRegistrationComponent,
         canActivate: [AuthorityGuard],
         data: { expectedAuthority: Authority.ROLE_GRUPO_EDITAR }

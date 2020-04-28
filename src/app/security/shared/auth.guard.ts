@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanLoad, RouterStateSnapshot, Route, Router, UrlSegment } from '@angular/router';
 
-import { Route as RouteEnum } from '@app/shared/enum/route.enum';
+import { AppRoute } from '@app/shared/enum/app-route.enum';
 import { AuthService } from './auth.service';
 
 @Injectable()
@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate, CanLoad {
 
   private checkLogin(): boolean {
     if (!this.authService.isValidAccessToken()) {
-      this.router.navigate([`/${RouteEnum.LOGIN}`]);
+      this.router.navigate([`/${AppRoute.LOGIN}`]);
 
       return false;
     }

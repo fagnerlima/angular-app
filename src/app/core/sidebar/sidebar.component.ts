@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 
 import { MenuItem } from 'primeng/api';
 
-import { Route } from '@app/shared/enum/route.enum';
+import { AppRoute } from '@app/shared/enum/app-route.enum';
 import { AuthService } from '@app/security/shared/auth.service';
 import { UsuarioListResponse } from '@app/administrativo/usuario/shared/usuario-list-response.model';
 import { UsuarioService } from '@app/administrativo/usuario/shared/usuario.service';
@@ -58,13 +58,13 @@ export class SidebarComponent implements OnInit, OnDestroy {
       // Home
       .addMenu(this.menu('Home', 'fa fa-home', 'menu-dashboard', ['/home']))
       // Administrativo
-      .addMenu(this.expandedMenu('Administrativo', 'menu-administrativo', this.isExpandedMenu(`/${Route.ADMINISTRATIVO}`)))
-        .addMenu(this.expandedMenu('Grupo', 'submenu-grupo', this.isExpandedMenu(`/${Route.ADMINISTRATIVO_GRUPOS}`)), 1)
-          .addMenu(this.listingMenu([`/${Route.ADMINISTRATIVO_GRUPOS}`]), 2)
-          .addMenu(this.registrationMenu([`/${Route.ADMINISTRATIVO_GRUPOS}/${Route.GENERICO_CADASTRAR}`]), 2)
-        .addMenu(this.expandedMenu('Usuário', 'submenu-usuario', this.isExpandedMenu(`/${Route.ADMINISTRATIVO_USUARIOS}`)), 1)
-          .addMenu(this.listingMenu([`/${Route.ADMINISTRATIVO_USUARIOS}`]), 2)
-          .addMenu(this.registrationMenu([`/${Route.ADMINISTRATIVO_USUARIOS}/${Route.GENERICO_CADASTRAR}`]), 2)
+      .addMenu(this.expandedMenu('Administrativo', 'menu-administrativo', this.isExpandedMenu(`/${AppRoute.ADMINISTRATIVO}`)))
+        .addMenu(this.expandedMenu('Grupo', 'submenu-grupo', this.isExpandedMenu(`/${AppRoute.ADMINISTRATIVO_GRUPOS}`)), 1)
+          .addMenu(this.listingMenu([`/${AppRoute.ADMINISTRATIVO_GRUPOS}`]), 2)
+          .addMenu(this.registrationMenu([`/${AppRoute.ADMINISTRATIVO_GRUPOS}/${AppRoute.GENERICO_CADASTRAR}`]), 2)
+        .addMenu(this.expandedMenu('Usuário', 'submenu-usuario', this.isExpandedMenu(`/${AppRoute.ADMINISTRATIVO_USUARIOS}`)), 1)
+          .addMenu(this.listingMenu([`/${AppRoute.ADMINISTRATIVO_USUARIOS}`]), 2)
+          .addMenu(this.registrationMenu([`/${AppRoute.ADMINISTRATIVO_USUARIOS}/${AppRoute.GENERICO_CADASTRAR}`]), 2)
       .getMenuItems();
   }
 
