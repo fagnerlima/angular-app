@@ -1,21 +1,27 @@
-<header id="app-topbar">
-  <button class="menu-button" (click)="onToggleMenu()">
-    <i class="fa fa-bars"></i>
-  </button>
-
-  <a routerLink="/" class="logo" [title]="applicationName" (click)="scrollToTop()">{{ applicationName }}</a>
-
-  <ul class="topbar-menu">
-    <ng-container *ngTemplateOutlet="popupMenu; context: { menu: menuUsuario, icon: 'fa fa-ellipsis-v' }"></ng-container>
-  </ul>
-
-  <p-menu #menuUsuario popup="popup" [model]="menuItemsUsuario"></p-menu>
-</header>
-
-<ng-template #popupMenu let-menu="menu" let-icon="icon">
-  <li>
-    <a href="javascript:" class="popup-menu" (click)="menu.toggle($event)">
-      <i class="fa {{icon}}"></i>
+<mat-toolbar id="app-topbar" color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button aria-label="Menu" (click)="onToggleMenu()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <a mat-button
+        routerLink="/"
+        [title]="applicationName"
+        (click)="scrollToTop()">
+        {{ applicationName }}
     </a>
-  </li>
-</ng-template>
+    <div class="flex-spacer"></div>
+    <button mat-icon-button [matMenuTriggerFor]="menuUsuario" aria-label="Menu Usuário">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menuUsuario>
+      <a mat-menu-item [routerLink]="getPerfilUsuarioRouterLink()">
+        <mat-icon>person</mat-icon>
+        <span>Perfil de Usuário</span>
+      </a>
+      <button mat-menu-item>
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>

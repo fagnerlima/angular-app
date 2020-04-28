@@ -36,6 +36,10 @@ export class TopbarComponent {
     window.scrollTo(0, 0);
   }
 
+  getPerfilUsuarioRouterLink(): string | any[] {
+    return [`/${AppRoute.ADMINISTRATIVO_USUARIOS_PERFIL}`];
+  }
+
   logout(): void {
     this.authService.logout();
   }
