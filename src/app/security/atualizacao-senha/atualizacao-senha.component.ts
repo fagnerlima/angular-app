@@ -54,8 +54,11 @@ export class AtualizacaoSenhaComponent implements OnInit {
     const senha: string = this._form.get('senha').value;
 
     this.authService.updateSenha(this.token, senha).subscribe(
-      () => this.toastService.addSuccess('', 'Senha atualizada com sucesso.'),
-      () => this._loading = false,
+      () => this.toastService.open('Senha atualizada com sucesso.'),
+      () => {
+        this._loading = false;
+        this._form.reset();
+      },
       () => this.router.navigate([`/${Route.LOGIN}`])
     );
   }

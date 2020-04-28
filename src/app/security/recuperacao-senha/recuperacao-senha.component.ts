@@ -48,8 +48,11 @@ export class RecuperacaoSenhaComponent implements OnInit {
     const email: string = this._form.get('email').value;
 
     this.authService.recoverySenha(email).subscribe(
-      () => this.toastService.addSuccess('', 'Um link para recuperação da senha foi enviado para o e-mail informado.'),
-      () => this._loading = false,
+      () => this.toastService.open('Um link para recuperação da senha foi enviado para o e-mail informado.'),
+      () => {
+        this._loading = false;
+        this._form.reset();
+      },
       () => this.router.navigate([`/${Route.LOGIN}`])
     );
   }
