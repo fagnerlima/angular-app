@@ -14,7 +14,9 @@ interface Validation {
 })
 export class FormValidationService {
 
-  getErrorMessages(control: AbstractControl, customMessages?: Validation[]): string[] {
+  customErrorsMessages: Validation[];
+
+  getErrorMessages(control: AbstractControl): string[] {
     if (isNullOrUndefined(control.errors)) {
       return [];
     }
@@ -23,13 +25,13 @@ export class FormValidationService {
     const messages = [];
 
     errors.forEach(error => {
-      if (!isNullOrUndefined(customMessages) && customMessages.length) {
-        customMessages.forEach(errorMessage => {
-          if (error === errorMessage.type) {
-            messages.push(errorMessage.message);
-            return;
-          }
-        });
+      if (!isNullOrUndefined(this.customErrorsMessages) && this.customErrorsMessages.length) {
+        const customErrorMessage = this.customErrorsMessages.find(errorMessage => errorMessage.type === error);
+
+        if (customErrorMessage) {
+          messages.push(customErrorMessage.message);
+          return;
+        }
       }
 
       messages.push(this.getErrorMessage(control, error));
@@ -39,15 +41,16 @@ export class FormValidationService {
   }
 
   getErrorMessage(control: AbstractControl, error: string): string {
-    const messages: Map<string, string> = new Map();
-    messages.set(FormValidationType.REQUIRED, 'Este campo é obrigatório');
-    messages.set(FormValidationType.REQUIRED_TRUE, 'Este campo deve ser marcado');
-    messages.set(FormValidationType.MIN, `Valor mínimo: ${this.getMinError(control)}`);
-    messages.set(FormValidationType.MIN_LENGTH, `Tamanho mínimo: ${this.getMinLengthError(control)} caracteres`);
-    messages.set(FormValidationType.MAX, `Valor máximo: ${this.getMaxError(control)}`);
-    messages.set(FormValidationType.MAX_LENGTH, `Tamanho máximo: ${this.getMaxLengthError(control)} caracteres`);
-    messages.set(FormValidationType.PATTERN, 'Formato inválido');
-    messages.set(FormValidationType.EMAIL, 'E-mail inválido');
+    const messages = new Map<string, string>([
+      [FormValidationType.REQUIRED, 'Este campo é obrigatório'],
+      [FormValidationType.REQUIRED_TRUE, 'Este campo deve ser marcado'],
+      [FormValidationType.MIN, `Valor mínimo: ${this.getMinError(control)}`],
+      [FormValidationType.MIN_LENGTH, `Tamanho mínimo: ${this.getMinLengthError(control)} caracteres`],
+      [FormValidationType.MAX, `Valor máximo: ${this.getMaxError(control)}`],
+      [FormValidationType.MAX_LENGTH, `Tamanho máximo: ${this.getMaxLengthError(control)} caracteres`],
+      [FormValidationType.PATTERN, 'Formato inválido'],
+      [FormValidationType.EMAIL, 'E-mail inválido'],
+    ]);
 
     return messages.has(error) ? messages.get(error) : 'Erro de validação';
   }

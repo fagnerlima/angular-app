@@ -14,7 +14,7 @@
   </div>
 
   <form
-      class="form login-form"
+      class="form form-login"
       [formGroup]="form"
       autocomplete="off"
       [class.submitted]="formSubmitted"
@@ -50,15 +50,13 @@
     </div>
 
     <div fxLayout="row" fxLayoutAlign="center center">
-      <div fxFlex="50%">
+      <div fxFlex="100%">
         <mat-checkbox
             id="lembrar-acesso"
             name="lembrar-acesso"
             formControlName="remember">
             Lembrar
           </mat-checkbox>
-      </div>
-      <div fxFlex="50%">
         <button mat-raised-button
           color="primary"
           type="submit"

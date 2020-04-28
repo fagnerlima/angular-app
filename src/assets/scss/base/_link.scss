@@ -9,6 +9,13 @@ body a {
   &:hover {
     color: $a-color-hover;
     text-decoration: underline;
+
+    &.mat-button,
+    &.mat-raised-button,
+    &.mat-stroked-button,
+    &.mat-flat-button {
+      text-decoration: none;
+    }
   }
 
   &.disabled {

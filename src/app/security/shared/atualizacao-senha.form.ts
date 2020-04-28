@@ -1,4 +1,4 @@
-import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl, FormGroupDirective, NgForm } from '@angular/forms';
 
 export class AtualizacaoSenhaForm extends FormGroup {
 
@@ -10,6 +10,16 @@ export class AtualizacaoSenhaForm extends FormGroup {
 
     this.setValidators(this.senhaConfirmada);
   }
+
+  confirmacaoSenhaErrorStateMacher = {
+    isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+      if (!control || (!control.touched && !form.submitted)) {
+        return false;
+      }
+
+      return control.invalid || control.parent.invalid;
+    }
+  };
 
   private senhaConfirmada(control: AbstractControl): { senhaConfirmada: { valid: boolean} } {
     const senha: string = control.get('senha').value;

@@ -1,65 +1,124 @@
-<div *ngIf="form" class="login-form">
+<mat-card *ngIf="recuperacaoSenhaForm" class="login-box">
   <app-panel-loader [visible]="loading"></app-panel-loader>
 
-  <img class="logo" src="assets/image/logo.png" alt="Angular App" title="Angular App">
+  <div fxLayout="row">
+    <div fxFlex="100%" class="text-center">
+      <img class="logo" src="assets/image/logo.png" alt="Angular App" title="Angular App">
+    </div>
+  </div>
 
   <ng-container *ngIf="!isModoAtualizacaoSenha(); else atualizacaoSenha">
-    <form class="form form-recuperacao-senha" [formGroup]="form" autocomplete="off" [class.submitted]="formSubmitted" (ngSubmit)="recuperarSenha()">
-      <div class="ui-g">
-        <div class="ui-g-12">
-          <h1 class="text-center">Recuperação de Senha</h1>
+    <div fxLayout="row">
+      <div fxFlex="100%" class="text-center">
+        <h1>Recuperação de Senha</h1>
+      </div>
+    </div>
+
+    <form
+        class="form form-recuperacao-senha"
+        [formGroup]="recuperacaoSenhaForm"
+        autocomplete="off"
+        [class.submitted]="formSubmitted"
+        (ngSubmit)="recuperarSenha()">
+      <div fxLayout="row">
+        <div fxFlex="100%">
+          <mat-form-field>
+            <mat-label>E-mail</mat-label>
+            <input matInput
+                type="email"
+                id="email"
+                formControlName="email"
+                appAutoFocus>
+            <mat-error *ngFor="let errorMessage of getErrorMessages(recuperacaoSenhaForm.get('email'))">
+              {{ errorMessage }}
+            </mat-error>
+          </mat-form-field>
         </div>
       </div>
-
-      <div class="ui-g form-group-email">
-        <label for="email" class="ui-g-12 control-label">E-mail</label>
-        <div class="ui-g-12">
-          <input pInputText type="text" id="email" class="form-control" formControlName="email" appAutoFocus>
-          <app-validation [control]="form.get('email')" [submitted]="formSubmitted" mode="submitted"></app-validation>
-        </div>
-      </div>
-
-      <div class="ui-g form-group-botoes">
-        <div class="ui-g-12">
-          <button pButton type="submit" class="pull-right" icon="fa fa-envelope-o" label="Enviar"></button>
-          <a pButton [routerLink]="getLoginRouterLink()" class="pull-left ui-button-secondary" icon="fa fa-undo" label="Voltar"></a>
+      <div fxLayout="row">
+        <div fxFlex="100%">
+          <button mat-raised-button
+              type="submit"
+              color="primary"
+              id="enviar"
+              class="pull-right">
+            Enviar
+          </button>
+          <a mat-raised-button
+              id="voltar"
+              class="pull-left"
+              [routerLink]="getLoginRouterLink()">
+            Voltar
+          </a>
         </div>
       </div>
     </form>
   </ng-container>
 
   <ng-template #atualizacaoSenha>
-    <form class="form form-atualizacao-senha" [formGroup]="form" autocomplete="off" [class.submitted]="formSubmitted" (ngSubmit)="atualizarSenha()">
-      <div class="ui-g ui-fluid">
-        <div class="ui-g-12">
-          <h1 class="text-center">Atualização de Senha</h1>
+    <div fxLayout="row">
+      <div fxFlex="100%" class="text-center">
+        <h1>Atualização de Senha</h1>
+      </div>
+    </div>
+
+    <form
+        class="form form-atualizacao-senha"
+        [formGroup]="atualizacaoSenhaForm"
+        autocomplete="off"
+        [class.submitted]="formSubmitted"
+        (ngSubmit)="atualizarSenha()">
+      <div fxLayout="row">
+        <div fxFlex="100%">
+          <mat-form-field>
+            <mat-label>Senha</mat-label>
+            <input matInput
+                type="password"
+                id="senha"
+                formControlName="senha"
+                appAutoFocus>
+            <mat-error *ngFor="let errorMessage of getErrorMessages(atualizacaoSenhaForm.get('senha'))">
+              {{ errorMessage }}
+            </mat-error>
+          </mat-form-field>
         </div>
       </div>
-
-      <div class="ui-g form-group-senha">
-        <label for="senha" class="ui-g-12 control-label">Senha</label>
-        <div class="ui-g-12">
-          <input pInputText type="password" id="senha" class="form-control" formControlName="senha" appAutoFocus>
-          <app-validation [control]="form.get('senha')" [submitted]="formSubmitted" mode="submitted"></app-validation>
+      <div fxLayout="row">
+        <div fxFlex="100%">
+          <mat-form-field>
+            <mat-label>Confirmação de Senha</mat-label>
+            <input
+                matInput
+                type="password"
+                id="confirmacao-senha"
+                formControlName="confirmacaoSenha"
+                [errorStateMatcher]="atualizacaoSenhaForm.confirmacaoSenhaErrorStateMacher">
+            <mat-error *ngFor="let errorMessage of getErrorMessages(atualizacaoSenhaForm.get('confirmacaoSenha'))">
+              {{ errorMessage }}
+            </mat-error>
+            <mat-error *ngFor="let errorMessage of getErrorMessages(atualizacaoSenhaForm)">
+              {{ errorMessage }}
+            </mat-error>
+          </mat-form-field>
         </div>
       </div>
-
-      <div class="ui-g form-group-confirmacao-senha">
-        <label for="confirmacao-senha" class="ui-g-12 control-label">Confirmação de Senha</label>
-        <div class="ui-g-12">
-          <input pInputText type="password" id="confirmacao-senha" class="form-control" formControlName="confirmacaoSenha" />
-          <app-validation [control]="form.get('confirmacaoSenha')" [submitted]="formSubmitted" mode="submitted"></app-validation>
-          <app-validation [control]="form" [submitted]="formSubmitted"
-            [messages]="[{ type: 'senhaConfirmada', message: 'As senhas não conferem' }]" mode="submitted"></app-validation>
-        </div>
-      </div>
-
-      <div class="ui-g form-group-botoes">
-        <div class="ui-g-12">
-          <button pButton type="submit" class="pull-right" icon="fa fa-check" label="Atualizar"></button>
-          <a pButton [routerLink]="getLoginRouterLink()" class="pull-left ui-button-secondary" icon="fa fa-undo" label="Voltar"></a>
+      <div fxLayout="row">
+        <div fxFlex="100%">
+          <button mat-raised-button
+              type="submit"
+              color="primary"
+              id="atualizar"
+              class="pull-right">
+            Atualizar
+          </button>
+          <a mat-raised-button
+              id="voltar"
+              class="pull-left"
+              [routerLink]="getLoginRouterLink()">
+            Voltar
+          </a>
         </div>
       </div>
     </form>
   </ng-template>
-</div>
+</mat-card>
