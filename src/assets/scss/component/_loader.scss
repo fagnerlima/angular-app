@@ -42,7 +42,7 @@
 
 .panel-loader {
   @include flex-center;
-  background-color: rgba(#424242, .5);
+  background-color: rgba(#424242, .25);
   height: 100%;
   left: 0;
   position: absolute;
