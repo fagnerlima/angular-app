@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppRoute } from '@app/shared/enum/app-route.enum';
 import { AuthGuard } from '@app/security/shared/auth.guard';
 import { Authority } from '@app/security/shared/authority.enum';
-import { AuthorityGuard } from '@app/security/shared/authority.guard';
 import { UsuarioPerfilComponent } from './usuario-perfil/usuario-perfil.component';
 import { UsuarioListingComponent } from './usuario-listing/usuario-listing.component';
 import { UsuarioComponent } from './usuario.component';
@@ -19,8 +18,8 @@ const routes: Routes = [
       {
         path: '',
         component: UsuarioListingComponent,
-        canActivate: [AuthorityGuard],
-        data: { expectedAuthority: Authority.ROLE_USUARIO_LISTAR }
+        canActivate: [AuthGuard],
+        data: { expectedAuthorities: Authority.ROLE_USUARIO_LISTAR }
       },
       {
         path: AppRoute.PERFIL,
@@ -30,14 +29,14 @@ const routes: Routes = [
       {
         path: AppRoute.GENERICO_CADASTRAR,
         component: UsuarioRegistrationComponent,
-        canActivate: [AuthorityGuard],
-        data: { expectedAuthority: Authority.ROLE_USUARIO_SALVAR }
+        canActivate: [AuthGuard],
+        data: { expectedAuthorities: Authority.ROLE_USUARIO_SALVAR }
       },
       {
         path: AppRoute.GENERICO_EDITAR,
         component: UsuarioRegistrationComponent,
-        canActivate: [AuthorityGuard],
-        data: { expectedAuthority: Authority.ROLE_USUARIO_EDITAR }
+        canActivate: [AuthGuard],
+        data: { expectedAuthorities: Authority.ROLE_USUARIO_EDITAR }
       }
     ]
   }

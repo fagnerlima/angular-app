@@ -8,7 +8,6 @@ import { AtualizacaoSenhaComponent } from './atualizacao-senha/atualizacao-senha
 import { AuthService } from './shared/auth.service';
 import { TokenInterceptor } from './shared/token-interceptor';
 import { AuthGuard } from './shared/auth.guard';
-import { AuthorityGuard } from './shared/authority.guard';
 import { SecurityRoutingModule } from './security-routing.module';
 
 @NgModule({
@@ -28,8 +27,7 @@ import { SecurityRoutingModule } from './security-routing.module';
       useClass: TokenInterceptor,
       multi: true
     },
-    AuthGuard,
-    AuthorityGuard
+    AuthGuard
   ]
 })
 export class SecurityModule { }
