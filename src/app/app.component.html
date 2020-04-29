@@ -14,9 +14,9 @@
           [mode]="mobileQueryList.matches ? 'over' : 'side'"
           [fixedInViewport]="mobileQueryList.matches"
           fixedTopGap="56">
-        <mat-nav-list>
-          <app-sidebar class="app-sidebar-list"></app-sidebar>
-        </mat-nav-list>
+        <app-sidebar
+            class="app-sidebar-list"
+            (itemClick)="sidenav.toggle()"></app-sidebar>
       </mat-sidenav>
       <mat-sidenav-content class="app-sidebar-content">
         <main id="app-main">

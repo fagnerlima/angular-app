@@ -1,6 +1,39 @@
-<section *ngIf="usuario" class="header-profile">
-  <ul>
-    <li><b>Usuário:</b> {{ usuario.nome }}</li>
-    <li><b>Tempo de sessão:</b> {{ today | timeDifference:loggedSince:'HH:mm:ss':'h' }}</li>
-  </ul>
-</section>
+<mat-toolbar *ngIf="usuario">
+  <mat-toolbar-row>
+    <section class="header-profile">
+      <ul>
+        <li><b>Usuário:</b> {{ usuario.nome }}</li>
+        <li><b>Tempo de sessão:</b> {{ today | timeDifference:loggedSince:'HH:mm:ss':'h' }}</li>
+      </ul>
+    </section>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-nav-list>
+  <ng-container *ngFor="let item of menuItems; let i = index">
+    <ng-container
+        [ngTemplateOutlet]="item.items && item.items.length ? tplHeaderWithMenuItems : tplMenuItem"
+        [ngTemplateOutletContext]="{ item: item, first: i === 0 }">
+    </ng-container>
+  </ng-container>
+</mat-nav-list>
+
+<ng-template #tplMenuItem let-item="item">
+  <a mat-list-item
+      [routerLink]="[item.routerLink]"
+      routerLinkActive="list-item-active"
+      (click)="onItemClick()">
+    <mat-icon *ngIf="item.icon" matListIcon>
+      {{ item.icon }}
+    </mat-icon>
+    {{ item.label  }}
+  </a>
+</ng-template>
+
+<ng-template #tplHeaderWithMenuItems let-item="item" let-first="first">
+  <mat-divider *ngIf="!first"></mat-divider>
+  <h2 matSubheader>{{ item.label }}</h2>
+  <ng-container *ngFor="let subitem of item.items">
+    <ng-container *ngTemplateOutlet="tplMenuItem; context: { item: subitem }"></ng-container>
+  </ng-container>
+</ng-template>

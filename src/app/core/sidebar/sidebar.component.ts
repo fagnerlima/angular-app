@@ -55,15 +55,11 @@ export class SidebarComponent implements OnInit, OnDestroy {
   initMenuItems(): void {
     this._menuItems = this.menuBuilder
       // Home
-      .add(this.menu('Home', 'fa fa-home', 'menu-dashboard', ['/home']))
+      .add({ label: 'Home', icon: 'home', routerLink: `/${AppRoute.HOME}` })
       // Administrativo
-      .add(this.expandedMenu('Administrativo', 'menu-administrativo', this.isExpandedMenu(`/${AppRoute.ADMINISTRATIVO}`)))
-        .add(this.expandedMenu('Grupo', 'submenu-grupo', this.isExpandedMenu(`/${AppRoute.ADMINISTRATIVO_GRUPOS}`)), 1)
-          .add(this.listingMenu([`/${AppRoute.ADMINISTRATIVO_GRUPOS}`]), 2)
-          .add(this.registrationMenu([`/${AppRoute.ADMINISTRATIVO_GRUPOS}/${AppRoute.GENERICO_CADASTRAR}`]), 2)
-        .add(this.expandedMenu('Usuário', 'submenu-usuario', this.isExpandedMenu(`/${AppRoute.ADMINISTRATIVO_USUARIOS}`)), 1)
-          .add(this.listingMenu([`/${AppRoute.ADMINISTRATIVO_USUARIOS}`]), 2)
-          .add(this.registrationMenu([`/${AppRoute.ADMINISTRATIVO_USUARIOS}/${AppRoute.GENERICO_CADASTRAR}`]), 2)
+      .add({ label: 'Administrativo' })
+        .add({ label: 'Grupos', routerLink: `/${AppRoute.ADMINISTRATIVO_GRUPOS}` }, 1)
+        .add({ label: 'Usuários', routerLink: `/${AppRoute.ADMINISTRATIVO_USUARIOS}` }, 1)
       .getMenuItems();
   }
 
@@ -94,43 +90,5 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   private loadUsuario(): void {
     this.usuarioService.findPerfil().subscribe(usuario => this._usuario = usuario);
-  }
-
-  private menu(label: string, icon: string, styleClass: string, routerLink: any): MenuItem {
-    return {
-      label,
-      icon,
-      styleClass,
-      routerLink,
-      command: () => this.onItemClick()
-    };
-  }
-
-  private expandedMenu(label: string, styleClass: string, expanded: boolean): MenuItem {
-    return {
-      label,
-      styleClass,
-      expanded
-    };
-  }
-
-  private listingMenu(routerLink: any): MenuItem {
-    return {
-      label: 'Listagem',
-      icon: 'fa fa-table',
-      styleClass: 'submenu-listagem',
-      routerLink,
-      command: () => this.onItemClick()
-    };
-  }
-
-  private registrationMenu(routerLink: any): MenuItem {
-    return {
-      label: 'Cadastro',
-      icon: 'fa fa-plus',
-      styleClass: 'submenu-cadastro',
-      routerLink,
-      command: () => this.onItemClick()
-    };
   }
 }
