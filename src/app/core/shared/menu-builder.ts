@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 
-import { MenuItem } from 'primeng/api';
-
 import { isNullOrUndefined } from '@app/shared/util/utils';
 import { AuthService } from '@app/security/shared/auth.service';
+import { MenuItem } from './menu-item';
 
 @Injectable()
 export class MenuBuilder {
@@ -34,7 +33,7 @@ export class MenuBuilder {
    * -- Submenu 0.0
    * --- Submenu 0.0.0
    */
-  addMenu(menu: MenuItem, level?: number): this {
+  add(menu: MenuItem, level?: number): this {
     if (isNullOrUndefined(level) || 0 === level) {
       this._menuItems.push(menu);
     } else {
@@ -60,7 +59,7 @@ export class MenuBuilder {
       return this;
     }
 
-    return this.addMenu(menu, level);
+    return this.add(menu, level);
   }
 
   clear(): void {

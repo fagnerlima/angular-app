@@ -1,5 +1,5 @@
 body {
-  .wrapper.login {
+  #app-wrapper.login {
     @include flex-center;
     height: 100vh;
     margin: 0;

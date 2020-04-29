@@ -1,41 +1,40 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 import * as moment from 'moment';
 
 import { AuthService } from './security/shared/auth.service';
-import { MediaQueryService } from './shared/service/media-query.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  providers: [MediaQueryService]
+  templateUrl: './app.component.html'
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
+  private _mobileQueryList: MediaQueryList;
+  private _mobileQueryListener: () => void;
   private _showButtonScrollTop = false;
-  private _toggled = false;
 
   constructor(
     private authService: AuthService,
-    private mediaQueryService: MediaQueryService
-  ) { }
+    private changeDetectorRef: ChangeDetectorRef,
+    private mediaMatcher: MediaMatcher
+  ) {
+    this._mobileQueryList = this.mediaMatcher.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => this.changeDetectorRef.detectChanges();
+    this._mobileQueryList.addEventListener('change', this._mobileQueryListener);
+  }
 
   ngOnInit(): void {
-    this.mediaQueryService.setMediaQuery('(min-width: 768px)');
-    this._toggled = this.matchesMediaQuery;
     moment.locale('pt-br');
   }
 
-  get displayMask(): boolean {
-    return this._toggled && !this.mediaQueryService.matches;
+  ngOnDestroy(): void {
+    this._mobileQueryList.removeEventListener('change', this._mobileQueryListener);
   }
 
-  get toggled(): boolean {
-    return this._toggled;
-  }
-
-  get matchesMediaQuery(): boolean {
-    return this.mediaQueryService.matches;
+  get mobileQueryList(): MediaQueryList {
+    return this._mobileQueryList;
   }
 
   get showButtonScrollTop(): boolean {
@@ -46,16 +45,6 @@ export class AppComponent implements OnInit {
     return this.authService.isValidAccessToken();
   }
 
-  toggleMenu(): void {
-    this._toggled = !this._toggled;
-  }
-
-  hideMenu(): void {
-    if (!this.matchesMediaQuery) {
-      this._toggled = false;
-    }
-  }
-
   scrollToTop(): void {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }
@@ -63,10 +52,5 @@ export class AppComponent implements OnInit {
   @HostListener('window:scroll')
   onScroll(): void {
     this._showButtonScrollTop = window.scrollY > 100;
-  }
-
-  @HostListener('document:keydown.escape', ['$event'])
-  keyDownEscape(event: KeyboardEvent): void {
-    this.hideMenu();
   }
 }

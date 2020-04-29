@@ -1,27 +1,23 @@
-<mat-toolbar id="app-topbar" color="primary">
-  <mat-toolbar-row>
-    <button mat-icon-button aria-label="Menu" (click)="onToggleMenu()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <a mat-button
-        routerLink="/"
-        [title]="applicationName"
-        (click)="scrollToTop()">
-        {{ applicationName }}
-    </a>
-    <div class="flex-spacer"></div>
-    <button mat-icon-button [matMenuTriggerFor]="menuUsuario" aria-label="Menu Usuário">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu #menuUsuario>
-      <a mat-menu-item [routerLink]="getPerfilUsuarioRouterLink()">
-        <mat-icon>person</mat-icon>
-        <span>Perfil de Usuário</span>
-      </a>
-      <button mat-menu-item (click)="logout()">
-        <mat-icon>exit_to_app</mat-icon>
-        <span>Logout</span>
-      </button>
-    </mat-menu>
-  </mat-toolbar-row>
-</mat-toolbar>
+<button mat-icon-button aria-label="Menu" (click)="onToggleMenu()">
+  <mat-icon>menu</mat-icon>
+</button>
+<a mat-button
+    routerLink="/"
+    [title]="applicationName"
+    (click)="scrollToTop()">
+    {{ applicationName }}
+</a>
+<div class="flex-spacer"></div>
+<button mat-icon-button [matMenuTriggerFor]="menuUsuario" aria-label="Menu Usuário">
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menuUsuario>
+  <a mat-menu-item [routerLink]="getPerfilUsuarioRouterLink()">
+    <mat-icon>person</mat-icon>
+    <span>Perfil de Usuário</span>
+  </a>
+  <button mat-menu-item (click)="logout()">
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Logout</span>
+  </button>
+</mat-menu>

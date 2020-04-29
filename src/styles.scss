@@ -1,14 +1,13 @@
 @import 'assets/scss/shared/vars';
 @import 'assets/scss/shared/mixins';
 @import 'assets/scss/shared/utils';
+@import 'assets/scss/reset';
 @import 'assets/scss/base/link';
 @import 'assets/scss/base/typography';
-@import 'assets/scss/layout/base';
 @import 'assets/scss/layout/container';
 @import 'assets/scss/layout/page-exception';
 @import 'assets/scss/layout/main';
 @import 'assets/scss/layout/login';
 @import 'assets/scss/layout/sidebar';
-@import 'assets/scss/layout/topbar';
 @import 'assets/scss/component/loader';
 @import 'assets/scss/component/tag';

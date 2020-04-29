@@ -3,13 +3,12 @@ import { Router, RoutesRecognized } from '@angular/router';
 
 import { Subscription } from 'rxjs';
 
-import { MenuItem } from 'primeng/api';
-
 import { AppRoute } from '@app/shared/enum/app-route.enum';
 import { AuthService } from '@app/security/shared/auth.service';
 import { UsuarioListResponse } from '@app/administrativo/usuario/shared/usuario-list-response.model';
 import { UsuarioService } from '@app/administrativo/usuario/shared/usuario.service';
 import { MenuBuilder } from '../shared/menu-builder';
+import { MenuItem } from '../shared/menu-item';
 
 @Component({
   selector: 'app-sidebar',
@@ -56,15 +55,15 @@ export class SidebarComponent implements OnInit, OnDestroy {
   initMenuItems(): void {
     this._menuItems = this.menuBuilder
       // Home
-      .addMenu(this.menu('Home', 'fa fa-home', 'menu-dashboard', ['/home']))
+      .add(this.menu('Home', 'fa fa-home', 'menu-dashboard', ['/home']))
       // Administrativo
-      .addMenu(this.expandedMenu('Administrativo', 'menu-administrativo', this.isExpandedMenu(`/${AppRoute.ADMINISTRATIVO}`)))
-        .addMenu(this.expandedMenu('Grupo', 'submenu-grupo', this.isExpandedMenu(`/${AppRoute.ADMINISTRATIVO_GRUPOS}`)), 1)
-          .addMenu(this.listingMenu([`/${AppRoute.ADMINISTRATIVO_GRUPOS}`]), 2)
-          .addMenu(this.registrationMenu([`/${AppRoute.ADMINISTRATIVO_GRUPOS}/${AppRoute.GENERICO_CADASTRAR}`]), 2)
-        .addMenu(this.expandedMenu('Usuário', 'submenu-usuario', this.isExpandedMenu(`/${AppRoute.ADMINISTRATIVO_USUARIOS}`)), 1)
-          .addMenu(this.listingMenu([`/${AppRoute.ADMINISTRATIVO_USUARIOS}`]), 2)
-          .addMenu(this.registrationMenu([`/${AppRoute.ADMINISTRATIVO_USUARIOS}/${AppRoute.GENERICO_CADASTRAR}`]), 2)
+      .add(this.expandedMenu('Administrativo', 'menu-administrativo', this.isExpandedMenu(`/${AppRoute.ADMINISTRATIVO}`)))
+        .add(this.expandedMenu('Grupo', 'submenu-grupo', this.isExpandedMenu(`/${AppRoute.ADMINISTRATIVO_GRUPOS}`)), 1)
+          .add(this.listingMenu([`/${AppRoute.ADMINISTRATIVO_GRUPOS}`]), 2)
+          .add(this.registrationMenu([`/${AppRoute.ADMINISTRATIVO_GRUPOS}/${AppRoute.GENERICO_CADASTRAR}`]), 2)
+        .add(this.expandedMenu('Usuário', 'submenu-usuario', this.isExpandedMenu(`/${AppRoute.ADMINISTRATIVO_USUARIOS}`)), 1)
+          .add(this.listingMenu([`/${AppRoute.ADMINISTRATIVO_USUARIOS}`]), 2)
+          .add(this.registrationMenu([`/${AppRoute.ADMINISTRATIVO_USUARIOS}/${AppRoute.GENERICO_CADASTRAR}`]), 2)
       .getMenuItems();
   }
 
@@ -103,7 +102,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
       icon,
       styleClass,
       routerLink,
-      routerLinkActiveOptions: { exact: true },
       command: () => this.onItemClick()
     };
   }
@@ -122,7 +120,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
       icon: 'fa fa-table',
       styleClass: 'submenu-listagem',
       routerLink,
-      routerLinkActiveOptions: { exact: true },
       command: () => this.onItemClick()
     };
   }
@@ -133,7 +130,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
       icon: 'fa fa-plus',
       styleClass: 'submenu-cadastro',
       routerLink,
-      routerLinkActiveOptions: { exact: true },
       command: () => this.onItemClick()
     };
   }

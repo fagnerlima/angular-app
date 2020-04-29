@@ -43,7 +43,7 @@ describe('Core: MenuBuilder', () => {
 
   it('deve criar um menu', () => {
     const menuItems = builder
-      .addMenu({ label: 'Menu 0', routerLink: ['/'] })
+      .add({ label: 'Menu 0', routerLink: ['/'] })
       .getMenuItems();
 
     expect(menuItems.length).toBe(1);
@@ -51,9 +51,9 @@ describe('Core: MenuBuilder', () => {
 
   it('deve criar um menu com dois submenus', () => {
     const menuItems = builder
-      .addMenu({ label: 'Menu 0' })
-        .addMenu({ label: 'Submenu 0.0', routerLink: ['/'] }, 1)
-        .addMenu({ label: 'Submenu 0.1', routerLink: ['/'] }, 1)
+      .add({ label: 'Menu 0' })
+        .add({ label: 'Submenu 0.0', routerLink: ['/'] }, 1)
+        .add({ label: 'Submenu 0.1', routerLink: ['/'] }, 1)
       .getMenuItems();
 
     expect(menuItems.length).toBe(1);
@@ -62,13 +62,13 @@ describe('Core: MenuBuilder', () => {
 
   it('deve criar dois menus com dois submenus de nível 1 cada e um submenu de nível 2', () => {
     const menuItems = builder
-      .addMenu({ label: 'Menu 0' })
-        .addMenu({ label: 'Submenu 0.0'}, 1)
-        .addMenu({ label: 'Submenu 0.1'}, 1)
-          .addMenu({ label: 'Submenu 0.1.0' }, 2)
-      .addMenu({ label: 'Menu 1' })
-        .addMenu({ label: 'Submenu 1.0'}, 1)
-        .addMenu({ label: 'Submenu 1.1'}, 1)
+      .add({ label: 'Menu 0' })
+        .add({ label: 'Submenu 0.0'}, 1)
+        .add({ label: 'Submenu 0.1'}, 1)
+          .add({ label: 'Submenu 0.1.0' }, 2)
+      .add({ label: 'Menu 1' })
+        .add({ label: 'Submenu 1.0'}, 1)
+        .add({ label: 'Submenu 1.1'}, 1)
       .getMenuItems();
 
     expect(menuItems.length).toBe(2);
@@ -89,7 +89,7 @@ describe('Core: MenuBuilder', () => {
 
   it('não deve criar menus', () => {
     const menuItems = builder
-      .addMenu({ label: 'Menu 0' })
+      .add({ label: 'Menu 0' })
         .addMenuIfHasAnyAuthority({ label: 'Submenu 0.0', routerLink: ['/'] }, 'ROLE_CADASTRAR', 1)
         .addMenuIfHasAnyAuthority({ label: 'Submenu 0.1', routerLink: ['/'] }, 'ROLE_CADASTRAR', 1)
       .getMenuItems();
@@ -99,10 +99,10 @@ describe('Core: MenuBuilder', () => {
 
   it('deve criar dois menus, sendo o primeiro com dois submenus', () => {
     const menuItems = builder
-      .addMenu({ label: 'Menu 0' })
+      .add({ label: 'Menu 0' })
         .addMenuIfHasAnyAuthority({ label: 'Submenu 0.0', routerLink: ['/'] }, 'ROLE_COMUM', 1)
         .addMenuIfHasAnyAuthority({ label: 'Submenu 0.1', routerLink: ['/'] }, 'ROLE_ADMIN', 1)
-      .addMenu({ label: 'Menu 1', routerLink: ['/'] })
+      .add({ label: 'Menu 1', routerLink: ['/'] })
       .getMenuItems();
 
     expect(menuItems.length).toBe(2);

@@ -1,23 +1,37 @@
-<div id="app-authenticated" *ngIf="hasValidTokens(); else notAuthenticated">
-  <div class="wrapper">
-    <app-topbar (toggleMenu)="toggleMenu()"></app-topbar>
+<ng-container *ngIf="hasValidTokens(); else notAuthenticated">
+  <div id="app-wrapper" class="authenticated" [class.mobile]="mobileQueryList.matches">
+    <mat-toolbar id="app-topbar" color="primary">
+      <mat-toolbar-row>
+        <app-topbar class="app-topbar-content" (toggleMenu)="sidenav.toggle()"></app-topbar>
+      </mat-toolbar-row>
+    </mat-toolbar>
 
-    <div id="app-wrapper" [class.toggled]="toggled">
-      <app-sidebar [active]="toggled" (itemClick)="hideMenu()"></app-sidebar>
-
-      <main id="app-main">
-        <router-outlet></router-outlet>
-
-        <app-page-footer></app-page-footer>
-      </main>
-
-      <div id="app-mask" [style.display]="displayMask ? 'block' : 'none'" (click)="hideMenu()"></div>
-    </div>
+    <mat-sidenav-container
+        id="app-sidebar-container"
+        [style.marginTop.px]="mobileQueryList.matches ? 56 : 0">
+      <mat-sidenav #sidenav
+          class="app-sidebar"
+          [mode]="mobileQueryList.matches ? 'over' : 'side'"
+          [fixedInViewport]="mobileQueryList.matches"
+          fixedTopGap="56">
+        <mat-nav-list>
+          <app-sidebar class="app-sidebar-list"></app-sidebar>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content class="app-sidebar-content">
+        <main id="app-main">
+          <div id="app-main-content">
+            <router-outlet></router-outlet>
+          </div>
+          <app-page-footer id="app-footer"></app-page-footer>
+        </main>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
   </div>
-</div>
+</ng-container>
 
 <ng-template #notAuthenticated>
-  <div class="wrapper login">
+  <div id="app-wrapper" class="login">
     <router-outlet></router-outlet>
   </div>
 </ng-template>
